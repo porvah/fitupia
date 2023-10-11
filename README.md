@@ -1,3 +1,3 @@
-# fitupia
+# Fitupia
 
 ## Mohamed is testing
