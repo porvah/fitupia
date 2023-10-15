@@ -16,6 +16,7 @@ class FitupiaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fitupia',
+      debugShowCheckedModeBanner: false,
       theme: Styles.lightTheme,
       darkTheme: Styles.darkTheme,
       // home: HomeScreen(),

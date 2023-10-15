@@ -9,9 +9,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig.init(context);
-
     return Scaffold(
+      appBar: AppBar(title: const Text('Fitupia')),
       body: SafeArea(child: Container()),
     );
   }
