@@ -46,19 +46,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(
-              child: PageView.builder(
-                controller: _pageController,
-                itemCount: _imagePages.length,
-                itemBuilder: (_, index) {
-                  return WelcomePageView(
-                    imagePath: _imagePages[index],
-                    title: _titlePages[index],
-                    description: _descriptionPages[index],
-                  );
-                },
-              ),
-            ),
+            _buildPageView(),
             SmoothPageIndicator(
               controller: _pageController,
               count: _imagePages.length,
@@ -69,6 +57,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             const SizedBox(height: 16),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildPageView() {
+    return Expanded(
+      child: PageView.builder(
+        controller: _pageController,
+        itemCount: _imagePages.length,
+        itemBuilder: (_, index) {
+          return WelcomePageView(
+            imagePath: _imagePages[index],
+            title: _titlePages[index],
+            description: _descriptionPages[index],
+          );
+        },
       ),
     );
   }
