@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../screens/home_screen.dart';
 import '../size_config/size_config.dart';
+import 'custom_button.dart';
 
 class WelcomePageView extends StatelessWidget {
   final String imagePath;
@@ -22,6 +24,13 @@ class WelcomePageView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _getData(),
+          CustomButton(
+            title: 'Get Started',
+            icon: Icons.arrow_forward_ios_outlined,
+            onPressed: () {
+              Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+            },
+          ),
           _getImage(),
         ],
       ),
@@ -29,12 +38,15 @@ class WelcomePageView extends StatelessWidget {
   }
 
   Widget _getData() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _getTitle(),
-        _getDescription(),
-      ],
+    return SizedBox(
+      width: SizeConfig.screenWidth / 1.5,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _getTitle(),
+          _getDescription(),
+        ],
+      ),
     );
   }
 
@@ -43,7 +55,7 @@ class WelcomePageView extends StatelessWidget {
       title,
       style: TextStyle(
         fontWeight: FontWeight.bold,
-        fontSize: SizeConfig.getProportionateScreenWidth(26),
+        fontSize: SizeConfig.getProportionateScreenWidth(22),
       ),
     );
   }
@@ -52,7 +64,8 @@ class WelcomePageView extends StatelessWidget {
     return Text(
       description,
       style: TextStyle(
-        fontSize: SizeConfig.getProportionateScreenWidth(18),
+        fontSize: SizeConfig.getProportionateScreenWidth(16),
+        color: Colors.black54,
       ),
     );
   }
