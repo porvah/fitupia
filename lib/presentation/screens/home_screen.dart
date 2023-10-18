@@ -13,8 +13,18 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: appBar(const Color.fromARGB(255, 70, 163, 240)),
-      drawer: drawer(Color.fromARGB(255, 47, 76, 99)),
-      body: SafeArea(child: Container()),
+      drawer: drawer(const Color.fromARGB(255, 47, 76, 99)),
+      body: SafeArea(
+          child: ListView(children: const [
+        Card(
+          elevation: 5,
+          shadowColor: Colors.black,
+          color: Color.fromARGB(255, 184, 147, 46),
+          child: Row(
+            children: [Text('data')],
+          ),
+        )
+      ])),
     );
   }
 }

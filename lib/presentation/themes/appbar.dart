@@ -12,7 +12,19 @@ AppBar appBar(Color barColor) {
 
 Drawer drawer(Color drawerColor) {
   return Drawer(
-    backgroundColor: drawerColor,
-    child: ListView(children: const [ListTile(title: Text('Profile'))]),
-  );
+      backgroundColor: drawerColor,
+      child: ListView(
+        children: [
+          Container(
+              decoration: const BoxDecoration(
+                  boxShadow: [BoxShadow(color: Colors.black, blurRadius: 5)]),
+              child: Image.asset('assets/images/poseidon.png')),
+          const ListTile(
+            title: Text(
+              'Profile',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          )
+        ],
+      ));
 }
