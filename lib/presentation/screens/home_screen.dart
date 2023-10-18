@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import "../themes/appbar.dart";
 import '../size_config/size_config.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,6 +12,8 @@ class HomeScreen extends StatelessWidget {
     SizeConfig.init(context);
 
     return Scaffold(
+      appBar: appBar(const Color.fromARGB(255, 70, 163, 240)),
+      drawer: drawer(Color.fromARGB(255, 47, 76, 99)),
       body: SafeArea(child: Container()),
     );
   }

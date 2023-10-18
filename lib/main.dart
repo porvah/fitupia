@@ -1,3 +1,4 @@
+import 'package:fitupia/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'app_router.dart';
@@ -20,7 +21,7 @@ class FitupiaApp extends StatelessWidget {
       darkTheme: Styles.darkTheme,
       // home: HomeScreen(),
       onGenerateRoute: appRouter.generateRoute,
-      initialRoute: '/',
+      initialRoute: HomeScreen.routeName,
     );
   }
 }
