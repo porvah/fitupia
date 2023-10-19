@@ -12,8 +12,9 @@ class HomeScreen extends StatelessWidget {
     SizeConfig.init(context);
 
     return Scaffold(
-      appBar: appBar(const Color.fromARGB(255, 70, 163, 240)),
-      drawer: drawer(const Color.fromARGB(255, 47, 76, 99)),
+      appBar: appBar(const Color.fromARGB(255, 70, 163, 240), context),
+      drawer: drawer(const Color.fromARGB(255, 1, 76, 138),
+          Image.asset('assets/images/poseidon.png')),
       body: SafeArea(
           child: ListView(children: const [
         Card(
