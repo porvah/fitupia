@@ -17,14 +17,42 @@ class HomeScreen extends StatelessWidget {
           Image.asset('assets/images/poseidon.png')),
       body: SafeArea(
           child: ListView(children: const [
-        Card(
-          elevation: 5,
-          shadowColor: Colors.black,
-          color: Color.fromARGB(255, 184, 147, 46),
-          child: Row(
-            children: [Text('data')],
-          ),
-        )
+        SizedBox(
+            height: 300,
+            child: Card(
+              elevation: 5,
+              shadowColor: Colors.black,
+              color: Color.fromARGB(255, 184, 147, 46),
+              child: Row(
+                children: [
+                  Text('Diet'),
+                ],
+              ),
+            )),
+        SizedBox(
+            height: 300,
+            child: Card(
+              elevation: 5,
+              shadowColor: Colors.black,
+              color: Color.fromARGB(255, 184, 147, 46),
+              child: Row(
+                children: [
+                  Text('Diet'),
+                ],
+              ),
+            )),
+        SizedBox(
+            height: 300,
+            child: Card(
+              elevation: 5,
+              shadowColor: Colors.black,
+              color: Color.fromARGB(255, 184, 147, 46),
+              child: Row(
+                children: [
+                  Text('Diet'),
+                ],
+              ),
+            ))
       ])),
     );
   }
