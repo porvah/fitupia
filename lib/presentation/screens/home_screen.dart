@@ -23,9 +23,30 @@ class HomeScreen extends StatelessWidget {
               elevation: 5,
               shadowColor: Colors.black,
               color: Color.fromARGB(255, 184, 147, 46),
-              child: Row(
+              child: Column(
                 children: [
-                  Text('Diet'),
+                  Padding(padding: EdgeInsets.all(8)),
+                  Text(
+                    "Today's Nutrition",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 35,
+                        decoration: TextDecoration.underline),
+                  ),
+                  Padding(padding: EdgeInsets.all(20)),
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          Text('Carbohydrates:'),
+                          Text('Total fiber:')
+                        ],
+                      ),
+                      Column(
+                        children: [Text('Protein:'), Text('Fat:')],
+                      )
+                    ],
+                  )
                 ],
               ),
             )),
@@ -34,10 +55,10 @@ class HomeScreen extends StatelessWidget {
             child: Card(
               elevation: 5,
               shadowColor: Colors.black,
-              color: Color.fromARGB(255, 184, 147, 46),
+              color: Color.fromARGB(249, 157, 156, 158),
               child: Row(
                 children: [
-                  Text('Diet'),
+                  Text('Exercise'),
                 ],
               ),
             )),
@@ -46,10 +67,10 @@ class HomeScreen extends StatelessWidget {
             child: Card(
               elevation: 5,
               shadowColor: Colors.black,
-              color: Color.fromARGB(255, 184, 147, 46),
+              color: Color.fromARGB(255, 197, 60, 36),
               child: Row(
                 children: [
-                  Text('Diet'),
+                  Text('Calendar'),
                 ],
               ),
             ))
