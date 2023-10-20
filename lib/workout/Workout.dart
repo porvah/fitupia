@@ -1,39 +1,29 @@
+import 'package:fitupia/workout/Exercis.dart';
+import 'package:fitupia/workout/exercis_widget.dart';
 import 'package:flutter/material.dart';
 
 class Workout extends StatelessWidget {
-  const Workout({super.key});
+  Workout({super.key});
+
+List<Exercis> exercises = [
+    Exercis(name: "Chest", imgPath: "assets/exercises_cover/chest.png"),
+    Exercis(name: "Back", imgPath: "assets/exercises_cover/back.png"),
+    Exercis(name: "Legs", imgPath: "assets/exercises_cover/leg.png"),
+    Exercis(name: "shoulders", imgPath: "assets/exercises_cover/shoulders.png"),
+    Exercis(name: "Arms", imgPath: "assets/exercises_cover/arm.png"),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
           backgroundColor: const Color(0xFFC0D1EF),
-          body: Container(
-            margin: const EdgeInsets.all(10.0),
-            child: Material(
-              borderRadius: BorderRadius.circular(10.0),
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child: InkWell(
-                onTap: () {},
-                child: Ink.image(
-                  image: const AssetImage("assets/back.png"),
-                  height: 200.0,
-                  fit: BoxFit.fill,
-                  child: const Center(
-                    child: Text(
-                      "Back Exercises",
-                      style: TextStyle(
-                        fontFamily: "CaesarDressing",
-                        fontSize: 38.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  ),
-              ),
-            ),
-          )),
+          body: ListView(
+            children: exercises.map((e) => ExercisWidget(exercis: e)).toList(),
+          )
+          ),
     );
   }
 }
+
+
