@@ -1,15 +1,14 @@
-import 'package:fitupia/workout/Exercis.dart';
 import 'package:flutter/material.dart';
+import 'package:fitupia/workout/exercises_classes/Exercis.dart';
 
 
-class ExercisWidget extends StatelessWidget {
-  const ExercisWidget({
+class ExercisButtonWidget extends StatelessWidget {
+  const ExercisButtonWidget({
     super.key,
     required this.exercis,
   });
 
   final Exercis exercis;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,9 +17,13 @@ class ExercisWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, "/${exercis.name.toLowerCase()}_screen");
+          },
           child: Ink.image(
             image: AssetImage(exercis.imgPath),
+            colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.3), BlendMode.darken),
             height: 200.0,
             fit: BoxFit.fill,
             child: Center(
