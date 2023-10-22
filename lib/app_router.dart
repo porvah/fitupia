@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'presentation/screens/home_screen.dart';
 import 'presentation/screens/splash_screen.dart';
+import 'presentation/screens/welcome_screen.dart';
 
 class AppRouter {
   const AppRouter();
@@ -12,6 +13,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case SplashScreen.routeName:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
+      case WelcomeScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const WelcomeScreen());
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
     }
