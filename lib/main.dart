@@ -1,4 +1,4 @@
-import 'package:fitupia/workout/workout_screen.dart';
+import 'package:fitupia/workout/workout_screens/gender_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'app_router.dart';
@@ -20,7 +20,7 @@ class FitupiaApp extends StatelessWidget {
       // debugShowCheckedModeBanner: false,
       // theme: Styles.lightTheme,
       // darkTheme: Styles.darkTheme,
-      home: workout_screen(),
+      home: GenderScreen(),
       onGenerateRoute: appRouter.generateRoute,
       // initialRoute: '/',
     );

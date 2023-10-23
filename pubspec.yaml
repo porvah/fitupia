@@ -68,7 +68,8 @@ flutter:
     - assets/fitupia_logo.png
     - assets/logo.png
     - assets/images/
-    - assets/exercises_cover/
+    - assets/exercises_cover/male/
+    - assets/exercises_cover/female/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
