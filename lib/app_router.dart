@@ -1,4 +1,3 @@
-import 'package:fitupia/presentation/screens/dummy_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'presentation/screens/home_screen.dart';
