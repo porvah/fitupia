@@ -27,18 +27,31 @@ class CardButtonWidget extends StatelessWidget {
       },
       child: Ink.image(
         image: AssetImage(card.imgPath),
-        colorFilter:
-            ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.darken),
         height: 200.0,
         fit: BoxFit.fill,
-        child: Center(
-          child: Text(
-            "${card.name} Exercises",
-            style: const TextStyle(
-              fontFamily: "CaesarDressing",
-              fontSize: 38.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      const Color(0xFF4d4d4d).withAlpha(100),
+                      const Color(0xFF333333).withAlpha(120),
+                      const Color(0xFF1a1a1a).withAlpha(190),
+                      const Color(0xFF000000).withAlpha(255),
+                    ]
+            )
+          ),
+          child: Center(
+            child: Text(
+              "${card.name} Exercises",
+              style: const TextStyle(
+                letterSpacing: 1.0,
+                fontFamily: "CaesarDressing",
+                fontSize: 38.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
           ),
         ),

@@ -25,8 +25,7 @@ class AppRouter {
       case WelcomeScreen.routeName:
         return MaterialPageRoute(builder: (_) => const WelcomeScreen());
       case WorkoutScreen.routeName:
-        final args = settings.arguments;
-        return MaterialPageRoute(builder: (_) => WorkoutScreen(args));
+        return MaterialPageRoute(builder: (_) => const WorkoutScreen());
       case ChestScreen.routeName:
         final args = settings.arguments;
         return MaterialPageRoute(builder: (_) =>  ChestScreen(args),);
