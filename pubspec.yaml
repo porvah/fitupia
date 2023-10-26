@@ -70,6 +70,11 @@ flutter:
     - assets/images/zeus.png
     - assets/images/aphrodite.png
     - assets/images/athena.png
+    - assets/images/Firefly food.jpg
+    - assets/images/Firefly exercise.jpg
+    - assets/images/Firefly calendar.jpg
+
+
   #   - images/a_dot_ham.jpeg
   fonts:
     - family: Fitupia  

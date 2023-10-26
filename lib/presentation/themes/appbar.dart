@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/dummy_screen.dart';
 
 AppBar appBar(Color barColor, BuildContext context) {
   return AppBar(
@@ -21,7 +22,7 @@ AppBar appBar(Color barColor, BuildContext context) {
       }));
 }
 
-Drawer drawer(Color drawerColor, Image img) {
+Drawer drawer(Color drawerColor, Image img, BuildContext context) {
   return Drawer(
       backgroundColor: drawerColor,
       child: ListView(
@@ -31,12 +32,16 @@ Drawer drawer(Color drawerColor, Image img) {
                 boxShadow: [BoxShadow(color: Colors.black, blurRadius: 5)]),
             child: img,
           ),
-          const ListTile(
-            title: Text(
+          ListTile(
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.of(context).pushNamed(DummyScreen.routeName);
+            },
+            title: const Text(
               'Profile',
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
-            leading: Icon(
+            leading: const Icon(
               Icons.person,
               color: Colors.white,
             ),
@@ -44,32 +49,44 @@ Drawer drawer(Color drawerColor, Image img) {
           const Divider(
             color: Colors.grey,
           ),
-          const ListTile(
-            title: Text(
+          ListTile(
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.of(context).pushNamed(DummyScreen.routeName);
+            },
+            title: const Text(
               'Diet Plan',
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
-            leading: Icon(
+            leading: const Icon(
               Icons.map_outlined,
               color: Colors.white,
             ),
           ),
-          const ListTile(
-            title: Text(
+          ListTile(
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.of(context).pushNamed(DummyScreen.routeName);
+            },
+            title: const Text(
               'Exercise ',
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
-            leading: Icon(
+            leading: const Icon(
               Icons.fitness_center_rounded,
               color: Colors.white,
             ),
           ),
-          const ListTile(
-            title: Text(
+          ListTile(
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.of(context).pushNamed(DummyScreen.routeName);
+            },
+            title: const Text(
               'Calendar Routine',
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
-            leading: Icon(
+            leading: const Icon(
               Icons.calendar_month_rounded,
               color: Colors.white,
             ),
@@ -77,12 +94,16 @@ Drawer drawer(Color drawerColor, Image img) {
           const Divider(
             color: Colors.grey,
           ),
-          const ListTile(
-            title: Text(
+          ListTile(
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.of(context).pushNamed(DummyScreen.routeName);
+            },
+            title: const Text(
               'Settings',
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
-            leading: Icon(
+            leading: const Icon(
               Icons.settings,
               color: Colors.white,
             ),
