@@ -9,6 +9,7 @@ import 'package:fitupia/workout/workout_screens/exercises_screens/shoulders_scre
 import 'package:fitupia/workout/workout_screens/workout_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'presentation/screens/dummy_screen.dart';
 import 'presentation/screens/home_screen.dart';
 import 'presentation/screens/splash_screen.dart';
 import 'presentation/screens/welcome_screen.dart';
@@ -28,25 +29,29 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const WorkoutScreen());
       case ChestScreen.routeName:
         final args = settings.arguments;
-        return MaterialPageRoute(builder: (_) =>  ChestScreen(args),);
+        return MaterialPageRoute(
+          builder: (_) => ChestScreen(args),
+        );
       case BackScreen.routeName:
         final args = settings.arguments;
-        return MaterialPageRoute(builder: (_) =>  BackScreen(args));
+        return MaterialPageRoute(builder: (_) => BackScreen(args));
       case LegsScreen.routeName:
         final args = settings.arguments;
-        return MaterialPageRoute(builder: (_) =>  LegsScreen(args));
+        return MaterialPageRoute(builder: (_) => LegsScreen(args));
       case ShouldersScreen.routeName:
         final args = settings.arguments;
-        return MaterialPageRoute(builder: (_) =>  ShouldersScreen(args));
+        return MaterialPageRoute(builder: (_) => ShouldersScreen(args));
       case ArmsScreen.routeName:
         final args = settings.arguments;
-        return MaterialPageRoute(builder: (_) =>  ArmsScreen(args));
+        return MaterialPageRoute(builder: (_) => ArmsScreen(args));
       case AbdomenScreen.routeName:
         final args = settings.arguments;
-        return MaterialPageRoute(builder: (_) =>  AbdomenScreen(args));
+        return MaterialPageRoute(builder: (_) => AbdomenScreen(args));
       case CardioScreen.routeName:
         final args = settings.arguments;
-        return MaterialPageRoute(builder: (_) =>  CardioScreen(args));
+        return MaterialPageRoute(builder: (_) => CardioScreen(args));
+      case DummyScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const DummyScreen());
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
     }
