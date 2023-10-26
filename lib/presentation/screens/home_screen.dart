@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import "../themes/appbar.dart";
-import '../size_config/size_config.dart';
 import '../widgets/home_card.dart';
 import "dummy_screen.dart";
 
@@ -29,8 +28,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig.init(context);
-
     return Scaffold(
       appBar: appBar(const Color.fromARGB(255, 70, 163, 240)),
       drawer: drawer(const Color.fromARGB(255, 1, 76, 138),
