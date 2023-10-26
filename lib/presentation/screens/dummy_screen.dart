@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../size_config/size_config.dart';
+import '../themes/appbar.dart';
 
 class DummyScreen extends StatelessWidget {
   static const String routeName = '/dummy_screen';
@@ -10,9 +11,7 @@ class DummyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('dummy'),
-      ),
+      appBar: appBar(Colors.black),
     );
   }
 }

@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
     SizeConfig.init(context);
 
     return Scaffold(
-      appBar: appBar(const Color.fromARGB(255, 70, 163, 240), context),
+      appBar: appBar(const Color.fromARGB(255, 70, 163, 240)),
       drawer: drawer(const Color.fromARGB(255, 1, 76, 138),
           Image.asset('assets/images/poseidon.png'), context),
       body: _buildListCards(),
