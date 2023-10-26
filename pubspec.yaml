@@ -68,11 +68,22 @@ flutter:
   assets:
     - assets/fitupia_logo.png
     - assets/logo.png
+    - assets/images/poseidon.png
+    - assets/images/zeus.png
+    - assets/images/aphrodite.png
+    - assets/images/athena.png
+    - assets/images/Firefly food.jpg
+    - assets/images/Firefly exercise.jpg
+    - assets/images/Firefly calendar.jpg
+
     - assets/images/
     - assets/exercises_cover/male/
     - assets/exercises_cover/female/
   #   - images/a_dot_ham.jpeg
-
+  fonts:
+    - family: Fitupia
+      fonts:
+        - asset: assets/fonts/Greek-Freak.ttf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
