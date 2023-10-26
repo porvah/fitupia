@@ -8,11 +8,13 @@ class WelcomePageView extends StatelessWidget {
   final String imagePath;
   final String title;
   final String description;
+  final bool haveButton;
 
   const WelcomePageView(
       {required this.imagePath,
       required this.title,
       required this.description,
+      this.haveButton = false,
       super.key});
 
   @override
@@ -24,13 +26,15 @@ class WelcomePageView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _getData(),
-          CustomButton(
-            title: 'Get Started',
-            icon: Icons.arrow_forward_ios_outlined,
-            onPressed: () {
-              Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
-            },
-          ),
+          if (haveButton)
+            CustomButton(
+              title: 'Get Started',
+              icon: Icons.arrow_forward_ios_outlined,
+              onPressed: () {
+                Navigator.of(context)
+                    .pushReplacementNamed(HomeScreen.routeName);
+              },
+            ),
           _getImage(),
         ],
       ),
