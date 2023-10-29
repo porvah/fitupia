@@ -77,9 +77,8 @@ flutter:
     - assets/images/Firefly calendar.jpg
 
     - assets/images/
-    - assets/exercises_cover/male/
-    - assets/exercises_cover/female/
-  #   - images/a_dot_ham.jpeg
+    - assets/images/exercises/
+
   fonts:
     - family: Fitupia
       fonts:
