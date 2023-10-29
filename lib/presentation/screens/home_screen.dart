@@ -1,3 +1,4 @@
+import 'package:fitupia/workout/workout_screens/workout_screen.dart';
 import 'package:flutter/material.dart';
 import "../themes/appbar.dart";
 import '../widgets/home_card.dart';
@@ -15,7 +16,7 @@ class HomeScreen extends StatelessWidget {
     [
       'Exercise',
       'assets/images/Firefly exercise.jpg',
-      DummyScreen.routeName,
+      WorkoutScreen.routeName,
     ],
     [
       'Track Your progress',

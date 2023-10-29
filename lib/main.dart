@@ -1,3 +1,4 @@
+import 'package:fitupia/presentation/themes/custom_theme.dart';
 import 'package:fitupia/workout/workout_screens/workout_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,11 +17,11 @@ class FitupiaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // title: 'Fitupia',
+      title: 'Fitupia',
       debugShowCheckedModeBanner: false,
-      // theme: Styles.lightTheme,
-      // darkTheme: Styles.darkTheme,
-      home: const WorkoutScreen(),
+      theme: Styles.lightTheme,
+      darkTheme: Styles.darkTheme,
+      // home: const WorkoutScreen(),
       onGenerateRoute: appRouter.generateRoute,
       // initialRoute: '/',
     );
