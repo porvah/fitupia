@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import "../themes/appbar.dart";
 import '../widgets/home_card.dart';
 import "dummy_screen.dart";
+import 'workout_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/home_screen';

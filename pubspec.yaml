@@ -77,9 +77,8 @@ flutter:
     - assets/images/Firefly calendar.jpg
 
     - assets/images/
-    - assets/exercises_cover/male/
-    - assets/exercises_cover/female/
-  #   - images/a_dot_ham.jpeg
+    - assets/images/exercises/
+
   fonts:
     - family: Fitupia
       fonts:
@@ -98,6 +97,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  fonts:
+    - family: CaesarDressing
+      fonts:
+        - asset: fonts/CaesarDressing-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

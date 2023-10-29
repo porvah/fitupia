@@ -1,4 +1,3 @@
-import 'package:fitupia/workout/list_of_exercises/list_of_exercises.dart';
 import 'package:flutter/material.dart';
 import 'package:fitupia/workout/workout_widgets/card_button_widget.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
