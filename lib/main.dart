@@ -1,4 +1,3 @@
-import 'package:fitupia/workout/workout_screens/workout_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'app_router.dart';
@@ -18,9 +17,9 @@ class FitupiaApp extends StatelessWidget {
     return MaterialApp(
       title: 'Fitupia',
       debugShowCheckedModeBanner: false,
-      // theme: Styles.lightTheme,
-      // darkTheme: Styles.darkTheme,
-      home: const WorkoutScreen(),
+      theme: Styles.lightTheme,
+      darkTheme: Styles.darkTheme,
+      // home: HomeScreen(),
       onGenerateRoute: appRouter.generateRoute,
       initialRoute: '/',
     );
