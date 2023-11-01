@@ -1,3 +1,7 @@
+import 'package:first_app/presentation/themes/appbar.dart';
+
+import 'dummy_screen.dart';
+import '../widgets/home_card.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import '../size_config/size_config.dart';
@@ -27,14 +31,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
         child: const Icon(Icons.add),
         onPressed: () {},
       ),
-      appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(Icons.arrow_back),
-          ),
-          title: const Text("Calendar")),
+      appBar: buildAppBar(
+        'Calendar',
+        Colors.white70,
+        const Color.fromARGB(255, 70, 163, 240),
+      ),
       body: SafeArea(
           child: Column(
         children: [
@@ -52,6 +53,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
               timelineAppointmentHeight: 300,
             ),
             firstDayOfWeek: 6,
+          ),
+          const HomeCard(
+            title: 'Statistics',
+            imgPath: 'assets/images/stats_image.png',
+            screenName: DummyScreen.routeName,
           ),
         ],
       )),

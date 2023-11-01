@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
       'Track Your progress',
       'assets/images/Firefly calendar.jpg',
       CalendarScreen.routeName,
-    ]
+    ],
   ];
 
   const HomeScreen({super.key});
@@ -32,7 +32,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(const Color.fromARGB(255, 70, 163, 240)),
+      appBar: buildAppBar(
+        'Home',
+        Colors.white70,
+        const Color.fromARGB(255, 70, 163, 240),
+      ),
       drawer: drawer(const Color.fromARGB(255, 1, 76, 138),
           Image.asset('assets/images/poseidon.png'), context),
       body: _buildListCards(),
