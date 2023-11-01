@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import "../themes/appbar.dart";
 import '../widgets/home_card.dart';
+import 'calendar_screen.dart';
 import 'diet_screen.dart';
 import "dummy_screen.dart";
 import 'workout_screen.dart';
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
     [
       'Track Your progress',
       'assets/images/Firefly calendar.jpg',
-      DummyScreen.routeName,
+      CalendarScreen.routeName,
     ]
   ];
 

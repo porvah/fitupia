@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'presentation/screens/calendar_screen.dart';
 import 'presentation/screens/diet_screen.dart';
 import 'presentation/screens/dummy_screen.dart';
 import 'presentation/screens/food_screen.dart';
@@ -31,6 +32,8 @@ class AppRouter {
       case DietScreen.routeName:
         return MaterialPageRoute(builder: (_) => const DietScreen());
 
+      case CalendarScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const CalendarScreen());
       default:
         return MaterialPageRoute(builder: (_) => const DummyScreen());
     }
