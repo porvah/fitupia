@@ -1,3 +1,4 @@
+import 'package:fitupia/presentation/screens/signup1.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/registration_screen.dart';
@@ -29,7 +30,7 @@ class WelcomePageView extends StatelessWidget {
             icon: Icons.arrow_forward_ios_outlined,
             onPressed: () {
               Navigator.of(context)
-                  .pushReplacementNamed(RegistrationScreen.routeName);
+                  .push(MaterialPageRoute(builder: (ctx) => SignUp1()));
             },
           ),
           _getImage(),

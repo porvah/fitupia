@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'signup2.dart';
@@ -19,7 +18,7 @@ class SignUp1 extends StatelessWidget {
           Align(
             alignment: Alignment.topCenter,
             child: Image.asset(
-              "assets/images/Firefly_greek_architecture_temple_9509999.png",
+              "assets/images_reg/Firefly_greek_architecture_temple_9509999.png",
             ),
           ),
           SingleChildScrollView(
@@ -266,7 +265,7 @@ class SignUp1 extends StatelessWidget {
                                                 alignment:
                                                     Alignment.centerRight,
                                                 child: Image.asset(
-                                                  "assets/images/letters.png",
+                                                  "assets/images_reg/letters.png",
                                                   height: MediaQuery.of(context)
                                                           .size
                                                           .height *
@@ -347,7 +346,7 @@ class SignUp1 extends StatelessWidget {
                                                 alignment:
                                                     Alignment.centerRight,
                                                 child: Image.asset(
-                                                  "assets/images/sex.png",
+                                                  "assets/images_reg/sex.png",
                                                   height: MediaQuery.of(context)
                                                           .size
                                                           .height *

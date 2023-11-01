@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_launcher_icons: ^0.13.1
   smooth_page_indicator: ^1.1.0
+  animated_custom_dropdown: ^1.5.0
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,7 @@ flutter:
     - assets/fitupia_logo.png
     - assets/logo.png
     - assets/images/
+    - assets/images_reg/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

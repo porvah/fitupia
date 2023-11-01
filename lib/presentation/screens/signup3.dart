@@ -1,3 +1,4 @@
+import 'package:fitupia/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
 
@@ -11,7 +12,7 @@ class SignUp3 extends StatelessWidget {
           Align(
             alignment: Alignment.bottomLeft,
             child: Image.asset(
-              "assets/images/screen30.png",
+              "assets/images_reg/screen30.png",
               height: MediaQuery.of(context).size.height * 0.25,
             ),
           ),
@@ -44,7 +45,7 @@ class SignUp3 extends StatelessWidget {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Image.asset(
-                          "assets/images/screen31.png",
+                          "assets/images_reg/screen31.png",
                           height: MediaQuery.of(context).size.height * 0.18,
                         ),
                       ),
@@ -54,7 +55,7 @@ class SignUp3 extends StatelessWidget {
                       Align(
                         alignment: Alignment.center,
                         child: Image.asset(
-                          "assets/images/screen32.png",
+                          "assets/images_reg/screen32.png",
                           height: MediaQuery.of(context).size.height * 0.18,
                         ),
                       ),
@@ -129,6 +130,11 @@ class SignUp3 extends StatelessWidget {
                             onPressed: () {
                               if (!_Goalctrl.text.isEmpty) {
                                 //3al Home screen
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (ctx) => const HomeScreen(),
+                                  ),
+                                );
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

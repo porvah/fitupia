@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:signin_signup/signup3.dart';
+import 'signup3.dart';
 
 class SignUp2 extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -18,7 +18,7 @@ class SignUp2 extends StatelessWidget {
           Align(
             alignment: Alignment.bottomRight,
             child: Image.asset(
-              "assets/images/border2.png",
+              "assets/images_reg/border2.png",
               height: MediaQuery.of(context).size.height * 0.42,
             ),
           ),
@@ -276,7 +276,7 @@ class SignUp2 extends StatelessWidget {
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Image.asset(
-                                            "assets/images/age-group.png",
+                                            "assets/images_reg/age-group.png",
                                             height: MediaQuery.of(context)
                                                     .size
                                                     .height *
@@ -323,7 +323,7 @@ class SignUp2 extends StatelessWidget {
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Image.asset(
-                                            "assets/images/height.png",
+                                            "assets/images_reg/height.png",
                                             height: MediaQuery.of(context)
                                                     .size
                                                     .height *
@@ -369,7 +369,7 @@ class SignUp2 extends StatelessWidget {
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Image.asset(
-                                            "assets/images/weight-scale.png",
+                                            "assets/images_reg/weight-scale.png",
                                             height: MediaQuery.of(context)
                                                     .size
                                                     .height *
