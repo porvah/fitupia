@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../size_config/size_config.dart';
 
 class HomeCard extends StatelessWidget {
   final String title;
@@ -19,7 +20,7 @@ class HomeCard extends StatelessWidget {
         Navigator.of(context).pushNamed(screenName);
       },
       child: SizedBox(
-        height: 200,
+        height: SizeConfig.screenHeight * 0.35,
         child: Card(
           elevation: 5,
           shadowColor: Colors.black,
@@ -49,9 +50,9 @@ class HomeCard extends StatelessWidget {
       color: Colors.black.withOpacity(0.5),
       child: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 22,
+          fontSize: SizeConfig.getProportionateScreenWidth(22),
           color: Colors.white,
         ),
         textAlign: TextAlign.center,
