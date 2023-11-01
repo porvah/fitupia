@@ -1,6 +1,7 @@
 import 'package:first_app/presentation/screens/food_screen.dart';
-import 'package:first_app/notebook_card.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/notebook_card.dart';
 
 class NoteBookScreen extends StatelessWidget {
   static const String routeName = '/notebook_screen';
