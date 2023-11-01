@@ -18,7 +18,7 @@ class FitupiaApp extends StatelessWidget {
       title: 'Fitupia',
       theme: Styles.lightTheme,
       darkTheme: Styles.darkTheme,
-      // home: HomeScreen(),
+      home: (),
       onGenerateRoute: appRouter.generateRoute,
       initialRoute: '/',
     );
