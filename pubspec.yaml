@@ -1,4 +1,4 @@
-name: fitupia
+name: first_app
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -30,13 +30,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  syncfusion_flutter_charts: ^19.1.54
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_launcher_icons: ^0.13.1
   smooth_page_indicator: ^1.1.0
-  lite_rolling_switch: ^1.0.1
+  pie_chart: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -48,11 +49,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-
-flutter_icons:
-  android: true
-  ios: true
-  image_path: "assets/fitupia_logo.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -75,9 +71,9 @@ flutter:
     - assets/images/Firefly food.jpg
     - assets/images/Firefly exercise.jpg
     - assets/images/Firefly calendar.jpg
-
     - assets/images/
     - assets/images/exercises/
+    - assets/images/diet/
 
   fonts:
     - family: Fitupia
@@ -86,6 +82,7 @@ flutter:
     - family: CaesarDressing
       fonts:
         - asset: assets/fonts/CaesarDressing-Regular.ttf
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -98,7 +95,6 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
 
-    
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

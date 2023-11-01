@@ -143,10 +143,10 @@ packages:
     dependency: transitive
     description:
       name: intl
-      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
+      sha256: "910f85bce16fb5c6f614e117efa303e85a1731bb0081edf3604a2ae6e9a3cc91"
       url: "https://pub.dev"
     source: hosted
-    version: "0.18.1"
+    version: "0.17.0"
   js:
     dependency: transitive
     description:
@@ -171,14 +171,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
-  lite_rolling_switch:
-    dependency: "direct main"
-    description:
-      name: lite_rolling_switch
-      sha256: f5685911d249534ac6ac9862622f18846d31799c90fa4600b475d902d132b090
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.1"
   matcher:
     dependency: transitive
     description:
@@ -219,6 +211,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.4.0"
+  pie_chart:
+    dependency: "direct main"
+    description:
+      name: pie_chart
+      sha256: "5dba6d0eb4718e8ed00a9079361cd8947c3f84ac5a5d76f05a27f4ec5e27589e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.3.2"
   pointycastle:
     dependency: transitive
     description:
@@ -272,6 +272,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  syncfusion_flutter_charts:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_charts
+      sha256: "0fba2a6a949308f6c2779195e8439f2c60064ad1b022abe8997f47b09e09fb6b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "19.4.56"
+  syncfusion_flutter_core:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_core
+      sha256: "9be1bb9bbdb42823439a18da71484f1964c14dbe1c255ab1b931932b12fa96e8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "19.4.56"
   term_glyph:
     dependency: transitive
     description:
