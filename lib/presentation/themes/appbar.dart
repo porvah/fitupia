@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 import '../screens/dummy_screen.dart';
 
-AppBar buildAppBar(String title, Color textColor, Color backgroundColor) {
+AppBar buildAppBar(
+  String title,
+  Color textColor,
+  Color backgroundColor, {
+  bool back = false,
+}) {
   return AppBar(
     backgroundColor: backgroundColor,
-    leading: BackButton(
-      color: textColor,
-    ),
+    leading: back
+        ? BackButton(
+            color: textColor,
+          )
+        : null,
     title: Text(
       title,
       style: TextStyle(
         color: textColor,
       ),
     ),
+    foregroundColor: textColor,
   );
 }
 

@@ -36,6 +36,7 @@ class HomeScreen extends StatelessWidget {
         'Home',
         Colors.white70,
         const Color.fromARGB(255, 70, 163, 240),
+        back: false,
       ),
       drawer: drawer(const Color.fromARGB(255, 1, 76, 138),
           Image.asset('assets/images/poseidon.png'), context),

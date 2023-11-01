@@ -1,6 +1,8 @@
+import 'package:first_app/presentation/screens/signup1.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/home_screen.dart';
+import '../screens/registration_screen.dart';
 import '../size_config/size_config.dart';
 import 'custom_button.dart';
 
@@ -32,7 +34,7 @@ class WelcomePageView extends StatelessWidget {
               icon: Icons.arrow_forward_ios_outlined,
               onPressed: () {
                 Navigator.of(context)
-                    .pushReplacementNamed(HomeScreen.routeName);
+                    .push(MaterialPageRoute(builder: (ctx) => HomeScreen()));
               },
             ),
           _getImage(),
