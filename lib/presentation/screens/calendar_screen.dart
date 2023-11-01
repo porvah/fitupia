@@ -64,35 +64,35 @@ class _CalendarScreenState extends State<CalendarScreen> {
     appointments.add(Appointment(
       subject: 'Leg Day',
       color: Colors.cyan,
-      recurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=WE;UNTIL=22000810",
+      recurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=WE;UNTIL=20300810",
       startTime: DateTime(2023, 11, 1, 5),
       endTime: DateTime(2023, 11, 1, 23),
     ));
     appointments.add(Appointment(
       subject: 'Abs Day',
       color: Colors.cyan,
-      recurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=TH;UNTIL=22000810",
+      recurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=TH;UNTIL=20300810",
       startTime: DateTime(2023, 11, 2, 5),
       endTime: DateTime(2023, 11, 2, 23),
     ));
     appointments.add(Appointment(
       subject: 'Back Day',
       color: Colors.cyan,
-      recurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=SA;UNTIL=22000810",
+      recurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=SA;UNTIL=20300810",
       startTime: DateTime(2023, 11, 4, 5),
       endTime: DateTime(2023, 11, 4, 23),
     ));
     appointments.add(Appointment(
       subject: 'Arm Day',
       color: Colors.cyan,
-      recurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=SU;UNTIL=22000810",
+      recurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=SU;UNTIL=20300810",
       startTime: DateTime(2023, 11, 5, 5),
       endTime: DateTime(2023, 11, 5, 23),
     ));
     appointments.add(Appointment(
       subject: 'Chest Day',
       color: Colors.cyan,
-      recurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=SA;UNTIL=22000810",
+      recurrenceRule: "FREQ=WEEKLY;INTERVAL=1;BYDAY=SA;UNTIL=20300810",
       startTime: DateTime(2023, 11, 6, 5),
       endTime: DateTime(2023, 11, 6, 23),
     ));

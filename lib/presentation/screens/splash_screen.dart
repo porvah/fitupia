@@ -1,8 +1,8 @@
-import 'package:fitupia/presentation/screens/calendar_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../size_config/size_config.dart';
 import '../widgets/animated_text.dart';
-import 'home_screen.dart';
+import 'welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String routeName = '/';
@@ -35,6 +35,8 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -70,8 +72,7 @@ class _SplashScreenState extends State<SplashScreen>
   void navigateToHomeScreen() {
     Future.delayed(
       const Duration(milliseconds: 1500),
-      () =>
-          Navigator.of(context).pushReplacementNamed(CalendarScreen.routeName),
+      () => Navigator.of(context).pushReplacementNamed(WelcomeScreen.routeName),
     );
   }
 }

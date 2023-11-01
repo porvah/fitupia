@@ -12,6 +12,13 @@ class Styles {
       centerTitle: true,
       foregroundColor: myColorScheme.primary,
       backgroundColor: myColorScheme.onPrimary,
+      titleTextStyle: const TextStyle(
+        letterSpacing: 1.0,
+        fontWeight: FontWeight.bold,
+        fontFamily: "CaesarDressing",
+        color: Colors.white,
+        fontSize: 32,
+      ),
     ),
   );
 
