@@ -1,21 +1,35 @@
-import 'package:first_app/foods.dart';
+import 'package:first_app/presentation/screens/food_screen.dart';
 import 'package:first_app/notebook_card.dart';
 import 'package:flutter/material.dart';
 
-class NoteBook extends StatefulWidget {
-  const NoteBook({super.key});
+class NoteBookScreen extends StatelessWidget {
+  static const String routeName = '/notebook_screen';
 
-  @override
-  State<NoteBook> createState() => _NoteBookState();
-}
+  const NoteBookScreen({super.key});
 
-class _NoteBookState extends State<NoteBook> {
   final List<List<dynamic>> noteCard = const [
-    ['List of ingredients and\ncalorie count', 'images/food.png', Food()],
-    ['Sports nutrition and\nvitamin', 'images/nutrition3.png', NoteBook()],
-    ['Drinks', 'images/drinks1.png', NoteBook()],
-    ['encyclopedia', 'images/encyclopedia1.png', NoteBook()],
+    [
+      'List of ingredients and\ncalorie count',
+      'images/food.png',
+      FoodScreen.routeName,
+    ],
+    [
+      'Sports nutrition and\nvitamin',
+      'images/nutrition3.png',
+      routeName,
+    ],
+    [
+      'Drinks',
+      'images/drinks1.png',
+      routeName,
+    ],
+    [
+      'encyclopedia',
+      'images/encyclopedia1.png',
+      routeName,
+    ],
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +44,7 @@ class _NoteBookState extends State<NoteBook> {
       body: ListView.builder(
           itemCount: noteCard.length,
           itemBuilder: (context, index) {
-            return noteBookCard(
+            return NoteBookCard(
                 title: noteCard[index][0],
                 imgPath: noteCard[index][1],
                 screenName: noteCard[index][2]);

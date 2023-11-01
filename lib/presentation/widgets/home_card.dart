@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class HomeCard extends StatelessWidget {
   final String title;
   final String imgPath;
-  final Widget screenName;
+  final String screenName;
 
   const HomeCard({
     required this.title,
@@ -16,9 +16,7 @@ class HomeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-          return screenName;
-        }));
+        Navigator.of(context).pushNamed(screenName);
       },
       child: SizedBox(
         height: 200,
