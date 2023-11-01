@@ -1,3 +1,4 @@
+import 'package:fitupia/presentation/screens/calendar_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/animated_text.dart';
@@ -69,7 +70,8 @@ class _SplashScreenState extends State<SplashScreen>
   void navigateToHomeScreen() {
     Future.delayed(
       const Duration(milliseconds: 1500),
-      () => Navigator.of(context).pushReplacementNamed(HomeScreen.routeName),
+      () =>
+          Navigator.of(context).pushReplacementNamed(CalendarScreen.routeName),
     );
   }
 }

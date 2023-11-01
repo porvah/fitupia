@@ -1,3 +1,4 @@
+import 'package:fitupia/presentation/screens/calendar_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'presentation/screens/home_screen.dart';
@@ -12,6 +13,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case SplashScreen.routeName:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
+      case CalendarScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const CalendarScreen());
       default:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
     }
