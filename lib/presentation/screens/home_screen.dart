@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import "../themes/appbar.dart";
 import '../widgets/home_card.dart';
+import 'diet_screen.dart';
 import "dummy_screen.dart";
 import 'workout_screen.dart';
 
@@ -11,7 +12,7 @@ class HomeScreen extends StatelessWidget {
     [
       'Today\'s Calories',
       'assets/images/Firefly food.jpg',
-      DummyScreen.routeName,
+      DietScreen.routeName,
     ],
     [
       'Exercise',

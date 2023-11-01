@@ -53,7 +53,7 @@ class FoodScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('List of ingradients'),
+        title: const Text('Ingradients'),
         backgroundColor: Colors.blue,
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.search)),

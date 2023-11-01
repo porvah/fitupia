@@ -11,22 +11,22 @@ class NoteBookScreen extends StatelessWidget {
   final List<List<dynamic>> noteCard = const [
     [
       'List of ingredients and\ncalorie count',
-      'images/food.png',
+      'assets/images/diet/food.png',
       FoodScreen.routeName,
     ],
     [
       'Sports nutrition and\nvitamin',
-      'images/nutrition3.png',
+      'assets/images/diet/nutrition3.png',
       routeName,
     ],
     [
       'Drinks',
-      'images/drinks1.png',
+      'assets/images/diet/drinks1.png',
       routeName,
     ],
     [
       'encyclopedia',
-      'images/encyclopedia1.png',
+      'assets/images/diet/encyclopedia1.png',
       routeName,
     ],
   ];

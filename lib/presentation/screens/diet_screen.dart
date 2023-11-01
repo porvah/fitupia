@@ -5,6 +5,8 @@ import 'package:syncfusion_flutter_charts/charts.dart' as sf;
 import 'notebook_screen.dart';
 
 class DietScreen extends StatefulWidget {
+  static const String routeName = '/diet_screen';
+
   const DietScreen({super.key});
   @override
   State<DietScreen> createState() => _DietScreenState();
@@ -24,7 +26,7 @@ class _DietScreenState extends State<DietScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Diet')),
+      appBar: _buildAppBar(),
       body: Container(
         decoration: const BoxDecoration(color: Colors.white),
         child: Column(
@@ -73,6 +75,21 @@ class _DietScreenState extends State<DietScreen> {
               icon: const Icon(Icons.add),
             )
           ],
+        ),
+      ),
+    );
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      backgroundColor: const Color.fromRGBO(234, 141, 11, 1),
+      leading: const BackButton(
+        color: Colors.white70,
+      ),
+      title: const Text(
+        "Diet",
+        style: TextStyle(
+          color: Colors.white70,
         ),
       ),
     );
