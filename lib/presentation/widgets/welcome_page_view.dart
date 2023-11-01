@@ -1,6 +1,7 @@
-import 'package:fitupia/presentation/screens/signup1.dart';
+import 'package:first_app/presentation/screens/signup1.dart';
 import 'package:flutter/material.dart';
 
+import '../screens/home_screen.dart';
 import '../screens/registration_screen.dart';
 import '../size_config/size_config.dart';
 import 'custom_button.dart';
@@ -9,11 +10,13 @@ class WelcomePageView extends StatelessWidget {
   final String imagePath;
   final String title;
   final String description;
+  final bool haveButton;
 
   const WelcomePageView(
       {required this.imagePath,
       required this.title,
       required this.description,
+      this.haveButton = false,
       super.key});
 
   @override
@@ -25,14 +28,15 @@ class WelcomePageView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _getData(),
-          CustomButton(
-            title: 'Get Started',
-            icon: Icons.arrow_forward_ios_outlined,
-            onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (ctx) => SignUp1()));
-            },
-          ),
+          if (haveButton)
+            CustomButton(
+              title: 'Get Started',
+              icon: Icons.arrow_forward_ios_outlined,
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (ctx) => HomeScreen()));
+              },
+            ),
           _getImage(),
         ],
       ),

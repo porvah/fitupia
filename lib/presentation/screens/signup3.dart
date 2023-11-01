@@ -1,6 +1,7 @@
-import 'package:fitupia/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
+
+import 'home_screen.dart';
 
 class SignUp3 extends StatelessWidget {
   final _Goalctrl = TextEditingController();

@@ -71,6 +71,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             imagePath: _imagePages[index],
             title: _titlePages[index],
             description: _descriptionPages[index],
+            haveButton: index == (_imagePages.length - 1),
           );
         },
       ),
