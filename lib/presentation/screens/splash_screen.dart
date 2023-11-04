@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'home_screen.dart';
 import '../size_config/size_config.dart';
 import '../widgets/animated_text.dart';
 import 'welcome_screen.dart';
@@ -72,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen>
   void navigateToHomeScreen() {
     Future.delayed(
       const Duration(milliseconds: 1500),
-      () => Navigator.of(context).pushReplacementNamed(WelcomeScreen.routeName),
+      () => Navigator.of(context).pushReplacementNamed(HomeScreen.routeName),
     );
   }
 }

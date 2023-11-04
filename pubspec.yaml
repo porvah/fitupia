@@ -75,6 +75,7 @@ flutter:
     - assets/images/
     - assets/images/exercises/
     - assets/images/diet/
+    - assets/images/statistics.png
 
   fonts:
     - family: Fitupia
