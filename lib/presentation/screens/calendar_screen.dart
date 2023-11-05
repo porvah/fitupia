@@ -17,9 +17,10 @@ class CalendarScreen extends StatelessWidget {
         foregroundColor: Colors.white,
       ),
       body: SafeArea(
-          child: Column(
+          child: ListView(
         children: [
           const Calendar(),
+          const Divider(),
           GestureDetector(
             onTap: () {
               Navigator.of(context).pushNamed(DummyScreen.routeName);

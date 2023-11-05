@@ -17,12 +17,69 @@ class CalendarState extends State<Calendar> {
     _openMenu = _openMenu ? false : true;
   }
 
+  final List<List<String>> _days = [
+    ["Saterday", "SA"],
+    ["Sunday", "SU"],
+    ["Monday", "MO"],
+    ["Tuesday", "TU"],
+    ["Wednesday", "WE"],
+    ["Thursday", "TH"],
+    ["Friday", "FR"]
+  ];
+  final List<List<String>> _exercises = [
+    ["Chest Day", ""],
+    ["Abs Day", ""],
+    ["Arm Day", ""],
+    ["Back Day", ""],
+    ["Leg Day", ""]
+  ];
+  ListView _buildDropDown() {
+    return ListView.builder(
+      itemCount: _exercises.length,
+      itemBuilder: (context, index) {
+        return Container(
+          width: SizeConfig.screenWidth,
+          padding:
+              EdgeInsets.only(top: SizeConfig.getProportionateScreenHeight(20)),
+          child: Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(
+                    left: SizeConfig.getProportionateScreenWidth(20)),
+                child: Text(
+                  _exercises[index][0],
+                  style: const TextStyle(fontSize: 15),
+                ),
+              ),
+              Container(
+                alignment: Alignment.centerRight,
+                margin: EdgeInsets.only(
+                    left: SizeConfig.getProportionateScreenWidth(100),
+                    right: SizeConfig.getProportionateScreenWidth(20)),
+                child: DropdownMenu(
+                    dropdownMenuEntries: _buildDropDownEntries(),
+                    onSelected: (value) => _exercises[index][1] = value),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  List<DropdownMenuEntry> _buildDropDownEntries() {
+    List<DropdownMenuEntry> entries = [];
+    for (int i = 0; i < _days.length; i++) {
+      entries.add(DropdownMenuEntry(value: _days[i][1], label: _days[i][0]));
+    }
+    return entries;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Column(
+    return Column(
       children: [
-        Container(
+        SizedBox(
           height: SizeConfig.getProportionateScreenHeight(100),
           child: SfCalendar(
             view: CalendarView.week,
@@ -60,10 +117,17 @@ class CalendarState extends State<Calendar> {
                             left: SizeConfig.getProportionateScreenWidth(100)),
                         alignment: Alignment.centerRight,
                         child: FloatingActionButton(
-                          child: const Icon(Icons.edit),
+                          child: _openMenu
+                              ? const Icon(Icons.check)
+                              : const Icon(Icons.edit),
                           onPressed: () {
                             setState(() {
-                              toggleOpenMenu();
+                              if (_openMenu) {
+                                toggleOpenMenu();
+                              } else {
+                                toggleOpenMenu();
+                                today = _exercises[0][1];
+                              }
                             });
                           },
                         ),
@@ -72,13 +136,14 @@ class CalendarState extends State<Calendar> {
                   ),
                 ),
               ),
-              Container(
-                child: Text(_openMenu ? "open" : "closed"),
-              )
+              AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  height: _openMenu ? 300 : 0,
+                  child: _buildDropDown())
             ],
           ),
         )
       ],
-    ));
+    );
   }
 }
