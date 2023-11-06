@@ -1,10 +1,8 @@
-import 'package:first_app/presentation/screens/signup1_screen.dart';
 import 'package:first_app/presentation/size_config/size_config.dart';
 import 'package:flutter/material.dart';
 
 import 'app_router.dart';
 import 'presentation/themes/custom_theme.dart';
-import './presentation/screens/registration_screen.dart';
 
 void main() {
   runApp(const FitupiaApp());
