@@ -2,10 +2,8 @@ import 'package:first_app/models/card_content.dart';
 import 'package:first_app/presentation/widgets/custom_listview.dart';
 import 'package:flutter/material.dart';
 import "../themes/appbar.dart";
-import '../widgets/home_card.dart';
 import 'calendar_screen.dart';
 import 'diet_screen.dart';
-import "dummy_screen.dart";
 import 'workout_screen.dart';
 
 class HomeScreen extends StatelessWidget {

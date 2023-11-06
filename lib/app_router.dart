@@ -1,5 +1,6 @@
 import 'package:first_app/presentation/screens/registration_screen.dart';
 import 'package:first_app/presentation/screens/signup1_screen.dart';
+import 'package:first_app/presentation/screens/stats_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'presentation/screens/calendar_screen.dart';
@@ -49,6 +50,8 @@ class AppRouter {
 
       case CalendarScreen.routeName:
         return MaterialPageRoute(builder: (_) => const CalendarScreen());
+      case StatsScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const StatsScreen());
       default:
         return MaterialPageRoute(builder: (_) => const DummyScreen());
     }

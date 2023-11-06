@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../screens/home_screen.dart';
 import '../screens/signup1_screen.dart';
 import '../size_config/size_config.dart';
 import 'custom_button.dart';
