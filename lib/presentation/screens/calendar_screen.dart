@@ -1,4 +1,4 @@
-import 'package:first_app/presentation/screens/dummy_screen.dart';
+import 'package:first_app/presentation/screens/stats_screen.dart';
 import 'package:first_app/presentation/widgets/calendar.dart';
 import 'package:flutter/material.dart';
 import '../size_config/size_config.dart';
@@ -23,7 +23,7 @@ class CalendarScreen extends StatelessWidget {
           const Divider(),
           GestureDetector(
             onTap: () {
-              Navigator.of(context).pushNamed(DummyScreen.routeName);
+              Navigator.of(context).pushNamed(StatsScreen.routeName);
             },
             child: SizedBox(
               height: SizeConfig.screenHeight * 0.35,
