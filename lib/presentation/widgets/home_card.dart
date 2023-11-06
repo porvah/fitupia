@@ -1,15 +1,12 @@
+import 'package:first_app/models/card_content.dart';
 import 'package:flutter/material.dart';
 import '../size_config/size_config.dart';
 
 class HomeCard extends StatelessWidget {
-  final String title;
-  final String imgPath;
-  final String screenName;
+  final CardContent card;
 
   const HomeCard({
-    required this.title,
-    required this.imgPath,
-    required this.screenName,
+    required this.card,
     super.key,
   });
 
@@ -17,7 +14,9 @@ class HomeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(screenName);
+        if (card.routeName != null) {
+          Navigator.of(context).pushNamed(card.routeName!);
+        }
       },
       child: SizedBox(
         height: SizeConfig.screenHeight * 0.35,
@@ -39,7 +38,7 @@ class HomeCard extends StatelessWidget {
 
   Image _buildImage() {
     return Image.asset(
-      imgPath,
+      card.imgPath,
       fit: BoxFit.cover,
     );
   }
@@ -49,7 +48,7 @@ class HomeCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       color: Colors.black.withOpacity(0.5),
       child: Text(
-        title,
+        card.name,
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: SizeConfig.getProportionateScreenWidth(22),

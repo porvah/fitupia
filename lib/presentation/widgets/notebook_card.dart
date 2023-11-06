@@ -1,14 +1,11 @@
+import 'package:first_app/models/card_content.dart';
 import 'package:flutter/material.dart';
 
 class NoteBookCard extends StatelessWidget {
-  final String title;
-  final String imgPath;
-  final String screenName;
+  final CardContent card;
 
   const NoteBookCard({
-    required this.title,
-    required this.imgPath,
-    required this.screenName,
+    required this.card,
     super.key,
   });
 
@@ -16,7 +13,9 @@ class NoteBookCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(screenName);
+        if (card.routeName != null) {
+          Navigator.of(context).pushNamed(card.routeName!);
+        }
       },
       child: SizedBox(
         height: 250,
@@ -40,7 +39,7 @@ class NoteBookCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(imgPath),
+          image: AssetImage(card.imgPath),
           fit: BoxFit.cover,
         ),
       ),
@@ -56,7 +55,7 @@ class NoteBookCard extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Text(
-              title,
+              card.name,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 22,

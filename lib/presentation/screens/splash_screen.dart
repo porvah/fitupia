@@ -1,3 +1,4 @@
+import 'package:first_app/presentation/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import '../size_config/size_config.dart';
@@ -53,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   Widget _getImage(BuildContext context) {
     return Image.asset(
-      'assets/logo.png',
+      'assets/logo2.jpg',
       height: MediaQuery.of(context).size.width / 2,
     );
   }
