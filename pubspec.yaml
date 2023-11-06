@@ -83,6 +83,7 @@ flutter:
     - assets/images/
     - assets/images/exercises/
     - assets/images/diet/
+    - assets/images/statistics.png
     - assets/images_reg/
 
   fonts:
