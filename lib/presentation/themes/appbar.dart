@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
 import '../screens/dummy_screen.dart';
 
-AppBar appBar(Color barColor) {
+AppBar buildAppBar(
+  String title,
+  Color textColor,
+  Color backgroundColor, {
+  bool back = false,
+}) {
   return AppBar(
-    title: const Text(
-      'Fitupia',
-      style: TextStyle(fontFamily: 'Fitupia', fontSize: 40),
+    backgroundColor: backgroundColor,
+    leading: back
+        ? BackButton(
+            color: textColor,
+          )
+        : null,
+    title: Text(
+      title,
+      style: TextStyle(
+        color: textColor,
+      ),
     ),
-    backgroundColor: barColor,
-    foregroundColor: Colors.white,
+    foregroundColor: textColor,
   );
 }
 

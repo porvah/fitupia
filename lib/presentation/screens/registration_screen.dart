@@ -1,7 +1,8 @@
+import 'package:first_app/presentation/widgets/label_input_field.dart';
 import 'package:flutter/material.dart';
 
+import '../size_config/size_config.dart';
 import '../widgets/custom_button.dart';
-import '../widgets/custom_input_field.dart';
 
 class RegistrationScreen extends StatelessWidget {
   static const String routeName = '/registration_screen';
@@ -11,41 +12,76 @@ class RegistrationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Registration'),
-      ),
       body: SafeArea(
-        child: Column(
+        child: ListView(
           children: [
-            const CustomInputField(
-              hintText: 'Name',
+            Container(
+              margin: const EdgeInsets.all(12),
+              height: SizeConfig.screenWidth * .3,
+              child: Image.asset(
+                'assets/logo.png',
+                width: SizeConfig.screenWidth * .1,
+              ),
+            ),
+            Text(
+              'Welcome to Fitupia',
+              style: TextStyle(
+                color: const Color.fromARGB(255, 2, 106, 154),
+                fontSize: SizeConfig.getProportionateScreenWidth(20),
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const LabelInputField(
+              title: 'Name',
+              hintText: 'Enter your name',
               icon: Icon(Icons.person),
             ),
-            const CustomInputField(
-              hintText: 'Age',
-              icon: Icon(Icons.numbers),
+            const LabelInputField(
+              title: 'Age',
+              hintText: 'Choose your date of birth',
+              textInputType: TextInputType.number,
+              icon: Icon(Icons.calendar_today_rounded),
+            ),
+            const LabelInputField(
+              title: 'Gender',
+              hintText: 'Choose your gender',
+              textInputType: TextInputType.number,
+              icon: Icon(Icons.male),
             ),
             const Row(
               children: [
                 Expanded(
-                  child: CustomInputField(
-                    hintText: 'Height',
+                  child: LabelInputField(
+                    title: 'Height',
+                    hintText: 'Enter your height',
                     icon: Icon(Icons.height),
                   ),
                 ),
                 Expanded(
-                  child: CustomInputField(
-                    hintText: 'Weight',
+                  child: LabelInputField(
+                    title: 'Weight',
+                    hintText: 'Enter your weight',
                     icon: Icon(Icons.monitor_weight_outlined),
                   ),
                 ),
               ],
             ),
-            const CustomInputField(
-              hintText: 'Goal',
+            const LabelInputField(
+              title: 'Goal',
+              hintText: 'Choose your goal',
               icon: Icon(Icons.height),
             ),
-            CustomButton(title: 'Register', onPressed: () {}),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CustomButton(
+                title: 'Register',
+                backgroundColor: const Color.fromARGB(255, 2, 106, 154),
+                color: Colors.white,
+                fontSize: SizeConfig.getProportionateScreenWidth(20),
+                onPressed: () {},
+              ),
+            ),
           ],
         ),
       ),

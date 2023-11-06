@@ -1,3 +1,4 @@
+import 'package:first_app/presentation/size_config/size_config.dart';
 import 'package:flutter/material.dart';
 
 import 'app_router.dart';
@@ -14,12 +15,14 @@ class FitupiaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
+
     return MaterialApp(
-      title: 'Fitupia',
       debugShowCheckedModeBanner: false,
+      title: 'Fitupia',
       theme: Styles.lightTheme,
       darkTheme: Styles.darkTheme,
-      // home: HomeScreen(),
+      // home: SignUp1Screen(),
       onGenerateRoute: appRouter.generateRoute,
       initialRoute: '/',
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../screens/home_screen.dart';
+import '../screens/signup1_screen.dart';
 import '../size_config/size_config.dart';
 import 'custom_button.dart';
 
@@ -31,8 +32,9 @@ class WelcomePageView extends StatelessWidget {
               title: 'Get Started',
               icon: Icons.arrow_forward_ios_outlined,
               onPressed: () {
-                Navigator.of(context)
-                    .pushReplacementNamed(HomeScreen.routeName);
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (ctx) => const SignUp1Screen()),
+                );
               },
             ),
           _getImage(),
