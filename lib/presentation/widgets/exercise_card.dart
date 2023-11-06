@@ -4,20 +4,24 @@ import '../../models/card_content.dart';
 import '../screens/exercise_screen.dart';
 import '../size_config/size_config.dart';
 
-class ExerciseCard extends StatelessWidget {
+class CustomCard extends StatelessWidget {
   final CardContent card;
 
-  const ExerciseCard({required this.card, super.key});
+  const CustomCard({required this.card, super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (_) => ExerciseScreen(card: card),
-          ),
-        );
+        if (card.routeName != null) {
+          Navigator.of(context).pushNamed(card.routeName!);
+        } else {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => ExerciseScreen(card: card),
+            ),
+          );
+        }
       },
       child: _buildHeroAnimation(
         child: Container(

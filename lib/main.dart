@@ -1,7 +1,10 @@
+import 'package:first_app/presentation/screens/signup1_screen.dart';
+import 'package:first_app/presentation/size_config/size_config.dart';
 import 'package:flutter/material.dart';
 
 import 'app_router.dart';
 import 'presentation/themes/custom_theme.dart';
+import './presentation/screens/registration_screen.dart';
 
 void main() {
   runApp(const FitupiaApp());
@@ -14,12 +17,14 @@ class FitupiaApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Fitupia',
       theme: Styles.lightTheme,
       darkTheme: Styles.darkTheme,
-      // home: HomeScreen(),
+      // home: SignUp1Screen(),
       onGenerateRoute: appRouter.generateRoute,
       initialRoute: '/',
     );

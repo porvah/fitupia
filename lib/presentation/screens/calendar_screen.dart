@@ -1,3 +1,4 @@
+import 'package:first_app/models/card_content.dart';
 import 'package:first_app/presentation/themes/appbar.dart';
 
 import 'dummy_screen.dart';
@@ -55,9 +56,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
             firstDayOfWeek: 6,
           ),
           const HomeCard(
-            title: 'Statistics',
-            imgPath: 'assets/images/stats_image.png',
-            screenName: DummyScreen.routeName,
+            card: CardContent(
+              name: 'Statistics',
+              imgPath: 'assets/images/stats_image.png',
+              routeName: DummyScreen.routeName,
+            ),
           ),
         ],
       )),

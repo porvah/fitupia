@@ -19,10 +19,10 @@ class AnimatedText extends StatelessWidget {
         child: Text(
           title,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 22,
-            color: Theme.of(context).colorScheme.primary,
+            color: Color.fromARGB(255, 2, 106, 154),
           ),
         ),
       ),
