@@ -1,3 +1,4 @@
+import 'package:first_app/presentation/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import '../screens/dummy_screen.dart';
 
@@ -54,7 +55,7 @@ Drawer drawer(Color drawerColor, Image img, BuildContext context) {
           ListTile(
             onTap: () {
               Navigator.pop(context);
-              Navigator.of(context).pushNamed(DummyScreen.routeName);
+              Navigator.of(context).pushNamed(SettingsScreen.routeName);
             },
             title: const Text(
               'Settings',

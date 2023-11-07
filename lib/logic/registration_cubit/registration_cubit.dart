@@ -34,4 +34,17 @@ class RegistrationCubit extends Cubit<RegistrationState> {
       emit(RegistrationFailure(e.toString()));
     }
   }
+
+  Future<void> deleteUser() async {
+    await curUser.delete();
+    curUser = UserData(
+      name: '',
+      gender: '',
+      dateOfBirth: '',
+      height: 0,
+      weight: 0,
+      goal: '',
+    );
+    emit(RegistrationInitial());
+  }
 }

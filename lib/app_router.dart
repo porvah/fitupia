@@ -1,9 +1,4 @@
-import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
-import 'package:first_app/presentation/screens/registration_screen.dart';
-import 'package:first_app/presentation/screens/signup1_screen.dart';
-import 'package:first_app/presentation/screens/stats_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'presentation/screens/calendar_screen.dart';
 import 'presentation/screens/diet_screen.dart';
@@ -11,6 +6,10 @@ import 'presentation/screens/dummy_screen.dart';
 import 'presentation/screens/food_screen.dart';
 import 'presentation/screens/home_screen.dart';
 import 'presentation/screens/notebook_screen.dart';
+import 'presentation/screens/registration_screen.dart';
+import 'presentation/screens/settings_screen.dart';
+import 'presentation/screens/stats_screen.dart';
+import 'presentation/screens/signup1_screen.dart';
 import 'presentation/screens/signup2_screen.dart';
 import 'presentation/screens/signup3_screen.dart';
 import 'presentation/screens/splash_screen.dart';
@@ -28,6 +27,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case WelcomeScreen.routeName:
         return MaterialPageRoute(builder: (_) => const WelcomeScreen());
+      case SettingsScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const SettingsScreen());
 
       case RegistrationScreen.routeName:
         return MaterialPageRoute(builder: (_) => const RegistrationScreen());

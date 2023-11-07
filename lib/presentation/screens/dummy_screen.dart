@@ -9,7 +9,6 @@ class DummyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig.init(context);
     return Scaffold(
       appBar: buildAppBar('Fitupia', Colors.black, Colors.blue),
     );
