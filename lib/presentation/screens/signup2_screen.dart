@@ -3,7 +3,9 @@ import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:first_app/presentation/widgets/custom_indicator.dart';
 import 'package:first_app/presentation/widgets/welcome_message.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../logic/registration_cubit/registration_cubit.dart';
 import '../widgets/label_input_field.dart';
 import '../widgets/show_snack_bar.dart';
 import 'signup3_screen.dart';
@@ -61,6 +63,14 @@ class _SignUp1ScreenState extends State<SignUp2Screen> {
         fontSize: SizeConfig.getProportionateScreenWidth(18),
         onPressed: () {
           if (_checkInput()) {
+            var regCubit = BlocProvider.of<RegistrationCubit>(context);
+            final currentData = regCubit.curUser;
+
+            regCubit.updateUserDate(currentData.copyWith(
+              height: double.tryParse(_heightController.text),
+              weight: double.tryParse(_weightController.text),
+            ));
+
             Navigator.of(context).pushNamed(SignUp3Screen.routeName);
           }
         },

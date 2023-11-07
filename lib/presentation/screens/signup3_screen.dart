@@ -4,7 +4,9 @@ import 'package:first_app/presentation/size_config/size_config.dart';
 import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:first_app/presentation/widgets/custom_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../logic/registration_cubit/registration_cubit.dart';
 import '../widgets/show_snack_bar.dart';
 
 class SignUp3Screen extends StatefulWidget {
@@ -107,21 +109,43 @@ class _SignUp1ScreenState extends State<SignUp3Screen> {
   }
 
   Widget _buildSubmitButton() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: CustomButton(
-        title: 'Register',
-        backgroundColor: const Color.fromARGB(255, 2, 106, 154),
-        color: Colors.white,
-        icon: Icons.login,
-        fontSize: SizeConfig.getProportionateScreenWidth(18),
-        onPressed: () {
-          if (_checkInput()) {
-            Navigator.of(context).pushNamed(HomeScreen.routeName);
-          }
-        },
-      ),
+    return BlocBuilder<RegistrationCubit, RegistrationState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CustomButton(
+            title: 'Register',
+            backgroundColor: const Color.fromARGB(255, 2, 106, 154),
+            color: Colors.white,
+            icon: Icons.login,
+            fontSize: SizeConfig.getProportionateScreenWidth(18),
+            loading: state is RegistrationLoading,
+            onPressed: () async => await _registerUser(),
+          ),
+        );
+      },
     );
+  }
+
+  Future<void> _registerUser() async {
+    if (_checkInput()) {
+      var nav = Navigator.of(context);
+      var scaf = ScaffoldMessenger.of(context);
+      var regCubit = BlocProvider.of<RegistrationCubit>(context);
+
+      final currentData = regCubit.curUser;
+      regCubit.updateUserDate(currentData.copyWith(
+        goal: _goalController.text,
+      ));
+      await regCubit.registerUser();
+
+      if (regCubit.state is RegistrationSuccess) {
+        _showSnackBar(scaf, 'Registered Successfully', Colors.green);
+        nav.pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
+      } else if (regCubit.state is RegistrationFailure) {
+        _showSnackBar(scaf, 'An error occurred', Colors.red[700]!);
+      }
+    }
   }
 
   bool _checkInput() {
@@ -148,5 +172,18 @@ class _SignUp1ScreenState extends State<SignUp3Screen> {
       return null;
     }
     return ["You must select your goal", null];
+  }
+
+  void _showSnackBar(
+      ScaffoldMessengerState messengerState, String msg, Color color) {
+    messengerState.showSnackBar(
+      SnackBar(
+        duration: const Duration(milliseconds: 1500),
+        content: Text(
+          msg,
+          style: TextStyle(color: color, fontSize: 16),
+        ),
+      ),
+    );
   }
 }

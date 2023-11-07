@@ -1,4 +1,5 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
+import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
 import 'package:first_app/presentation/size_config/size_config.dart';
 import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:first_app/presentation/widgets/custom_date_field.dart';
@@ -6,6 +7,7 @@ import 'package:first_app/presentation/widgets/custom_indicator.dart';
 import 'package:first_app/presentation/widgets/show_snack_bar.dart';
 import 'package:first_app/presentation/widgets/welcome_message.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../widgets/label_input_field.dart';
@@ -60,6 +62,15 @@ class _SignUp1ScreenState extends State<SignUp1Screen> {
         fontSize: SizeConfig.getProportionateScreenWidth(18),
         onPressed: () {
           if (_checkInput()) {
+            var regCubit = BlocProvider.of<RegistrationCubit>(context);
+            final currentData = regCubit.curUser;
+
+            regCubit.updateUserDate(currentData.copyWith(
+              name: _nameController.text,
+              dateOfBirth: _date,
+              gender: _genderController.text,
+            ));
+
             Navigator.of(context).pushNamed(SignUp2Screen.routeName);
           }
         },

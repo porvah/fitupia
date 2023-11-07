@@ -31,9 +31,8 @@ class WelcomePageView extends StatelessWidget {
               title: 'Get Started',
               icon: Icons.arrow_forward_ios_outlined,
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (ctx) => const SignUp1Screen()),
-                );
+                Navigator.of(context)
+                    .pushReplacementNamed(SignUp1Screen.routeName);
               },
             ),
           _getImage(),
