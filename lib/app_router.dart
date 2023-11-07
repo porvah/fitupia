@@ -1,3 +1,4 @@
+import 'package:first_app/presentation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'presentation/screens/calendar_screen.dart';
@@ -27,6 +28,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case WelcomeScreen.routeName:
         return MaterialPageRoute(builder: (_) => const WelcomeScreen());
+      case ProfileScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case SettingsScreen.routeName:
         return MaterialPageRoute(builder: (_) => const SettingsScreen());
 

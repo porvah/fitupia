@@ -2,6 +2,7 @@ import 'package:first_app/models/card_content.dart';
 import 'package:first_app/presentation/widgets/custom_listview.dart';
 import 'package:flutter/material.dart';
 import "../themes/appbar.dart";
+import '../widgets/custom_drawer.dart';
 import 'calendar_screen.dart';
 import 'diet_screen.dart';
 import 'workout_screen.dart';
@@ -38,8 +39,7 @@ class HomeScreen extends StatelessWidget {
         const Color.fromARGB(255, 70, 163, 240),
         back: false,
       ),
-      drawer: drawer(const Color.fromARGB(255, 1, 76, 138),
-          Image.asset('assets/images/poseidon.png'), context),
+      drawer: const CustomDrawer(),
       body: CustomListView(cards: homeCards),
     );
   }
