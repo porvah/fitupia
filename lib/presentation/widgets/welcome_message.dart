@@ -32,7 +32,7 @@ class WelcomeMessage extends StatelessWidget {
       margin: const EdgeInsets.all(16),
       height: SizeConfig.screenWidth * .35,
       child: Image.asset(
-        'assets/logo2.jpg',
+        'assets/logo2.png',
       ),
     );
   }

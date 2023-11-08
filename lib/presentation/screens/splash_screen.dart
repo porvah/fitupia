@@ -58,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   Widget _getImage(BuildContext context) {
     return Image.asset(
-      'assets/logo2.jpg',
+      'assets/logo2.png',
       height: MediaQuery.of(context).size.width / 2,
     );
   }
