@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import "../themes/appbar.dart";
 import '../widgets/home_card.dart';
-import "dummy_screen.dart";
+import 'calendar_screen.dart';
+import 'diet_screen.dart';
+import 'workout_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String routeName = '/home_screen';
@@ -10,18 +12,18 @@ class HomeScreen extends StatelessWidget {
     [
       'Today\'s Calories',
       'assets/images/Firefly food.jpg',
-      DummyScreen.routeName,
+      DietScreen.routeName,
     ],
     [
       'Exercise',
       'assets/images/Firefly exercise.jpg',
-      DummyScreen.routeName,
+      WorkoutScreen.routeName,
     ],
     [
       'Track Your progress',
       'assets/images/Firefly calendar.jpg',
-      DummyScreen.routeName,
-    ]
+      CalendarScreen.routeName,
+    ],
   ];
 
   const HomeScreen({super.key});
@@ -29,7 +31,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(const Color.fromARGB(255, 70, 163, 240)),
+      appBar: buildAppBar(
+        'Home',
+        Colors.white70,
+        const Color.fromARGB(255, 70, 163, 240),
+        back: false,
+      ),
       drawer: drawer(const Color.fromARGB(255, 1, 76, 138),
           Image.asset('assets/images/poseidon.png'), context),
       body: _buildListCards(),

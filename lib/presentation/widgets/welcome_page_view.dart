@@ -32,7 +32,7 @@ class WelcomePageView extends StatelessWidget {
               icon: Icons.arrow_forward_ios_outlined,
               onPressed: () {
                 Navigator.of(context)
-                    .pushReplacementNamed(HomeScreen.routeName);
+                    .push(MaterialPageRoute(builder: (ctx) => const HomeScreen()));
               },
             ),
           _getImage(),

@@ -1,5 +1,5 @@
-import 'package:fitupia/presentation/size_config/size_config.dart';
 import 'package:flutter/material.dart';
+import '../size_config/size_config.dart';
 
 class HomeCard extends StatelessWidget {
   final String title;
