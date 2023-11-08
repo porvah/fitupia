@@ -1,4 +1,6 @@
 import 'package:first_app/presentation/screens/dummy_screen.dart';
+import 'package:first_app/presentation/screens/meals_screen.dart';
+import '../screens/encyclopedia_screen.dart';
 import '../screens/food_screen.dart';
 import '../../models/card_content.dart';
 
@@ -11,16 +13,16 @@ List<CardContent> handbookCards = const [
   CardContent(
     name: 'Sports nutrition and\nvitamin',
     imgPath: 'assets/images/diet/nutrition3.png',
-    routeName: DummyScreen.routeName,
+    routeName: MealsScreen.routeName,
   ),
   CardContent(
     name: 'Drinks',
     imgPath: 'assets/images/diet/drinks1.png',
-    routeName: DummyScreen.routeName,
+    routeName: MealsScreen.routeName,
   ),
   CardContent(
     name: 'encyclopedia',
     imgPath: 'assets/images/diet/encyclopedia1.png',
-    routeName: DummyScreen.routeName,
+    routeName: EncyclopediaScreen.routeName,
   ),
 ];

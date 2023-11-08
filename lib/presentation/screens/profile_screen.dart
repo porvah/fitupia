@@ -117,7 +117,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Text(
       userData.name,
       style: const TextStyle(
-        color: Colors.white,
+        color: Color.fromARGB(255, 14, 130, 83),
         fontWeight: FontWeight.bold,
         fontSize: 22,
       ),

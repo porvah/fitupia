@@ -1,4 +1,3 @@
-import 'package:first_app/presentation/themes/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart' as sf;
@@ -6,6 +5,8 @@ import 'package:syncfusion_flutter_charts/charts.dart' as sf;
 import '../../models/gpd_model.dart';
 import '../helper/nutrition.dart';
 import 'notebook_screen.dart';
+import '../themes/appbar.dart';
+import '../widgets/custom_button.dart';
 
 class DietScreen extends StatefulWidget {
   static const String routeName = '/diet_screen';
@@ -71,13 +72,16 @@ class _DietScreenState extends State<DietScreen> {
                     maximumValue: 3000)
               ],
             ),
-            OutlinedButton.icon(
+            CustomButton(
+              title: 'Add Meal',
               onPressed: () {
                 Navigator.of(context).pushNamed(NoteBookScreen.routeName);
               },
-              label: const Text('Add Meal'),
-              icon: const Icon(Icons.add),
-            )
+              icon: Icons.add,
+              color: Colors.white,
+              backgroundColor: Colors.redAccent,
+              fontSize: 18,
+            ),
           ],
         ),
       ),

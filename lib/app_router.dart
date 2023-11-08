@@ -1,3 +1,5 @@
+import 'package:first_app/presentation/screens/encyclopedia_screen.dart';
+import 'package:first_app/presentation/screens/meals_screen.dart';
 import 'package:first_app/presentation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -46,6 +48,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const DummyScreen());
       case WorkoutScreen.routeName:
         return MaterialPageRoute(builder: (_) => const WorkoutScreen());
+      case EncyclopediaScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const EncyclopediaScreen());
+      case MealsScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const MealsScreen());
 
       case FoodScreen.routeName:
         return MaterialPageRoute(builder: (_) => const FoodScreen());
