@@ -1,12 +1,12 @@
 import 'package:first_app/presentation/screens/dummy_screen.dart';
-
+import '../screens/food_screen.dart';
 import '../../models/card_content.dart';
 
 List<CardContent> handbookCards = const [
   CardContent(
     name: 'List of ingredients and\ncalorie count',
     imgPath: 'assets/images/diet/food.png',
-    routeName: DummyScreen.routeName,
+    routeName: FoodScreen.routeName,
   ),
   CardContent(
     name: 'Sports nutrition and\nvitamin',
