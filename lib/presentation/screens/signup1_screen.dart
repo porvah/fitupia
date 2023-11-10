@@ -150,7 +150,7 @@ class _SignUp1ScreenState extends State<SignUp1Screen> {
     String name = _nameController.text.trim();
     if (name.isEmpty) {
       return ["Name field can't be empty", null];
-    } else if (!RegExp(r'^[a-zA-Z]+$').hasMatch(name)) {
+    } else if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(name)) {
       return [
         "Name can contain only English letters",
         "assets/images_reg/letters.png"

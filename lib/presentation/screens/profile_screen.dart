@@ -96,7 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       width: SizeConfig.screenWidth,
       height: 150,
       child: Image.asset(
-        'assets/images/Firefly calendar.jpg',
+        'assets/images_reg/Firefly_greek_architecture.png',
         fit: BoxFit.fitWidth,
       ),
     );

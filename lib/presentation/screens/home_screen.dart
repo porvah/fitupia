@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   final List<CardContent> homeCards = const [
     CardContent(
-      name: 'Today\'s Calories',
+      name: 'Today\'s calories',
       imgPath: 'assets/images/Firefly food.jpg',
       routeName: DietScreen.routeName,
     ),
@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
       routeName: WorkoutScreen.routeName,
     ),
     CardContent(
-      name: 'Track Your progress',
+      name: 'Track your progress',
       imgPath: 'assets/images/Firefly calendar.jpg',
       routeName: CalendarScreen.routeName,
     ),

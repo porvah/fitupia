@@ -3,7 +3,7 @@ import '../screens/meals_screen.dart';
 
 List<CardContent> foodsCategory = const [
   CardContent(
-    name: 'Dairy Product',
+    name: 'Dairy product',
     imgPath: 'assets/images/diet/dairy1.png',
     routeName: MealsScreen.routeName,
   ),
@@ -13,7 +13,7 @@ List<CardContent> foodsCategory = const [
     routeName: MealsScreen.routeName,
   ),
   CardContent(
-    name: 'Meats, beef',
+    name: 'Meats and beef',
     imgPath: 'assets/images/diet/meat1.png',
     routeName: MealsScreen.routeName,
   ),
@@ -23,12 +23,12 @@ List<CardContent> foodsCategory = const [
     routeName: MealsScreen.routeName,
   ),
   CardContent(
-    name: 'Eggs, cheese',
+    name: 'Eggs and cheese',
     imgPath: 'assets/images/diet/eggsandcheese1.png',
     routeName: MealsScreen.routeName,
   ),
   CardContent(
-    name: 'Vegetables, olives',
+    name: 'Vegetables and olives',
     imgPath: 'assets/images/diet/vegetables1.png',
     routeName: MealsScreen.routeName,
   ),
@@ -38,7 +38,7 @@ List<CardContent> foodsCategory = const [
     routeName: MealsScreen.routeName,
   ),
   CardContent(
-    name: 'Nuts, seeds',
+    name: 'Nuts and seeds',
     imgPath: 'assets/images/diet/nuts2.png',
     routeName: MealsScreen.routeName,
   ),

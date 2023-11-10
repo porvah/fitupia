@@ -69,7 +69,7 @@ class MealWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _buildNut('Protein', mealModel.protien, Colors.green),
+        _buildNut('Protein', mealModel.protein, Colors.green),
         _buildNut('Carbs', mealModel.carbs, Colors.amber),
         _buildNut('Fat', mealModel.fat, Colors.purple),
       ],

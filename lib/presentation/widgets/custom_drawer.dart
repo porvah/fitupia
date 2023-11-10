@@ -1,3 +1,4 @@
+import 'package:first_app/presentation/screens/encyclopedia_screen.dart';
 import 'package:first_app/presentation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,8 +19,18 @@ class CustomDrawer extends StatelessWidget {
             ),
             child: Image.asset('assets/images/poseidon.png'),
           ),
-          _buildItem(context, 'Profile', Icons.account_circle,
-              ProfileScreen.routeName),
+          _buildItem(
+            context,
+            'Profile',
+            Icons.account_circle,
+            ProfileScreen.routeName,
+          ),
+          _buildItem(
+            context,
+            'Encyclopedia',
+            Icons.info,
+            EncyclopediaScreen.routeName,
+          ),
           const Divider(
             color: Colors.grey,
           ),

@@ -46,7 +46,7 @@ class _DietScreenState extends State<DietScreen> {
               dataMap: {
                 'Carbohydrates': 1500,
                 'Total fiber': 2490,
-                'Protien': 2900,
+                'Protein': 2900,
                 'Fat': 2305,
                 'Water': 2088
               },

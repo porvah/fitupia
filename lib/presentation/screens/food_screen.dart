@@ -11,7 +11,7 @@ class FoodScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar('Ingradients', Colors.white, Colors.blue),
+      appBar: buildAppBar('Ingredients', Colors.white, Colors.blue),
       body: CustomListView(cards: foodsCategory),
     );
   }
