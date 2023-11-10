@@ -47,4 +47,10 @@ class RegistrationCubit extends Cubit<RegistrationState> {
     );
     emit(RegistrationInitial());
   }
+
+  Future<void> editUser(UserData userData) async {
+    curUser = userData;
+    await curUser.save();
+    emit(RegistrationSuccess());
+  }
 }

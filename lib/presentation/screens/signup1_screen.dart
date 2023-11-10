@@ -64,12 +64,13 @@ class _SignUp1ScreenState extends State<SignUp1Screen> {
           if (_checkInput()) {
             var regCubit = BlocProvider.of<RegistrationCubit>(context);
             final currentData = regCubit.curUser;
-
-            regCubit.updateUserDate(currentData.copyWith(
+            currentData.copyWith(
               name: _nameController.text,
               dateOfBirth: _date,
               gender: _genderController.text,
-            ));
+            );
+
+            regCubit.updateUserDate(currentData);
 
             Navigator.of(context).pushNamed(SignUp2Screen.routeName);
           }

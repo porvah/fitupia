@@ -1,6 +1,8 @@
 import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
+import 'package:first_app/presentation/screens/registration_screen.dart';
 import 'package:first_app/presentation/size_config/size_config.dart';
 import 'package:first_app/presentation/themes/appbar.dart';
+import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -69,6 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             _buildTop(context),
             _getUserName(),
+            const SizedBox(height: 12),
             _buildPanner(context, userParams),
             _buildPanner(context, userGoal),
             _buildPanner(context, userBirth),
@@ -114,14 +117,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _getUserName() {
-    return Text(
-      userData.name,
-      style: const TextStyle(
-        color: Color.fromARGB(255, 14, 130, 83),
-        fontWeight: FontWeight.bold,
-        fontSize: 22,
-      ),
-      textAlign: TextAlign.center,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Spacer(flex: 7),
+        Text(
+          userData.name,
+          style: const TextStyle(
+            color: Color.fromARGB(255, 14, 130, 83),
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const Spacer(flex: 3),
+        Padding(
+          padding: const EdgeInsets.only(right: 12.0),
+          child: CustomButton(
+            title: 'Edit',
+            color: Colors.white,
+            backgroundColor: const Color.fromARGB(255, 5, 144, 12),
+            fontSize: 18,
+            icon: Icons.edit,
+            onPressed: () {
+              Navigator.of(context).pushNamed(RegistrationScreen.routeName);
+            },
+          ),
+        ),
+      ],
     );
   }
 

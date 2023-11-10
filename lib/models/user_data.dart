@@ -5,17 +5,17 @@ part 'user_data.g.dart';
 @HiveType(typeId: 0)
 class UserData extends HiveObject {
   @HiveField(0)
-  final String name;
+  String name;
   @HiveField(1)
-  final String gender;
+  String gender;
   @HiveField(2)
-  final String dateOfBirth;
+  String dateOfBirth;
   @HiveField(3)
-  final double height;
+  double height;
   @HiveField(4)
-  final double weight;
+  double weight;
   @HiveField(5)
-  final String goal;
+  String goal;
 
   UserData({
     required this.name,
@@ -26,7 +26,7 @@ class UserData extends HiveObject {
     required this.goal,
   });
 
-  UserData copyWith({
+  void copyWith({
     String? name,
     String? gender,
     String? dateOfBirth,
@@ -34,13 +34,11 @@ class UserData extends HiveObject {
     double? weight,
     String? goal,
   }) {
-    return UserData(
-      name: name ?? this.name,
-      gender: gender ?? this.gender,
-      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
-      height: height ?? this.height,
-      weight: weight ?? this.weight,
-      goal: goal ?? this.goal,
-    );
+    this.name = name ?? this.name;
+    this.gender = gender ?? this.gender;
+    this.dateOfBirth = dateOfBirth ?? this.dateOfBirth;
+    this.height = height ?? this.height;
+    this.weight = weight ?? this.weight;
+    this.goal = goal ?? this.goal;
   }
 }

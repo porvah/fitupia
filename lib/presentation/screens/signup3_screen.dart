@@ -134,9 +134,11 @@ class _SignUp1ScreenState extends State<SignUp3Screen> {
       var regCubit = BlocProvider.of<RegistrationCubit>(context);
 
       final currentData = regCubit.curUser;
-      regCubit.updateUserDate(currentData.copyWith(
+      currentData.copyWith(
         goal: _goalController.text,
-      ));
+      );
+
+      regCubit.updateUserDate(currentData);
       await regCubit.registerUser();
 
       if (regCubit.state is RegistrationSuccess) {
