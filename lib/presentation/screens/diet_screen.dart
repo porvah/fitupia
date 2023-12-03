@@ -1,3 +1,4 @@
+import 'package:first_app/presentation/screens/daily_intakes_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart' as sf;
@@ -80,6 +81,16 @@ class _DietScreenState extends State<DietScreen> {
               icon: Icons.add,
               color: Colors.white,
               backgroundColor: Colors.redAccent,
+              fontSize: 18,
+            ),
+            CustomButton(
+              title: 'Daily Intakes',
+              onPressed: () {
+                Navigator.of(context).pushNamed(DailyIntakesScreen.routeName);
+              },
+              icon: Icons.dinner_dining,
+              color: Colors.white,
+              backgroundColor: const Color.fromRGBO(234, 141, 11, 1),
               fontSize: 18,
             ),
           ],

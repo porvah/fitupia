@@ -1,4 +1,5 @@
 import 'package:first_app/logic/add_meal_cubit/add_meal_cubit.dart';
+import 'package:first_app/logic/read_meal_cubit/read_meal_cubit.dart';
 import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:first_app/presentation/widgets/label_input_field.dart';
 import 'package:flutter/material.dart';
@@ -188,11 +189,13 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
 
     MealModel finalMealModel = _getMeal();
     var mealCubit = BlocProvider.of<AddMealCubit>(context);
+    var readMealCubit = BlocProvider.of<ReadMealCubit>(context);
 
     await mealCubit.addMeal(finalMealModel);
 
     if (mealCubit.state is AddMealStateSuccess) {
       _showSnackBar(scaf, 'Meal added successfully', Colors.green);
+      readMealCubit.getMeals();
     } else if (mealCubit.state is AddMealStateFailure) {
       _showSnackBar(scaf, 'An error occurred', Colors.red[700]!);
     }
