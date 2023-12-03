@@ -1,8 +1,9 @@
+import 'package:first_app/logic/add_meal_cubit/add_meal_cubit.dart';
 import 'package:first_app/presentation/widgets/custom_button.dart';
-import 'package:first_app/presentation/widgets/custom_input_field.dart';
 import 'package:first_app/presentation/widgets/label_input_field.dart';
 import 'package:first_app/presentation/widgets/show_snack_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../models/meal_model.dart';
 import '../size_config/size_config.dart';
@@ -182,9 +183,36 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
     );
   }
 
-  void _onSaveMeal() {
-    showSnackBar(context, 'Meal added successfully', Colors.green);
-    Navigator.of(context).pop();
+  Future<void> _onSaveMeal() async {
+    var nav = Navigator.of(context);
+    var scaf = ScaffoldMessenger.of(context);
+
+    MealModel finalMealModel = _getMeal();
+    var mealCubit = BlocProvider.of<AddMealCubit>(context);
+
+    await mealCubit.addMeal(finalMealModel);
+
+    if (mealCubit.state is AddMealStateSuccess) {
+      _showSnackBar(scaf, 'Meal added successfully', Colors.green);
+    } else if (mealCubit.state is AddMealStateFailure) {
+      _showSnackBar(scaf, 'An error occurred', Colors.red[700]!);
+    }
+
+    nav.pop();
+  }
+
+  MealModel _getMeal() {
+    MealModel meal = widget.meal;
+    double grams = double.parse(controlGrams.text);
+
+    return MealModel(
+      name: meal.name,
+      cals: _getCalories(),
+      weight: grams,
+      protein: _getProtien(),
+      carbs: _getCarbs(),
+      fat: _getFat(),
+    );
   }
 
   double _getCalories() {
@@ -205,5 +233,18 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
   double _getFat() {
     double grams = double.parse(controlGrams.text);
     return (grams / widget.meal.weight) * widget.meal.fat;
+  }
+
+  void _showSnackBar(
+      ScaffoldMessengerState messengerState, String msg, Color color) {
+    messengerState.showSnackBar(
+      SnackBar(
+        duration: const Duration(milliseconds: 1500),
+        content: Text(
+          msg,
+          style: TextStyle(color: color, fontSize: 16),
+        ),
+      ),
+    );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:first_app/logic/add_meal_cubit/add_meal_cubit.dart';
 import 'package:first_app/logic/read_user_cubit/read_user_cubit.dart';
 import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
 import 'package:first_app/models/meal_model.dart';
@@ -36,6 +37,7 @@ class FitupiaApp extends StatelessWidget {
       providers: [
         BlocProvider<RegistrationCubit>(create: (_) => RegistrationCubit()),
         BlocProvider<ReadUserCubit>(create: (_) => ReadUserCubit()),
+        BlocProvider<AddMealCubit>(create: (_) => AddMealCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
