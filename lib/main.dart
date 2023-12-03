@@ -1,5 +1,6 @@
 import 'package:first_app/logic/read_user_cubit/read_user_cubit.dart';
 import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
+import 'package:first_app/models/meal_model.dart';
 import 'package:first_app/presentation/helper/helper.dart';
 import 'package:first_app/presentation/size_config/size_config.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,9 @@ void main() async {
 
   await Hive.initFlutter();
   Hive.registerAdapter(UserDataAdapter());
+  Hive.registerAdapter(MealModelAdapter());
   await Hive.openBox<UserData>(kUserBox);
+  await Hive.openBox<MealModel>(kMealBox);
 
   runApp(const FitupiaApp());
 }

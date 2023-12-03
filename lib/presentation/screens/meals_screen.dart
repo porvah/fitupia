@@ -1,37 +1,11 @@
-import 'package:first_app/models/meal_model.dart';
 import 'package:first_app/presentation/themes/appbar.dart';
 import 'package:first_app/presentation/widgets/meal_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../helper/meals.dart';
+
 class MealsScreen extends StatelessWidget {
   static const String routeName = '/meals_screen';
-
-  final List<MealModel> meals = const [
-    MealModel(
-      name: 'Chicken',
-      cals: 284,
-      weight: 172,
-      protein: 53.4,
-      carbs: 0,
-      fat: 6.2,
-    ),
-    MealModel(
-      name: 'Chicken',
-      cals: 284,
-      weight: 172,
-      protein: 53.4,
-      carbs: 0,
-      fat: 6.2,
-    ),
-    MealModel(
-      name: 'Chicken',
-      cals: 284,
-      weight: 172,
-      protein: 53.4,
-      carbs: 0,
-      fat: 6.2,
-    ),
-  ];
 
   const MealsScreen({super.key});
 
