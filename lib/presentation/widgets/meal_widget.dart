@@ -1,6 +1,8 @@
 import 'package:first_app/models/meal_model.dart';
 import 'package:flutter/material.dart';
 
+import 'custom_bottom_sheet.dart';
+
 class MealWidget extends StatelessWidget {
   final MealModel mealModel;
 
@@ -21,7 +23,7 @@ class MealWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _buildPanner(),
-              _buildAddButton(),
+              _buildAddButton(context),
             ],
           ),
           const SizedBox(height: 20),
@@ -108,9 +110,11 @@ class MealWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildAddButton() {
+  Widget _buildAddButton(BuildContext context) {
     return TextButton.icon(
-      onPressed: () {},
+      onPressed: () {
+        _openBottomSheet(context);
+      },
       icon: const Icon(Icons.add),
       label: const Text(
         'Add',
@@ -123,5 +127,14 @@ class MealWidget extends StatelessWidget {
         padding: const EdgeInsets.all(12),
       ),
     );
+  }
+
+  void _openBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (ctx) {
+          return CustomBottomSheet(meal: mealModel);
+        });
   }
 }

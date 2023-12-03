@@ -9,6 +9,8 @@ class LabelInputField extends StatelessWidget {
   final TextInputType? textInputType;
   final String? Function(String?)? validateInput;
   final Widget? icon;
+  final Color? color;
+  final Color? textColor;
   final bool readonly;
 
   const LabelInputField({
@@ -19,6 +21,8 @@ class LabelInputField extends StatelessWidget {
     this.textInputType,
     this.validateInput,
     this.icon,
+    this.color,
+    this.textColor,
     this.readonly = false,
   });
 
@@ -36,6 +40,7 @@ class LabelInputField extends StatelessWidget {
           validateInput: validateInput,
           icon: icon,
           readonly: readonly,
+          color: color,
         ),
       ],
     );
@@ -46,10 +51,10 @@ class LabelInputField extends StatelessWidget {
       padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
       child: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18,
-          color: Color.fromARGB(255, 2, 106, 154),
+          color: textColor ?? const Color.fromARGB(255, 2, 106, 154),
         ),
       ),
     );
