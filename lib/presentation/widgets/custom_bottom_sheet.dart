@@ -1,7 +1,6 @@
 import 'package:first_app/logic/add_meal_cubit/add_meal_cubit.dart';
 import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:first_app/presentation/widgets/label_input_field.dart';
-import 'package:first_app/presentation/widgets/show_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
