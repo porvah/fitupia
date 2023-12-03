@@ -1,8 +1,6 @@
 import 'package:first_app/models/meal_model.dart';
 import 'package:flutter/material.dart';
 
-import 'custom_bottom_sheet.dart';
-
 class MealWidget extends StatelessWidget {
   final MealModel mealModel;
   final String buttonTitle;

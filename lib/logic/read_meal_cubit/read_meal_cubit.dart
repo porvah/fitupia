@@ -21,4 +21,9 @@ class ReadMealCubit extends Cubit<ReadMealState> {
       emit(ReadMealStateFull());
     }
   }
+
+  Future<void> deleteMeal(MealModel mealModel) async {
+    await mealModel.delete();
+    getMeals();
+  }
 }

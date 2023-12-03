@@ -34,15 +34,16 @@ class DailyIntakesScreen extends StatelessWidget {
   Widget _buildEmptyScreen() {
     return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
           "No meals added today!",
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.red,
             fontWeight: FontWeight.bold,
             fontSize: 22,
           ),
+          textAlign: TextAlign.center,
         ),
       ],
     );
@@ -58,9 +59,15 @@ class DailyIntakesScreen extends StatelessWidget {
           mealModel: meals[index],
           buttonTitle: 'Delete',
           icon: Icons.delete_forever,
-          onPressed: () {},
+          onPressed: () async {
+            await _deleteMeal(context, meals[index]);
+          },
         );
       },
     );
+  }
+
+  Future<void> _deleteMeal(BuildContext context, MealModel mealModel) async {
+    await BlocProvider.of<ReadMealCubit>(context).deleteMeal(mealModel);
   }
 }
