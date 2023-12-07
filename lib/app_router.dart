@@ -1,3 +1,4 @@
+import 'package:first_app/presentation/screens/daily_intakes_screen.dart';
 import 'package:first_app/presentation/screens/encyclopedia_screen.dart';
 import 'package:first_app/presentation/screens/meals_screen.dart';
 import 'package:first_app/presentation/screens/profile_screen.dart';
@@ -59,6 +60,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const NoteBookScreen());
       case DietScreen.routeName:
         return MaterialPageRoute(builder: (_) => const DietScreen());
+      case DailyIntakesScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const DailyIntakesScreen());
 
       case CalendarScreen.routeName:
         return MaterialPageRoute(builder: (_) => const CalendarScreen());

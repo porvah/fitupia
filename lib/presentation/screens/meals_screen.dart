@@ -3,35 +3,11 @@ import 'package:first_app/presentation/themes/appbar.dart';
 import 'package:first_app/presentation/widgets/meal_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../helper/meals.dart';
+import '../widgets/custom_bottom_sheet.dart';
+
 class MealsScreen extends StatelessWidget {
   static const String routeName = '/meals_screen';
-
-  final List<MealModel> meals = const [
-    MealModel(
-      name: 'Chicken',
-      cals: 284,
-      weight: 172,
-      protein: 53.4,
-      carbs: 0,
-      fat: 6.2,
-    ),
-    MealModel(
-      name: 'Chicken',
-      cals: 284,
-      weight: 172,
-      protein: 53.4,
-      carbs: 0,
-      fat: 6.2,
-    ),
-    MealModel(
-      name: 'Chicken',
-      cals: 284,
-      weight: 172,
-      protein: 53.4,
-      carbs: 0,
-      fat: 6.2,
-    ),
-  ];
 
   const MealsScreen({super.key});
 
@@ -43,10 +19,24 @@ class MealsScreen extends StatelessWidget {
         child: ListView.builder(
           itemCount: meals.length,
           itemBuilder: (ctx, index) {
-            return MealWidget(mealModel: meals[index]);
+            return MealWidget(
+              mealModel: meals[index],
+              buttonTitle: 'Add',
+              icon: Icons.add,
+              onPressed: () => _openBottomSheet(context, meals[index]),
+            );
           },
         ),
       ),
     );
+  }
+
+  void _openBottomSheet(BuildContext context, MealModel mealModel) {
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (ctx) {
+          return CustomBottomSheet(meal: mealModel);
+        });
   }
 }
