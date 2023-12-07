@@ -12,15 +12,10 @@ class AllNutritions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: nutritions.length,
-      shrinkWrap: true,
-      itemBuilder: (contex, index) {
-        return NutritionWidget(
-          nutritionModel: nutritions[index],
-        );
-      },
+    return Row(
+      children: nutritions.map((nutrition) {
+        return NutritionWidget(nutritionModel: nutrition);
+      }).toList(),
     );
   }
 }
