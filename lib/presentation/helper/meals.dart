@@ -8,6 +8,7 @@ final List<MealModel> meals = [
     protein: 53.4,
     carbs: 0,
     fat: 6.2,
+    fibers: 2,
   ),
   MealModel(
     name: 'Fish',
@@ -16,6 +17,7 @@ final List<MealModel> meals = [
     protein: 70,
     carbs: 10,
     fat: 8,
+    fibers: 3.2,
   ),
   MealModel(
     name: 'Rise',
@@ -24,5 +26,6 @@ final List<MealModel> meals = [
     protein: 41.8,
     carbs: 122.9,
     fat: 19,
+    fibers: 10.7,
   ),
 ];

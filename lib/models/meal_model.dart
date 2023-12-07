@@ -16,6 +16,8 @@ class MealModel extends HiveObject {
   final double carbs;
   @HiveField(5)
   final double fat;
+  @HiveField(6)
+  final double fibers;
 
   MealModel({
     required this.name,
@@ -24,5 +26,6 @@ class MealModel extends HiveObject {
     required this.protein,
     required this.carbs,
     required this.fat,
+    required this.fibers,
   });
 }

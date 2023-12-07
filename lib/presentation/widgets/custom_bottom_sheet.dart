@@ -249,6 +249,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
       protein: _getProtien(),
       carbs: _getCarbs(),
       fat: _getFat(),
+      fibers: _getFibers(),
     );
   }
 
@@ -270,5 +271,10 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
   double _getFat() {
     double grams = getGrams();
     return (grams / widget.meal.weight) * widget.meal.fat;
+  }
+
+  double _getFibers() {
+    double grams = getGrams();
+    return (grams / widget.meal.weight) * widget.meal.fibers;
   }
 }

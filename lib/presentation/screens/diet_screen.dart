@@ -2,6 +2,7 @@ import 'package:first_app/models/nutrition_model.dart';
 import 'package:first_app/presentation/screens/daily_intakes_screen.dart';
 import 'package:first_app/presentation/widgets/all_nutritions.dart';
 import 'package:first_app/presentation/widgets/calories_indicator.dart';
+import 'package:first_app/presentation/widgets/calories_stats.dart';
 import 'package:flutter/material.dart';
 
 import '../size_config/size_config.dart';
@@ -9,15 +10,10 @@ import 'notebook_screen.dart';
 import '../themes/appbar.dart';
 import '../widgets/custom_button.dart';
 
-class DietScreen extends StatefulWidget {
+class DietScreen extends StatelessWidget {
   static const String routeName = '/diet_screen';
 
   const DietScreen({super.key});
-  @override
-  State<DietScreen> createState() => _DietScreenState();
-}
-
-class _DietScreenState extends State<DietScreen> {
   final List<NutritionModel> nutritions = const [
     NutritionModel(
       title: 'Fat',
@@ -57,9 +53,9 @@ class _DietScreenState extends State<DietScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _buildStats(),
+          const CaloriesStats(),
           SizedBox(height: SizeConfig.getProportionateScreenHeight(60)),
-          _buildButtons(),
+          _buildButtons(context),
         ],
       ),
     );
@@ -68,14 +64,14 @@ class _DietScreenState extends State<DietScreen> {
   Widget _buildStats() {
     return Column(
       children: [
-        const CaloriesIndicator(took: 1000, left: 500, total: 1500),
+        CaloriesIndicator(took: 1000, left: 500, total: 1500),
         const SizedBox(height: 8),
         AllNutritions(nutritions: nutritions)
       ],
     );
   }
 
-  Widget _buildButtons() {
+  Widget _buildButtons(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [

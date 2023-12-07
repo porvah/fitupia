@@ -34,18 +34,18 @@ class CaloriesIndicator extends StatelessWidget {
         SizeConfig.screenWidth / 3,
       ),
       duration: const Duration(milliseconds: 300),
-      // key: _chartKey,
+      key: Key(took.toString()),
       initialChartData: [
         CircularStackEntry(
           [
             CircularSegmentEntry(
               (total - left).toDouble(),
-              Colors.green,
+              Colors.red[700],
               rankKey: 'completed',
             ),
             CircularSegmentEntry(
               left.toDouble(),
-              Colors.green.withAlpha(100),
+              Colors.red[700]!.withAlpha(100),
               rankKey: 'remaining',
             ),
           ],
@@ -56,7 +56,7 @@ class CaloriesIndicator extends StatelessWidget {
       percentageValues: false,
       holeLabel: '$total cal',
       labelStyle: TextStyle(
-        color: Colors.green,
+        color: Colors.red[700],
         fontWeight: FontWeight.bold,
         fontSize: SizeConfig.getProportionateScreenWidth(20),
       ),
@@ -71,12 +71,12 @@ class CaloriesIndicator extends StatelessWidget {
             Icon(
               icon,
               size: 30,
-              color: Colors.green,
+              color: Colors.red[700],
             ),
             Text(
               value.toString(),
               style: TextStyle(
-                color: Colors.green,
+                color: Colors.red[700],
                 fontWeight: FontWeight.bold,
                 fontSize: SizeConfig.getProportionateScreenWidth(22),
               ),

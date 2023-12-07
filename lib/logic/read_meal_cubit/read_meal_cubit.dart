@@ -15,6 +15,7 @@ class ReadMealCubit extends Cubit<ReadMealState> {
     var mealsValues = mealBox.values.toList();
 
     if (mealsValues.isEmpty) {
+      meals.clear();
       emit(ReadMealStateEmpty());
     } else {
       meals = mealsValues;
@@ -25,5 +26,45 @@ class ReadMealCubit extends Cubit<ReadMealState> {
   Future<void> deleteMeal(MealModel mealModel) async {
     await mealModel.delete();
     getMeals();
+  }
+
+  double getAllCalories() {
+    double res = 0.0;
+    for (MealModel meal in meals) {
+      res += meal.cals;
+    }
+    return res;
+  }
+
+  double getAllProeins() {
+    double res = 0.0;
+    for (MealModel meal in meals) {
+      res += meal.protein;
+    }
+    return res;
+  }
+
+  double getAllFat() {
+    double res = 0.0;
+    for (MealModel meal in meals) {
+      res += meal.fat;
+    }
+    return res;
+  }
+
+  double getAllCarbs() {
+    double res = 0.0;
+    for (MealModel meal in meals) {
+      res += meal.carbs;
+    }
+    return res;
+  }
+
+  double getAllFibers() {
+    double res = 0.0;
+    for (MealModel meal in meals) {
+      res += meal.fibers;
+    }
+    return res;
   }
 }

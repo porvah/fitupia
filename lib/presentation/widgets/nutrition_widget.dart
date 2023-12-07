@@ -29,7 +29,7 @@ class NutritionWidget extends StatelessWidget {
         SizeConfig.screenWidth / 4.2,
       ),
       duration: const Duration(milliseconds: 300),
-      // key: _chartKey,
+      key: Key(nutritionModel.current.toString()),
       initialChartData: [
         CircularStackEntry(
           [
