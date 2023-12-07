@@ -16,7 +16,6 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(UserDataAdapter());
   await Hive.openBox<UserData>(kUserBox);
-
   runApp(const FitupiaApp());
 }
 
