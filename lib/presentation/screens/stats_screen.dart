@@ -32,7 +32,7 @@ class _StatsScreenState extends State<StatsScreen> {
     ChartData('May', 40)
   ];
 
-  void prep() async{
+  void getWeightAndBMI() async{
     userBox = await Hive.openBox<UserData>(kUserBox);
     UserData? user = userBox.getAt(0);
     setState(() {
@@ -44,7 +44,7 @@ class _StatsScreenState extends State<StatsScreen> {
   }
   void initState() {
     super.initState();
-    prep();
+    getWeightAndBMI();
   }
   @override
   Widget build(BuildContext context) {

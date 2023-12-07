@@ -1,8 +1,12 @@
+import 'package:first_app/logic/formulas.dart';
+import 'package:first_app/models/user_data.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart' as sf;
 
 import '../../models/gpd_model.dart';
+import '../helper/helper.dart';
 import '../helper/nutrition.dart';
 import 'notebook_screen.dart';
 import '../themes/appbar.dart';
@@ -19,11 +23,20 @@ class DietScreen extends StatefulWidget {
 class _DietScreenState extends State<DietScreen> {
   late List<GPDData> _chartData;
   late sf.TooltipBehavior _tooltipBehavior;
+  late Map<String, double> DRI;
 
+  @override
+  void getDRI()async{
+    Box userBox = await Hive.openBox<UserData>(kUserBox);
+    setState(() {
+      DRI = Formulas.getDRI(userBox.getAt(0));
+    });
+  }
   @override
   void initState() {
     _chartData = chartdata;
     _tooltipBehavior = sf.TooltipBehavior(enable: true);
+    getDRI();
     super.initState();
   }
 
@@ -42,14 +55,8 @@ class _DietScreenState extends State<DietScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.,
           children: [
-            const PieChart(
-              dataMap: {
-                'Carbohydrates': 1500,
-                'Total fiber': 2490,
-                'Protein': 2900,
-                'Fat': 2305,
-                'Water': 2088
-              },
+            PieChart(
+              dataMap: DRI,
               chartType: ChartType.ring,
               legendOptions:
                   LegendOptions(legendPosition: LegendPosition.right),
@@ -88,3 +95,7 @@ class _DietScreenState extends State<DietScreen> {
     );
   }
 }
+
+/*
+*
+  }*/

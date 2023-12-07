@@ -24,22 +24,22 @@ class Formulas{
   }
   static Map<String, double> getDRI(UserData user){
     Map<String, double> DRI = {
-      'protein':0,
-      'fats':0,
-      'carbs':0,
-      'water':0,
-      'fiber':0
+      'Protein':0,
+      'Fats':0,
+      'Carbs':0,
+      'Water':0,
+      'Fiber':0
     };
     double BMR = getBMR(user);
     int age = getAge(user);
 
-    DRI['protein'] = age < 4 ? BMR * .15 / 4 : BMR * .2 / 4; // Grams
-    if (age < 4)DRI['fats'] = BMR * .35 / 9;
-    else if (age < 19)DRI['fats'] = BMR * .3 / 9;
-    else DRI['fats'] = BMR * .275 / 9; // Grams
-    DRI['carbs'] = BMR * .55 / 4; // Grams
-    DRI['water'] = BMR; // ml
-    DRI['fiber'] = BMR / 1000 * 14; // grams
+    DRI['Protein'] = age < 4 ? BMR * .15 / 4 : BMR * .2 / 4; // Grams
+    if (age < 4)DRI['Fats'] = BMR * .35 / 9;
+    else if (age < 19)DRI['Fats'] = BMR * .3 / 9;
+    else DRI['Fats'] = BMR * .275 / 9; // Grams
+    DRI['Carbs'] = BMR * .55 / 4; // Grams
+    DRI['Water'] = BMR / 250; // cups
+    DRI['Fiber'] = BMR / 1000 * 14; // grams
     return DRI;
   }
   static double getBMI(UserData user){
