@@ -19,6 +19,8 @@ class CustomBottomSheet extends StatefulWidget {
 
 class _CustomBottomSheetState extends State<CustomBottomSheet> {
   late TextEditingController controlGrams;
+  final GlobalKey<FormState> _globalKey = GlobalKey();
+  AutovalidateMode _autoValidateMode = AutovalidateMode.disabled;
 
   @override
   void initState() {
@@ -146,15 +148,36 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
   }
 
   Widget _buildInputField() {
-    return LabelInputField(
-      title: "Weight in grams",
-      hintText: 'Grams',
-      readonly: false,
-      textEditingController: controlGrams,
-      textInputType: TextInputType.number,
-      color: Colors.green,
-      textColor: Colors.black,
+    return Form(
+      key: _globalKey,
+      autovalidateMode: _autoValidateMode,
+      child: LabelInputField(
+        title: "Weight in grams",
+        hintText: 'Grams',
+        readonly: false,
+        textEditingController: controlGrams,
+        textInputType: TextInputType.number,
+        color: Colors.green,
+        textColor: Colors.black,
+        validateInput: _validateInput,
+      ),
     );
+  }
+
+  String? _validateInput(String? val) {
+    if (val == null) {
+      return "Field can't be empty";
+    }
+
+    try {
+      double newVal = double.parse(val);
+      if (newVal <= 0) {
+        return "Weight must be greater then zero";
+      }
+    } catch (e) {
+      return "Weight must be number";
+    }
+    return null;
   }
 
   Widget _buildButtons() {
@@ -184,6 +207,11 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
   }
 
   Future<void> _onSaveMeal() async {
+    if (!_globalKey.currentState!.validate()) {
+      _autoValidateMode = AutovalidateMode.always;
+      return;
+    }
+
     var nav = Navigator.of(context);
     var scaf = ScaffoldMessenger.of(context);
 
@@ -203,9 +231,15 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
     nav.pop();
   }
 
+  double getGrams() {
+    double res = double.tryParse(controlGrams.text) ?? 0;
+    if (res < 0) res = 0;
+    return res;
+  }
+
   MealModel _getMeal() {
     MealModel meal = widget.meal;
-    double grams = double.parse(controlGrams.text);
+    double grams = getGrams();
 
     return MealModel(
       name: meal.name,
@@ -218,22 +252,22 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
   }
 
   double _getCalories() {
-    double grams = double.parse(controlGrams.text);
+    double grams = getGrams();
     return (grams / widget.meal.weight) * widget.meal.cals;
   }
 
   double _getProtien() {
-    double grams = double.parse(controlGrams.text);
+    double grams = getGrams();
     return (grams / widget.meal.weight) * widget.meal.protein;
   }
 
   double _getCarbs() {
-    double grams = double.parse(controlGrams.text);
+    double grams = getGrams();
     return (grams / widget.meal.weight) * widget.meal.carbs;
   }
 
   double _getFat() {
-    double grams = double.parse(controlGrams.text);
+    double grams = getGrams();
     return (grams / widget.meal.weight) * widget.meal.fat;
   }
 

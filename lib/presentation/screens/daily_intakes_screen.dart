@@ -52,19 +52,65 @@ class DailyIntakesScreen extends StatelessWidget {
   Widget _buildMeals(BuildContext context) {
     List<MealModel> meals = BlocProvider.of<ReadMealCubit>(context).meals;
 
-    return ListView.builder(
-      itemCount: meals.length,
-      itemBuilder: (ctx, index) {
-        return MealWidget(
-          mealModel: meals[index],
-          buttonTitle: 'Delete',
-          icon: Icons.delete_forever,
-          onPressed: () async {
-            await _deleteMeal(context, meals[index]);
-          },
-        );
-      },
+    return Column(
+      children: [
+        Expanded(
+          child: ListView.builder(
+            itemCount: meals.length,
+            itemBuilder: (ctx, index) {
+              return MealWidget(
+                mealModel: meals[index],
+                buttonTitle: 'Delete',
+                icon: Icons.delete_forever,
+                onPressed: () async {
+                  await _deleteMeal(context, meals[index]);
+                },
+              );
+            },
+          ),
+        ),
+        _buildAllCalories(context),
+      ],
     );
+  }
+
+  Widget _buildAllCalories(context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 18),
+      decoration: const BoxDecoration(
+        color: Color.fromARGB(255, 195, 147, 5),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(12),
+          topRight: Radius.circular(12),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text(
+            'All Calories: ',
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
+          ),
+          Text(
+            '${_getAllCalories(context).toStringAsFixed(2)} cal',
+            style: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
+          ),
+        ],
+      ),
+    );
+  }
+
+  double _getAllCalories(BuildContext context) {
+    double res = 0.0;
+
+    var meals = BlocProvider.of<ReadMealCubit>(context).meals;
+    for (var meal in meals) {
+      res += meal.cals;
+    }
+
+    return res;
   }
 
   Future<void> _deleteMeal(BuildContext context, MealModel mealModel) async {
