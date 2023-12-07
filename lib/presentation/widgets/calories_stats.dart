@@ -7,7 +7,9 @@ import 'all_nutritions.dart';
 import 'calories_indicator.dart';
 
 class CaloriesStats extends StatelessWidget {
-  const CaloriesStats({super.key});
+  final int BMR;
+  final Map<String, int> DRI;
+  const CaloriesStats({Key? key, required this.BMR, required this.DRI}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class CaloriesStats extends StatelessWidget {
       builder: (context, state) {
         var reg = BlocProvider.of<ReadMealCubit>(context);
         int took = reg.getAllCalories().toInt();
-        int total = 1500;
+        int total = BMR;
         int left = total - took;
 
         return Column(
@@ -34,25 +36,25 @@ class CaloriesStats extends StatelessWidget {
       NutritionModel(
         title: 'Proteins',
         current: reg.getAllProeins().toInt(),
-        target: 200,
+        target: DRI['Protein']!,
         color: Colors.green,
       ),
       NutritionModel(
         title: 'Carbs',
         current: reg.getAllCarbs().toInt(),
-        target: 150,
+        target: DRI['Carbs']!,
         color: Colors.amber,
       ),
       NutritionModel(
         title: 'Fat',
         current: reg.getAllFat().toInt(),
-        target: 50,
+        target: DRI['Fats']!,
         color: Colors.purple,
       ),
       NutritionModel(
         title: 'Fibers',
         current: reg.getAllFibers().toInt(),
-        target: 40,
+        target: DRI['Fiber']!,
         color: const Color.fromRGBO(21, 101, 192, 1),
       ),
     ];

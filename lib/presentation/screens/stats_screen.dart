@@ -17,7 +17,6 @@ class StatsScreen extends StatefulWidget {
 }
 
 class _StatsScreenState extends State<StatsScreen> {
-  late Box<UserData> userBox;
   String startingBMI = '0';
   String currentBMI = '0';
   String startingWeight = '0';
@@ -33,7 +32,7 @@ class _StatsScreenState extends State<StatsScreen> {
   ];
 
   void getWeightAndBMI() async{
-    userBox = await Hive.openBox<UserData>(kUserBox);
+    Box<UserData> userBox = await Hive.openBox<UserData>(kUserBox);
     UserData? user = userBox.getAt(0);
     setState(() {
       startingWeight = user!.weight.toString();

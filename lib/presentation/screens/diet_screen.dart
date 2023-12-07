@@ -4,16 +4,49 @@ import 'package:first_app/presentation/widgets/all_nutritions.dart';
 import 'package:first_app/presentation/widgets/calories_indicator.dart';
 import 'package:first_app/presentation/widgets/calories_stats.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
+import '../../logic/formulas.dart';
+import '../../models/user_data.dart';
+import '../helper/helper.dart';
 import '../size_config/size_config.dart';
 import 'notebook_screen.dart';
 import '../themes/appbar.dart';
 import '../widgets/custom_button.dart';
 
-class DietScreen extends StatelessWidget {
+class DietScreen extends StatefulWidget {
   static const String routeName = '/diet_screen';
 
   const DietScreen({super.key});
+
+  @override
+  State<DietScreen> createState() => _DietScreenState();
+}
+
+class _DietScreenState extends State<DietScreen> {
+
+  int BMR = 1;
+  Map<String, int> DRI = {
+    'Protein':1,
+    'Fats':1,
+    'Carbs':1,
+    'Water':1,
+    'Fiber':1
+  };
+  void getBMR() async{
+    Box<UserData> userBox = await Hive.openBox<UserData>(kUserBox);
+    UserData? user = userBox.getAt(0);
+    setState(() {
+      BMR = Formulas.getBMR(user!) ;
+      DRI = Formulas.getDRI(user!);
+    });
+  }
+  @override
+  void initState() {
+    getBMR();
+    super.initState();
+  }
+
   final List<NutritionModel> nutritions = const [
     NutritionModel(
       title: 'Fat',
@@ -53,7 +86,7 @@ class DietScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const CaloriesStats(),
+          CaloriesStats(BMR: BMR, DRI: DRI),
           SizedBox(height: SizeConfig.getProportionateScreenHeight(60)),
           _buildButtons(context),
         ],
