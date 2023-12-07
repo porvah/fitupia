@@ -1,6 +1,7 @@
 import 'package:first_app/models/nutrition_model.dart';
 import 'package:first_app/presentation/screens/daily_intakes_screen.dart';
 import 'package:first_app/presentation/widgets/all_nutritions.dart';
+import 'package:first_app/presentation/widgets/calories_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart' as sf;
@@ -68,6 +69,7 @@ class _DietScreenState extends State<DietScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          const CaloriesIndicator(took: 1000, left: 500, total: 1500),
           Expanded(child: AllNutritions(nutritions: nutritions)),
           // const PieChart(
           //   dataMap: {
