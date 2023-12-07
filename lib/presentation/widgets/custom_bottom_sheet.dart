@@ -2,6 +2,7 @@ import 'package:first_app/logic/add_meal_cubit/add_meal_cubit.dart';
 import 'package:first_app/logic/read_meal_cubit/read_meal_cubit.dart';
 import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:first_app/presentation/widgets/label_input_field.dart';
+import 'package:first_app/presentation/widgets/show_snack_bar_messenger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -222,10 +223,10 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
     await mealCubit.addMeal(finalMealModel);
 
     if (mealCubit.state is AddMealStateSuccess) {
-      _showSnackBar(scaf, 'Meal added successfully', Colors.green);
+      showSnackBarMessenger(scaf, 'Meal added successfully', Colors.green);
       readMealCubit.getMeals();
     } else if (mealCubit.state is AddMealStateFailure) {
-      _showSnackBar(scaf, 'An error occurred', Colors.red[700]!);
+      showSnackBarMessenger(scaf, 'An error occurred', Colors.red[700]!);
     }
 
     nav.pop();
@@ -269,18 +270,5 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
   double _getFat() {
     double grams = getGrams();
     return (grams / widget.meal.weight) * widget.meal.fat;
-  }
-
-  void _showSnackBar(
-      ScaffoldMessengerState messengerState, String msg, Color color) {
-    messengerState.showSnackBar(
-      SnackBar(
-        duration: const Duration(milliseconds: 1500),
-        content: Text(
-          msg,
-          style: TextStyle(color: color, fontSize: 16),
-        ),
-      ),
-    );
   }
 }

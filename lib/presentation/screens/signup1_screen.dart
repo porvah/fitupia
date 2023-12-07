@@ -4,7 +4,7 @@ import 'package:first_app/presentation/size_config/size_config.dart';
 import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:first_app/presentation/widgets/custom_date_field.dart';
 import 'package:first_app/presentation/widgets/custom_indicator.dart';
-import 'package:first_app/presentation/widgets/show_snack_bar.dart';
+import 'package:first_app/presentation/widgets/show_snack_bar_context.dart';
 import 'package:first_app/presentation/widgets/welcome_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -128,7 +128,7 @@ class _SignUp1ScreenState extends State<SignUp1Screen> {
     for (var check in checks) {
       if (check == null) continue;
 
-      showSnackBar(
+      showSnackBarContext(
         context,
         check[0]!,
         const Color.fromARGB(255, 188, 37, 26),

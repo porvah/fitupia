@@ -10,7 +10,7 @@ import 'package:intl/intl.dart';
 import '../../logic/registration_cubit/registration_cubit.dart';
 import '../size_config/size_config.dart';
 import '../widgets/custom_button.dart';
-import '../widgets/show_snack_bar.dart';
+import '../widgets/show_snack_bar_context.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String routeName = '/registration_screen';
@@ -199,7 +199,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     for (var check in checks) {
       if (check == null) continue;
 
-      showSnackBar(
+      showSnackBarContext(
         context,
         check[0]!,
         const Color.fromARGB(255, 188, 37, 26),

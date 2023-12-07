@@ -1,7 +1,7 @@
 import 'package:first_app/presentation/size_config/size_config.dart';
 import 'package:flutter/material.dart';
 
-void showSnackBar(
+void showSnackBarContext(
   BuildContext context,
   String title,
   Color color, {
