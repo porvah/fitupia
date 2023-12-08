@@ -16,6 +16,8 @@ class UserData extends HiveObject {
   double weight;
   @HiveField(5)
   String goal;
+  @HiveField(6)
+  List<int> exerciseSchedule;
 
   UserData({
     required this.name,
@@ -24,6 +26,7 @@ class UserData extends HiveObject {
     required this.height,
     required this.weight,
     required this.goal,
+    required this.exerciseSchedule,
   });
 
   void copyWith({
@@ -33,6 +36,7 @@ class UserData extends HiveObject {
     double? height,
     double? weight,
     String? goal,
+    List<int>? exerciseSchedule,
   }) {
     this.name = name ?? this.name;
     this.gender = gender ?? this.gender;
@@ -40,6 +44,6 @@ class UserData extends HiveObject {
     this.height = height ?? this.height;
     this.weight = weight ?? this.weight;
     this.goal = goal ?? this.goal;
+    this.exerciseSchedule = exerciseSchedule ?? this.exerciseSchedule;
   }
-
 }

@@ -16,10 +16,14 @@ import 'presentation/themes/custom_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await prepareMeals();
+
   await Hive.initFlutter();
+
   Hive.registerAdapter(UserDataAdapter());
   Hive.registerAdapter(MealModelAdapter());
+
   await Hive.openBox<UserData>(kUserBox);
   await Hive.openBox<MealModel>(kMealBox);
 

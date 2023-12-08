@@ -23,13 +23,14 @@ class UserDataAdapter extends TypeAdapter<UserData> {
       height: fields[3] as double,
       weight: fields[4] as double,
       goal: fields[5] as String,
+      exerciseSchedule: (fields[6] as List).cast<int>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, UserData obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class UserDataAdapter extends TypeAdapter<UserData> {
       ..writeByte(4)
       ..write(obj.weight)
       ..writeByte(5)
-      ..write(obj.goal);
+      ..write(obj.goal)
+      ..writeByte(6)
+      ..write(obj.exerciseSchedule);
   }
 
   @override
