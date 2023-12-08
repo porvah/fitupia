@@ -1,4 +1,5 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
+import 'package:first_app/logic/read_user_cubit/read_user_cubit.dart';
 import 'package:first_app/presentation/screens/profile_screen.dart';
 import 'package:first_app/presentation/themes/appbar.dart';
 import 'package:first_app/presentation/widgets/custom_date_field.dart';
@@ -10,6 +11,7 @@ import 'package:intl/intl.dart';
 import '../../logic/registration_cubit/registration_cubit.dart';
 import '../size_config/size_config.dart';
 import '../widgets/custom_button.dart';
+import '../widgets/show_snack_bar_context.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String routeName = '/registration_screen';
@@ -169,6 +171,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   }
 
   Future<void> _updateUser() async {
+    if (_checkInput() == false) {
+      return;
+    }
+
     final currentData = regCubit.curUser;
     currentData.copyWith(
       dateOfBirth: _date,
@@ -178,10 +184,67 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
 
     var nav = Navigator.of(context);
+    ReadUserCubit userCubit = BlocProvider.of<ReadUserCubit>(context);
     await regCubit.editUser(currentData);
+    userCubit.getUser();
 
     nav.pop();
     nav.pop();
     nav.pushNamed(ProfileScreen.routeName);
+  }
+
+  bool _checkInput() {
+    List<List<String?>?> checks = [
+      _checkHeight(),
+      _checkWeight(),
+    ];
+
+    for (var check in checks) {
+      if (check == null) continue;
+
+      showSnackBarContext(
+        context,
+        check[0]!,
+        const Color.fromARGB(255, 188, 37, 26),
+        imgPath: check[1],
+      );
+      return false;
+    }
+
+    return true;
+  }
+
+  List<String?>? _checkHeight() {
+    if (_heightController.text.isEmpty) {
+      return ["Height can't be empty", null];
+    }
+
+    double? height = double.tryParse(_heightController.text);
+    if (height == null) {
+      return ["Invalid Height", null];
+    } else if (height < 120 || height > 230) {
+      return [
+        "Height must be between 120 and 230",
+        "assets/images_reg/height.png"
+      ];
+    }
+    return null;
+  }
+
+  List<String?>? _checkWeight() {
+    if (_weightController.text.isEmpty) {
+      return ["Weight can't be empty", null];
+    }
+
+    double? weight = double.tryParse(_weightController.text);
+    if (weight == null) {
+      return ["Invalid Weight", null];
+    } else if (weight < 30 || weight > 300) {
+      return [
+        "Weight must be between 30 and 300",
+        "assets/images_reg/weight-scale.png"
+      ];
+    }
+    return null;
   }
 }

@@ -1,50 +1,50 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_data.dart';
+part of 'meal_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserDataAdapter extends TypeAdapter<UserData> {
+class MealModelAdapter extends TypeAdapter<MealModel> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
-  UserData read(BinaryReader reader) {
+  MealModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return UserData(
+    return MealModel(
       name: fields[0] as String,
-      gender: fields[1] as String,
-      dateOfBirth: fields[2] as String,
-      height: fields[3] as double,
-      weight: fields[4] as double,
-      goal: fields[5] as String,
-      exerciseSchedule: (fields[6] as List).cast<int>(),
+      cals: fields[1] as double,
+      weight: fields[2] as double,
+      protein: fields[3] as double,
+      carbs: fields[4] as double,
+      fat: fields[5] as double,
+      fibers: fields[6] as double,
     );
   }
 
   @override
-  void write(BinaryWriter writer, UserData obj) {
+  void write(BinaryWriter writer, MealModel obj) {
     writer
       ..writeByte(7)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
-      ..write(obj.gender)
+      ..write(obj.cals)
       ..writeByte(2)
-      ..write(obj.dateOfBirth)
-      ..writeByte(3)
-      ..write(obj.height)
-      ..writeByte(4)
       ..write(obj.weight)
+      ..writeByte(3)
+      ..write(obj.protein)
+      ..writeByte(4)
+      ..write(obj.carbs)
       ..writeByte(5)
-      ..write(obj.goal)
+      ..write(obj.fat)
       ..writeByte(6)
-      ..write(obj.exerciseSchedule);
+      ..write(obj.fibers);
   }
 
   @override
@@ -53,7 +53,7 @@ class UserDataAdapter extends TypeAdapter<UserData> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is UserDataAdapter &&
+      other is MealModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

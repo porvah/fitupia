@@ -6,8 +6,10 @@ import 'package:first_app/presentation/widgets/custom_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../logic/read_user_cubit/read_user_cubit.dart';
 import '../../logic/registration_cubit/registration_cubit.dart';
-import '../widgets/show_snack_bar.dart';
+import '../widgets/show_snack_bar_context.dart';
+import '../widgets/show_snack_bar_messenger.dart';
 
 class SignUp3Screen extends StatefulWidget {
   static const String routeName = '/signup3_screen';
@@ -138,14 +140,16 @@ class _SignUp1ScreenState extends State<SignUp3Screen> {
         goal: _goalController.text,
       );
 
+      ReadUserCubit userCubit = BlocProvider.of<ReadUserCubit>(context);
       regCubit.updateUserDate(currentData);
       await regCubit.registerUser();
+      userCubit.getUser();
 
       if (regCubit.state is RegistrationSuccess) {
-        _showSnackBar(scaf, 'Registered Successfully', Colors.green);
+        showSnackBarMessenger(scaf, 'Registered Successfully', Colors.green);
         nav.pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
       } else if (regCubit.state is RegistrationFailure) {
-        _showSnackBar(scaf, 'An error occurred', Colors.red[700]!);
+        showSnackBarMessenger(scaf, 'An error occurred', Colors.red[700]!);
       }
     }
   }
@@ -156,7 +160,7 @@ class _SignUp1ScreenState extends State<SignUp3Screen> {
     for (var check in checks) {
       if (check == null) continue;
 
-      showSnackBar(
+      showSnackBarContext(
         context,
         check[0]!,
         const Color.fromARGB(255, 188, 37, 26),
@@ -174,18 +178,5 @@ class _SignUp1ScreenState extends State<SignUp3Screen> {
       return null;
     }
     return ["You must select your goal", null];
-  }
-
-  void _showSnackBar(
-      ScaffoldMessengerState messengerState, String msg, Color color) {
-    messengerState.showSnackBar(
-      SnackBar(
-        duration: const Duration(milliseconds: 1500),
-        content: Text(
-          msg,
-          style: TextStyle(color: color, fontSize: 16),
-        ),
-      ),
-    );
   }
 }

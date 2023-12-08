@@ -6,6 +6,7 @@ class CustomInputField extends StatelessWidget {
   final TextInputType? textInputType;
   final String? Function(String?)? validateInput;
   final Widget? icon;
+  final Color? color;
   final bool readonly;
 
   const CustomInputField({
@@ -15,6 +16,7 @@ class CustomInputField extends StatelessWidget {
     this.validateInput,
     this.textInputType,
     this.icon,
+    this.color,
     required this.readonly,
   });
 
@@ -44,8 +46,8 @@ class CustomInputField extends StatelessWidget {
   OutlineInputBorder _inputBorder(BuildContext context) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(10.0),
-      borderSide: const BorderSide(
-        color: Color.fromARGB(255, 2, 106, 154),
+      borderSide: BorderSide(
+        color: color ?? const Color.fromARGB(255, 2, 106, 154),
         width: 2.0,
       ),
     );
