@@ -173,7 +173,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
     try {
       double newVal = double.parse(val);
       if (newVal <= 0) {
-        return "Weight must be greater then zero";
+        return "Weight must be greater than zero";
       }
     } catch (e) {
       return "Weight must be number";
