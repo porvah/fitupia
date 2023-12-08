@@ -33,15 +33,6 @@ class CaloriesStats extends StatelessWidget {
   }
 
   List<NutritionModel> _getNutritions(ReadMealCubit reg) {
-    // print(reg.getAllProeins().toInt());
-    // print(DRI['Protein']);
-    // print(reg.getAllCarbs().toInt());
-    // print(DRI['Carbs']);
-    // print(reg.getAllFat().toInt());
-    // print(DRI['Fats']);
-    // print(reg.getAllFibers().toInt());
-    // print(DRI['Fiber']);
-
     return [
       NutritionModel(
         title: 'Proteins',

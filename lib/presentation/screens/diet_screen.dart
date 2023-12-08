@@ -3,13 +3,10 @@ import 'package:first_app/presentation/screens/daily_intakes_screen.dart';
 import 'package:first_app/presentation/widgets/calories_stats.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
 
 import '../../logic/formulas.dart';
 import '../../logic/read_meal_cubit/read_meal_cubit.dart';
 import '../../logic/read_user_cubit/read_user_cubit.dart';
-import '../../models/user_data.dart';
-import '../helper/helper.dart';
 import '../size_config/size_config.dart';
 import 'notebook_screen.dart';
 import '../themes/appbar.dart';
@@ -25,28 +22,16 @@ class DietScreen extends StatefulWidget {
 }
 
 class _DietScreenState extends State<DietScreen> {
-  int BMR = 1;
-  Map<String, int> DRI = {
-    'Protein': 1,
-    'Fats': 1,
-    'Carbs': 1,
-    'Water': 1,
-    'Fiber': 1
-  };
-  void getBMR() async {
-    var user = BlocProvider.of<ReadUserCubit>(context).userData;
-    // Box<UserData> userBox = await Hive.openBox<UserData>(kUserBox);
-    // UserData? user = userBox.getAt(0);
-    setState(() {
-      BMR = Formulas.getBMR(user!);
-      DRI = Formulas.getDRI(user!);
-    });
-  }
+  late int bmr;
+  late Map<String, int> dri;
 
   @override
   void initState() {
-    getBMR();
     super.initState();
+
+    var user = BlocProvider.of<ReadUserCubit>(context).userData!;
+    bmr = Formulas.getBMR(user);
+    dri = Formulas.getDRI(user);
   }
 
   final List<NutritionModel> nutritions = const [
@@ -89,7 +74,7 @@ class _DietScreenState extends State<DietScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CaloriesStats(BMR: BMR, DRI: DRI),
+          CaloriesStats(BMR: bmr, DRI: dri),
           SizedBox(height: SizeConfig.getProportionateScreenHeight(60)),
           _buildButtons(context),
         ],

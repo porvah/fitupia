@@ -18,36 +18,38 @@ class Formulas {
 
   static int getBMR(UserData user) {
     int age = getAge(user);
-    double BMR = 10 * user!.weight + 6.25 * user!.height - 5 * age;
-    if (user.gender == "Male")
-      BMR += 5;
-    else
-      BMR -= 161;
-    return BMR.round();
+    double bmr = 10 * user.weight + 6.25 * user.height - 5 * age;
+    if (user.gender == "Male") {
+      bmr += 5;
+    } else {
+      bmr -= 161;
+    }
+    return bmr.round();
   }
 
   static Map<String, int> getDRI(UserData user) {
-    Map<String, int> DRI = {
+    Map<String, int> dri = {
       'Protein': 0,
       'Fats': 0,
       'Carbs': 0,
       'Water': 0,
       'Fiber': 0
     };
-    int BMR = getBMR(user);
+    int bmr = getBMR(user);
     int age = getAge(user);
 
-    DRI['Protein'] = (age < 4 ? BMR * .15 / 4 : BMR * .2 / 4).round(); // Grams
-    if (age < 4)
-      DRI['Fats'] = (BMR * .35 / 9).round();
-    else if (age < 19)
-      DRI['Fats'] = (BMR * .3 / 9).round();
-    else
-      DRI['Fats'] = (BMR * .275 / 9).round(); // Grams
-    DRI['Carbs'] = (BMR * .55 / 4).round(); // Grams
-    DRI['Water'] = (BMR / 250).round(); // cups
-    DRI['Fiber'] = (BMR / 1000 * 14).round(); // grams
-    return DRI;
+    dri['Protein'] = (age < 4 ? bmr * .15 / 4 : bmr * .2 / 4).round(); // Grams
+    if (age < 4) {
+      dri['Fats'] = (bmr * .35 / 9).round();
+    } else if (age < 19) {
+      dri['Fats'] = (bmr * .3 / 9).round();
+    } else {
+      dri['Fats'] = (bmr * .275 / 9).round(); // Grams
+    }
+    dri['Carbs'] = (bmr * .55 / 4).round(); // Grams
+    dri['Water'] = (bmr / 250).round(); // cups
+    dri['Fiber'] = (bmr / 1000 * 14).round(); // grams
+    return dri;
   }
 
   static double getBMI(UserData user) {
