@@ -41,4 +41,5 @@ class UserData extends HiveObject {
     this.weight = weight ?? this.weight;
     this.goal = goal ?? this.goal;
   }
+
 }

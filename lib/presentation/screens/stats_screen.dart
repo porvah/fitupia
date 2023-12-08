@@ -1,4 +1,7 @@
+import 'package:first_app/logic/formulas.dart';
+import 'package:first_app/logic/read_user_cubit/read_user_cubit.dart';
 import 'package:first_app/presentation/themes/appbar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +15,10 @@ class StatsScreen extends StatefulWidget {
 }
 
 class _StatsScreenState extends State<StatsScreen> {
-  int startingBMI = 30;
-  int currentBMI = 25;
-  int startingWeight = 90;
-  int currentWeight = 70;
+  String startingBMI = '0';
+  String currentBMI = '0';
+  String startingWeight = '0';
+  String currentWeight = '0';
   int completedDays = 50;
   int missedDays = 30;
   List<ChartData> weights = [
@@ -25,6 +28,16 @@ class _StatsScreenState extends State<StatsScreen> {
     ChartData('Apr', 32),
     ChartData('May', 40)
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    var user = BlocProvider.of<ReadUserCubit>(context).userData!;
+    startingWeight = user.weight.toString();
+    currentWeight = user.weight.toString();
+    startingBMI = Formulas.getBMI(user).toStringAsFixed(1);
+    currentBMI = startingBMI;
+  }
 
   @override
   Widget build(BuildContext context) {

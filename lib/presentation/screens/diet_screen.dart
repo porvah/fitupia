@@ -1,21 +1,39 @@
 import 'package:first_app/models/nutrition_model.dart';
 import 'package:first_app/presentation/screens/daily_intakes_screen.dart';
-import 'package:first_app/presentation/widgets/all_nutritions.dart';
-import 'package:first_app/presentation/widgets/calories_indicator.dart';
 import 'package:first_app/presentation/widgets/calories_stats.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../logic/formulas.dart';
 import '../../logic/read_meal_cubit/read_meal_cubit.dart';
+import '../../logic/read_user_cubit/read_user_cubit.dart';
 import '../size_config/size_config.dart';
 import 'notebook_screen.dart';
 import '../themes/appbar.dart';
 import '../widgets/custom_button.dart';
 
-class DietScreen extends StatelessWidget {
+class DietScreen extends StatefulWidget {
   static const String routeName = '/diet_screen';
 
   const DietScreen({super.key});
+
+  @override
+  State<DietScreen> createState() => _DietScreenState();
+}
+
+class _DietScreenState extends State<DietScreen> {
+  late int bmr;
+  late Map<String, int> dri;
+
+  @override
+  void initState() {
+    super.initState();
+
+    var user = BlocProvider.of<ReadUserCubit>(context).userData!;
+    bmr = Formulas.getBMR(user);
+    dri = Formulas.getDRI(user);
+  }
+
   final List<NutritionModel> nutritions = const [
     NutritionModel(
       title: 'Fat',
@@ -46,7 +64,6 @@ class DietScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<ReadMealCubit>(context).getMeals();
-
     return Scaffold(
       appBar: buildAppBar(
         'Diet',
@@ -57,21 +74,11 @@ class DietScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const CaloriesStats(),
+          CaloriesStats(BMR: bmr, DRI: dri),
           SizedBox(height: SizeConfig.getProportionateScreenHeight(60)),
           _buildButtons(context),
         ],
       ),
-    );
-  }
-
-  Widget _buildStats() {
-    return Column(
-      children: [
-        CaloriesIndicator(took: 1000, left: 500, total: 1500),
-        const SizedBox(height: 8),
-        AllNutritions(nutritions: nutritions)
-      ],
     );
   }
 
