@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../logic/formulas.dart';
 import '../../logic/read_meal_cubit/read_meal_cubit.dart';
 import '../../logic/read_user_cubit/read_user_cubit.dart';
+import '../../logic/registration_cubit/registration_cubit.dart';
 import '../size_config/size_config.dart';
 import 'notebook_screen.dart';
 import '../themes/appbar.dart';
@@ -28,7 +29,9 @@ class _DietScreenState extends State<DietScreen> {
   void initState() {
     super.initState();
 
-    var user = BlocProvider.of<ReadUserCubit>(context).userData!;
+    var userCubit = BlocProvider.of<RegistrationCubit>(context);
+    var user = userCubit.curUser;
+
     allCal = Formulas.getAllCalories(user);
     dri = Formulas.getDRI(user);
   }

@@ -1,5 +1,5 @@
 import 'package:first_app/logic/formulas.dart';
-import 'package:first_app/logic/read_user_cubit/read_user_cubit.dart';
+import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
 import 'package:first_app/presentation/themes/appbar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -32,7 +32,7 @@ class _StatsScreenState extends State<StatsScreen> {
   @override
   void initState() {
     super.initState();
-    var user = BlocProvider.of<ReadUserCubit>(context).userData!;
+    var user = BlocProvider.of<RegistrationCubit>(context).curUser;
     startingWeight = user.weight.toString();
     currentWeight = user.weight.toString();
     startingBMI = Formulas.getBMI(user).toStringAsFixed(1);

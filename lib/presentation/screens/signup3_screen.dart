@@ -6,6 +6,7 @@ import 'package:first_app/presentation/widgets/custom_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../logic/read_user_cubit/read_user_cubit.dart';
 import '../../logic/registration_cubit/registration_cubit.dart';
 import '../widgets/show_snack_bar_context.dart';
 import '../widgets/show_snack_bar_messenger.dart';
@@ -139,8 +140,10 @@ class _SignUp1ScreenState extends State<SignUp3Screen> {
         goal: _goalController.text,
       );
 
+      ReadUserCubit userCubit = BlocProvider.of<ReadUserCubit>(context);
       regCubit.updateUserDate(currentData);
       await regCubit.registerUser();
+      userCubit.getUser();
 
       if (regCubit.state is RegistrationSuccess) {
         showSnackBarMessenger(scaf, 'Registered Successfully', Colors.green);
