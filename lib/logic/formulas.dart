@@ -27,6 +27,16 @@ class Formulas {
     return bmr.round();
   }
 
+  static int getAllCalories(UserData user) {
+    int bmr = getBMR(user);
+
+    if (user.goal == 'Gain Muscles') {
+      return (bmr * 1.7).round();
+    } else {
+      return (bmr * 1.2).round();
+    }
+  }
+
   static Map<String, int> getDRI(UserData user) {
     Map<String, int> dri = {
       'Protein': 0,
@@ -35,20 +45,21 @@ class Formulas {
       'Water': 0,
       'Fiber': 0
     };
-    int bmr = getBMR(user);
+    int allCal = getAllCalories(user);
     int age = getAge(user);
 
-    dri['Protein'] = (age < 4 ? bmr * .15 / 4 : bmr * .2 / 4).round(); // Grams
+    dri['Protein'] =
+        (age < 4 ? allCal * .15 / 4 : allCal * .2 / 4).round(); // Grams
     if (age < 4) {
-      dri['Fats'] = (bmr * .35 / 9).round();
+      dri['Fats'] = (allCal * .35 / 9).round();
     } else if (age < 19) {
-      dri['Fats'] = (bmr * .3 / 9).round();
+      dri['Fats'] = (allCal * .3 / 9).round();
     } else {
-      dri['Fats'] = (bmr * .275 / 9).round(); // Grams
+      dri['Fats'] = (allCal * .275 / 9).round(); // Grams
     }
-    dri['Carbs'] = (bmr * .55 / 4).round(); // Grams
-    dri['Water'] = (bmr / 250).round(); // cups
-    dri['Fiber'] = (bmr / 1000 * 14).round(); // grams
+    dri['Carbs'] = (allCal * .55 / 4).round(); // Grams
+    dri['Water'] = (allCal / 250).round(); // cups
+    dri['Fiber'] = (allCal / 1000 * 14).round(); // grams
     return dri;
   }
 

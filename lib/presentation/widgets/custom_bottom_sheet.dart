@@ -220,12 +220,12 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
     var readMealCubit = BlocProvider.of<ReadMealCubit>(context);
     var userData = BlocProvider.of<ReadUserCubit>(context).userData!;
 
-    var bmr = Formulas.getBMR(userData);
+    var allCal = Formulas.getAllCalories(userData);
     var dri = Formulas.getDRI(userData);
 
     String? checkExceeding = readMealCubit.isMealExceeding(
       finalMealModel,
-      bmr,
+      allCal,
       dri,
     );
 

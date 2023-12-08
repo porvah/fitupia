@@ -33,6 +33,7 @@ Future<void> prepareMeals() async {
     List<List<dynamic>> listData = const CsvToListConverter().convert(data);
     listData.remove(listData[0]);
     List<MealModel> mealList = [];
+
     for (List<dynamic> list in listData) {
       mealList.add(MealModel(
           name: list[0],

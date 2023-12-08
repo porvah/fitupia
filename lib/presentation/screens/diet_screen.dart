@@ -21,7 +21,7 @@ class DietScreen extends StatefulWidget {
 }
 
 class _DietScreenState extends State<DietScreen> {
-  late int bmr;
+  late int allCal;
   late Map<String, int> dri;
 
   @override
@@ -29,7 +29,7 @@ class _DietScreenState extends State<DietScreen> {
     super.initState();
 
     var user = BlocProvider.of<ReadUserCubit>(context).userData!;
-    bmr = Formulas.getBMR(user);
+    allCal = Formulas.getAllCalories(user);
     dri = Formulas.getDRI(user);
   }
 
@@ -46,7 +46,7 @@ class _DietScreenState extends State<DietScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CaloriesStats(bmr: bmr, dri: dri),
+          CaloriesStats(bmr: allCal, dri: dri),
           SizedBox(height: SizeConfig.getProportionateScreenHeight(60)),
           _buildButtons(context),
         ],

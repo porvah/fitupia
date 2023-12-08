@@ -1,4 +1,5 @@
 import 'package:first_app/models/meal_model.dart';
+import 'package:first_app/presentation/size_config/size_config.dart';
 import 'package:flutter/material.dart';
 
 class MealWidget extends StatelessWidget {
@@ -43,8 +44,11 @@ class MealWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 6.0),
+        Container(
+          padding: const EdgeInsets.only(left: 6),
+          constraints: BoxConstraints(
+            maxWidth: SizeConfig.screenWidth * 0.65,
+          ),
           child: Text(
             mealModel.name,
             style: const TextStyle(
@@ -52,6 +56,7 @@ class MealWidget extends StatelessWidget {
               fontWeight: FontWeight.bold,
               fontSize: 22,
             ),
+            overflow: TextOverflow.ellipsis,
           ),
         ),
         Row(
