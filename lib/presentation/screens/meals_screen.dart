@@ -9,8 +9,8 @@ import '../widgets/custom_bottom_sheet.dart';
 class MealsScreen extends StatelessWidget {
   static const String routeName = '/meals_screen';
 
-  const MealsScreen({super.key});
-
+  const MealsScreen(this.toBeDisplayedList, {super.key});
+  final int toBeDisplayedList;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,10 +20,11 @@ class MealsScreen extends StatelessWidget {
           itemCount: meals.length,
           itemBuilder: (ctx, index) {
             return MealWidget(
-              mealModel: meals[index],
+              mealModel: meals[toBeDisplayedList][index],
               buttonTitle: 'Add',
               icon: Icons.add,
-              onPressed: () => _openBottomSheet(context, meals[index]),
+              onPressed: () =>
+                  _openBottomSheet(context, meals[toBeDisplayedList][index]),
             );
           },
         ),

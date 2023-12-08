@@ -52,7 +52,9 @@ class AppRouter {
       case EncyclopediaScreen.routeName:
         return MaterialPageRoute(builder: (_) => const EncyclopediaScreen());
       case MealsScreen.routeName:
-        return MaterialPageRoute(builder: (_) => const MealsScreen());
+        int toBeDisplayedList = settings.arguments as int;
+        return MaterialPageRoute(
+            builder: (_) => MealsScreen(toBeDisplayedList));
 
       case FoodScreen.routeName:
         return MaterialPageRoute(builder: (_) => const FoodScreen());
