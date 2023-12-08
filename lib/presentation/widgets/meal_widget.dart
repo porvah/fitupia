@@ -85,8 +85,8 @@ class MealWidget extends StatelessWidget {
         _buildNut('Protein', mealModel.protein, Colors.green),
         _buildNut('Carbs', mealModel.carbs, Colors.amber),
         _buildNut('Fat', mealModel.fat, Colors.purple),
-        _buildNut(
-            'Fibers', mealModel.fibers, const Color.fromRGBO(21, 101, 192, 1)),
+        // _buildNut(
+        //     'Fibers', mealModel.fibers, const Color.fromRGBO(21, 101, 192, 1)),
       ],
     );
   }

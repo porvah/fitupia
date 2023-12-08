@@ -1,4 +1,5 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
+import 'package:first_app/logic/read_user_cubit/read_user_cubit.dart';
 import 'package:first_app/presentation/screens/profile_screen.dart';
 import 'package:first_app/presentation/themes/appbar.dart';
 import 'package:first_app/presentation/widgets/custom_date_field.dart';
@@ -183,7 +184,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
 
     var nav = Navigator.of(context);
+    ReadUserCubit userCubit = BlocProvider.of<ReadUserCubit>(context);
     await regCubit.editUser(currentData);
+    userCubit.getUser();
 
     nav.pop();
     nav.pop();

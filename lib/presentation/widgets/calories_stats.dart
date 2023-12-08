@@ -52,12 +52,12 @@ class CaloriesStats extends StatelessWidget {
         target: dri['Fats']!,
         color: Colors.purple,
       ),
-      NutritionModel(
-        title: 'Fibers',
-        current: reg.getAllFibers().toInt(),
-        target: dri['Fiber']!,
-        color: const Color.fromRGBO(21, 101, 192, 1),
-      ),
+      // NutritionModel(
+      //   title: 'Fibers',
+      //   current: reg.getAllFibers().toInt(),
+      //   target: dri['Fiber']!,
+      //   color: const Color.fromRGBO(21, 101, 192, 1),
+      // ),
     ];
   }
 }

@@ -13,6 +13,7 @@ class AllNutritions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: nutritions.map((nutrition) {
         return NutritionWidget(nutritionModel: nutrition);
       }).toList(),
