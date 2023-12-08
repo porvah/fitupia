@@ -1,8 +1,13 @@
+import 'package:first_app/models/meal_model.dart';
 import 'package:first_app/presentation/themes/appbar.dart';
 import 'package:first_app/presentation/widgets/label_input_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../logic/add_meal_cubit/add_meal_cubit.dart';
+import '../../logic/read_meal_cubit/read_meal_cubit.dart';
 import '../widgets/custom_button.dart';
+import '../widgets/show_snack_bar_messenger.dart';
 
 class CustomMealScreen extends StatefulWidget {
   static const String routeName = '/custom_meal_screen';
@@ -128,11 +133,52 @@ class _CustomMealScreenState extends State<CustomMealScreen> {
     );
   }
 
-  void _onSubmit() {
+  Future<void> _onSubmit() async {
     if (!_globalKey.currentState!.validate()) {
-      _autovalidateMode = AutovalidateMode.always;
+      setState(() {
+        _autovalidateMode = AutovalidateMode.always;
+      });
       return;
     }
+
+    var nav = Navigator.of(context);
+    var scaf = ScaffoldMessenger.of(context);
+
+    MealModel finalMealModel = _getMeal();
+    var mealCubit = BlocProvider.of<AddMealCubit>(context);
+    var readMealCubit = BlocProvider.of<ReadMealCubit>(context);
+
+    await mealCubit.addMeal(finalMealModel);
+
+    if (mealCubit.state is AddMealStateSuccess) {
+      showSnackBarMessenger(scaf, 'Meal added successfully', Colors.green);
+      readMealCubit.getMeals();
+    } else if (mealCubit.state is AddMealStateFailure) {
+      showSnackBarMessenger(scaf, 'An error occurred', Colors.red[700]!);
+    }
+
+    nav.pop();
+  }
+
+  MealModel _getMeal() {
+    String name = _nameController.text;
+    double weight = double.parse(_weightController.text);
+    double cals = double.parse(_calsController.text);
+    double protein = double.parse(_proteinController.text);
+    double carbs = double.parse(_carbController.text);
+    double fat = double.parse(_fatController.text);
+
+    MealModel mealModel = MealModel(
+      name: name,
+      cals: cals,
+      weight: weight,
+      protein: protein,
+      carbs: carbs,
+      fat: fat,
+      fibers: 0.0,
+    );
+
+    return mealModel;
   }
 
   String? _validateText(String? val) {
