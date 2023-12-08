@@ -1,9 +1,16 @@
-Food,Grams,Calories,Protein,Fat,Carbs
-Carbonated drinks,346,0,0,0,0
-Club soda,346,0,0,0,0
-Cola drinks,346,137,0,0,38
-Fruit-flavored soda,346,161,0,0,42
-Ginger ale,346,105,0,0,28
-Root beer,346,140,0,0,35
-Coffee,230,3,0,0,1
-Tea,230,4,0,0,1
+﻿Name,grams,Calories,fat,protien,carbs
+café latte,227,67,3,5,6
+cappuccino,227,74,4,4,6
+coffee,227,2,0,0.3,0.1
+Diet soda,227,1,0,0,0.24
+Energy Drink,227,108,0.2,0.6,27
+Fruit punch,227,114,0,0.15,29
+Fruit smoothie,227,162,1.76,2.14,37
+Ice cream soda,227,167,6,2,30
+Lemonade,227,99,0.1,0.2,26
+Soda,227,91,0,0.2,24
+Tea,227,2,0,0,0.8
+Coca cola,300,120,0,0,33
+Pepsi,354,150,0,0,41
+Vegetable juice,253,56,0.8,2.4,10
+Orange(fruit) juice,240,110,0,2,27

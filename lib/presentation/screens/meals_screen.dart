@@ -8,16 +8,25 @@ import '../widgets/custom_bottom_sheet.dart';
 
 class MealsScreen extends StatelessWidget {
   static const String routeName = '/meals_screen';
-
+  final pagenameList = const [
+    'Dairy product',
+    'Meats and beef',
+    'Fish',
+    'Vegetables',
+    'Bread and flour',
+    'Nuts and seeds',
+    'Drinks'
+  ];
   const MealsScreen(this.toBeDisplayedList, {super.key});
   final int toBeDisplayedList;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar('Meals', Colors.white, Colors.green),
+      appBar: buildAppBar(
+          pagenameList[toBeDisplayedList], Colors.white, Colors.green),
       body: SafeArea(
         child: ListView.builder(
-          itemCount: meals.length,
+          itemCount: meals[toBeDisplayedList].length,
           itemBuilder: (ctx, index) {
             return MealWidget(
               mealModel: meals[toBeDisplayedList][index],
