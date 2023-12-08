@@ -13,8 +13,6 @@ class DailyIntakesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<ReadMealCubit>(context).getMeals();
-
     return Scaffold(
       appBar: buildAppBar('Today\'s Intakes', Colors.white, Colors.amber),
       body: SafeArea(
