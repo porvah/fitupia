@@ -4,7 +4,9 @@ import 'package:first_app/presentation/widgets/all_nutritions.dart';
 import 'package:first_app/presentation/widgets/calories_indicator.dart';
 import 'package:first_app/presentation/widgets/calories_stats.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../logic/read_meal_cubit/read_meal_cubit.dart';
 import '../size_config/size_config.dart';
 import 'notebook_screen.dart';
 import '../themes/appbar.dart';
@@ -43,6 +45,8 @@ class DietScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<ReadMealCubit>(context).getMeals();
+
     return Scaffold(
       appBar: buildAppBar(
         'Diet',
