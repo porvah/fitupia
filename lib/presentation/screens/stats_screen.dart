@@ -1,11 +1,13 @@
 import 'package:first_app/logic/formulas.dart';
+import 'package:first_app/logic/read_meal_cubit/read_meal_cubit.dart';
+import 'package:first_app/logic/read_user_cubit/read_user_cubit.dart';
 import 'package:first_app/models/user_data.dart';
 import 'package:first_app/presentation/helper/helper.dart';
 import 'package:first_app/presentation/themes/appbar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
-
 
 class StatsScreen extends StatefulWidget {
   static const String routeName = '/stats_screen';
@@ -31,9 +33,10 @@ class _StatsScreenState extends State<StatsScreen> {
     ChartData('May', 40)
   ];
 
-  void getWeightAndBMI() async{
-    Box<UserData> userBox = await Hive.openBox<UserData>(kUserBox);
-    UserData? user = userBox.getAt(0);
+  void getWeightAndBMI() async {
+    var user = BlocProvider.of<ReadUserCubit>(context).userData;
+    // Box<UserData> userBox = await Hive.openBox<UserData>(kUserBox);
+    // UserData? user = userBox.getAt(0);
     setState(() {
       startingWeight = user!.weight.toString();
       currentWeight = user!.weight.toString();
@@ -41,10 +44,12 @@ class _StatsScreenState extends State<StatsScreen> {
       currentBMI = startingBMI;
     });
   }
+
   void initState() {
     super.initState();
     getWeightAndBMI();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

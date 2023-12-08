@@ -23,6 +23,8 @@ class NutritionWidget extends StatelessWidget {
   }
 
   AnimatedCircularChart _buildChart() {
+    print(nutritionModel.current);
+    print(nutritionModel.target);
     return AnimatedCircularChart(
       size: Size(
         SizeConfig.screenWidth / 4.2,

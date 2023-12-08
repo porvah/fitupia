@@ -1,12 +1,13 @@
 import 'package:first_app/models/nutrition_model.dart';
 import 'package:first_app/presentation/screens/daily_intakes_screen.dart';
-import 'package:first_app/presentation/widgets/all_nutritions.dart';
-import 'package:first_app/presentation/widgets/calories_indicator.dart';
 import 'package:first_app/presentation/widgets/calories_stats.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 
 import '../../logic/formulas.dart';
+import '../../logic/read_meal_cubit/read_meal_cubit.dart';
+import '../../logic/read_user_cubit/read_user_cubit.dart';
 import '../../models/user_data.dart';
 import '../helper/helper.dart';
 import '../size_config/size_config.dart';
@@ -24,23 +25,24 @@ class DietScreen extends StatefulWidget {
 }
 
 class _DietScreenState extends State<DietScreen> {
-
   int BMR = 1;
   Map<String, int> DRI = {
-    'Protein':1,
-    'Fats':1,
-    'Carbs':1,
-    'Water':1,
-    'Fiber':1
+    'Protein': 1,
+    'Fats': 1,
+    'Carbs': 1,
+    'Water': 1,
+    'Fiber': 1
   };
-  void getBMR() async{
-    Box<UserData> userBox = await Hive.openBox<UserData>(kUserBox);
-    UserData? user = userBox.getAt(0);
+  void getBMR() async {
+    var user = BlocProvider.of<ReadUserCubit>(context).userData;
+    // Box<UserData> userBox = await Hive.openBox<UserData>(kUserBox);
+    // UserData? user = userBox.getAt(0);
     setState(() {
-      BMR = Formulas.getBMR(user!) ;
+      BMR = Formulas.getBMR(user!);
       DRI = Formulas.getDRI(user!);
     });
   }
+
   @override
   void initState() {
     getBMR();
@@ -76,6 +78,7 @@ class _DietScreenState extends State<DietScreen> {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<ReadMealCubit>(context).getMeals();
     return Scaffold(
       appBar: buildAppBar(
         'Diet',
@@ -91,16 +94,6 @@ class _DietScreenState extends State<DietScreen> {
           _buildButtons(context),
         ],
       ),
-    );
-  }
-
-  Widget _buildStats() {
-    return Column(
-      children: [
-        CaloriesIndicator(took: 1000, left: 500, total: 1500),
-        const SizedBox(height: 8),
-        AllNutritions(nutritions: nutritions)
-      ],
     );
   }
 
