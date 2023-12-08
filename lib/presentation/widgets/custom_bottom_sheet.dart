@@ -1,5 +1,7 @@
 import 'package:first_app/logic/add_meal_cubit/add_meal_cubit.dart';
+import 'package:first_app/logic/formulas.dart';
 import 'package:first_app/logic/read_meal_cubit/read_meal_cubit.dart';
+import 'package:first_app/logic/read_user_cubit/read_user_cubit.dart';
 import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:first_app/presentation/widgets/label_input_field.dart';
 import 'package:first_app/presentation/widgets/show_snack_bar_messenger.dart';
@@ -213,14 +215,37 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
       return;
     }
 
-    var nav = Navigator.of(context);
-    var scaf = ScaffoldMessenger.of(context);
-
     MealModel finalMealModel = _getMeal();
     var mealCubit = BlocProvider.of<AddMealCubit>(context);
     var readMealCubit = BlocProvider.of<ReadMealCubit>(context);
+    var userData = BlocProvider.of<ReadUserCubit>(context).userData!;
 
-    await mealCubit.addMeal(finalMealModel);
+    var bmr = Formulas.getBMR(userData);
+    var dri = Formulas.getDRI(userData);
+
+    String? checkExceeding = readMealCubit.isMealExceeding(
+      finalMealModel,
+      bmr,
+      dri,
+    );
+
+    if (checkExceeding != null) {
+      _warnExceeding(
+          context, checkExceeding, mealCubit, readMealCubit, finalMealModel);
+    } else {
+      await _addMeal(mealCubit, readMealCubit, finalMealModel);
+    }
+  }
+
+  Future<void> _addMeal(
+    AddMealCubit mealCubit,
+    ReadMealCubit readMealCubit,
+    MealModel meal,
+  ) async {
+    var nav = Navigator.of(context);
+    var scaf = ScaffoldMessenger.of(context);
+
+    await mealCubit.addMeal(meal);
 
     if (mealCubit.state is AddMealStateSuccess) {
       showSnackBarMessenger(scaf, 'Meal added successfully', Colors.green);
@@ -230,6 +255,58 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
     }
 
     nav.pop();
+  }
+
+  void _warnExceeding(
+    BuildContext context,
+    String exceeded,
+    AddMealCubit mealCubit,
+    ReadMealCubit readMealCubit,
+    MealModel finalMealModel,
+  ) {
+    showDialog(
+        context: context,
+        builder: (ctx) => _buildWarningDialog(
+              ctx,
+              exceeded,
+              mealCubit,
+              readMealCubit,
+              finalMealModel,
+            ));
+  }
+
+  Widget _buildWarningDialog(
+    BuildContext context,
+    String exceeded,
+    AddMealCubit mealCubit,
+    ReadMealCubit readMealCubit,
+    MealModel finalMealModel,
+  ) {
+    return AlertDialog(
+      title: const Text(
+        'Warning',
+        style: TextStyle(fontSize: 22, color: Colors.red),
+      ),
+      content: Text(
+        'Exceeding the daily limit of $exceeded',
+        style: const TextStyle(fontSize: 18),
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22)),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: const Text('Cancel', style: TextStyle(color: Colors.black)),
+        ),
+        TextButton(
+          onPressed: () async {
+            var nav = Navigator.of(context);
+            await _addMeal(mealCubit, readMealCubit, finalMealModel);
+            nav.pop();
+          },
+          child: Text('Add anyway', style: TextStyle(color: Colors.red[700])),
+        ),
+      ],
+    );
   }
 
   double getGrams() {

@@ -28,6 +28,19 @@ class ReadMealCubit extends Cubit<ReadMealState> {
     getMeals();
   }
 
+  String? isMealExceeding(MealModel meal, int bmr, Map<String, int> dri) {
+    if (getAllCalories() + meal.cals > bmr) {
+      return 'Calories';
+    } else if (getAllProeins() + meal.protein > dri['Protein']!) {
+      return 'Protein';
+    } else if (getAllCarbs() + meal.carbs > dri['Carbs']!) {
+      return 'Carbs';
+    } else if (getAllFat() + meal.fat > dri['Fats']!) {
+      return 'Fats';
+    }
+    return null;
+  }
+
   double getAllCalories() {
     double res = 0.0;
     for (MealModel meal in meals) {
