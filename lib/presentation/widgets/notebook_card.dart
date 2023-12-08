@@ -3,18 +3,17 @@ import 'package:flutter/material.dart';
 
 class NoteBookCard extends StatelessWidget {
   final CardContent card;
-
-  const NoteBookCard({
-    required this.card,
-    super.key,
-  });
+  final int toBeDisplayedList;
+  const NoteBookCard(
+      {required this.card, super.key, required this.toBeDisplayedList});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         if (card.routeName != null) {
-          Navigator.of(context).pushNamed(card.routeName!);
+          Navigator.pushNamed(context, card.routeName!,
+              arguments: toBeDisplayedList);
         }
       },
       child: SizedBox(

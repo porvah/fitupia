@@ -19,7 +19,10 @@ class NoteBookScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: handbookCards.length,
         itemBuilder: (ctx, index) {
-          return NoteBookCard(card: handbookCards[index]);
+          return NoteBookCard(
+            card: handbookCards[index],
+            toBeDisplayedList: index,
+          );
         },
       ),
     );
