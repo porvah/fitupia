@@ -1,4 +1,3 @@
-import 'package:first_app/models/nutrition_model.dart';
 import 'package:first_app/presentation/screens/daily_intakes_screen.dart';
 import 'package:first_app/presentation/widgets/calories_stats.dart';
 import 'package:flutter/material.dart';
@@ -34,33 +33,6 @@ class _DietScreenState extends State<DietScreen> {
     dri = Formulas.getDRI(user);
   }
 
-  final List<NutritionModel> nutritions = const [
-    NutritionModel(
-      title: 'Fat',
-      current: 42,
-      target: 50,
-      color: Colors.amber,
-    ),
-    NutritionModel(
-      title: 'Proteins',
-      current: 70,
-      target: 200,
-      color: Color.fromRGBO(211, 47, 47, 1),
-    ),
-    NutritionModel(
-      title: 'Carbs',
-      current: 92,
-      target: 150,
-      color: Colors.purple,
-    ),
-    NutritionModel(
-      title: 'Fibers',
-      current: 9,
-      target: 40,
-      color: Color.fromRGBO(21, 101, 192, 1),
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<ReadMealCubit>(context).getMeals();
@@ -74,7 +46,7 @@ class _DietScreenState extends State<DietScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          CaloriesStats(BMR: bmr, DRI: dri),
+          CaloriesStats(bmr: bmr, dri: dri),
           SizedBox(height: SizeConfig.getProportionateScreenHeight(60)),
           _buildButtons(context),
         ],
