@@ -1,19 +1,19 @@
+import 'package:first_app/models/card_content.dart';
 import 'package:first_app/presentation/widgets/exercis_of_bodypart_card.dart';
 import 'package:flutter/material.dart';
 
-import '../../models/card_content.dart';
-
 class ExercisScreen extends StatelessWidget {
+  final List<dynamic> data;
   final CardContent card;
-  const ExercisScreen({required this.card, super.key});
+  const ExercisScreen({super.key, required this.data, required this.card});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
         body: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) => ExercisOfBodyPartCard(card: card),
+          itemCount: data.length,
+          itemBuilder: (context, index) => ExercisOfBodyPartCard(data: data[index]),
         ),
     );
   }
@@ -26,7 +26,7 @@ class ExercisScreen extends StatelessWidget {
       ),
       title: Text(
         card.name,
-        style: const TextStyle(
+        style: TextStyle(
           color: Color(0xFF455766),
         ),
       ),

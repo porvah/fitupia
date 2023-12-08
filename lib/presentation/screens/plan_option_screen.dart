@@ -1,6 +1,6 @@
 import 'package:first_app/models/card_content.dart';
 import 'package:first_app/presentation/size_config/size_config.dart';
-import 'package:first_app/presentation/widgets/exercis_of_bodypart_card.dart';
+import 'package:first_app/presentation/widgets/exercis_of_option_bodypart_card.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_icon/gradient_icon.dart';
 
@@ -77,7 +77,7 @@ class PlanScreen extends StatelessWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                return ExercisOfBodyPartCard(card: card);
+                return ExercisOfOptionBodyPartCard(card: card);
               },
               childCount: 22,
             ),

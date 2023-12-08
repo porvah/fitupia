@@ -1,3 +1,5 @@
+import 'package:first_app/presentation/screens/exercis_screen.dart';
+import 'package:first_app/presentation/screens/workout_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'app_router.dart';
@@ -19,9 +21,9 @@ class FitupiaApp extends StatelessWidget {
       title: 'Fitupia',
       theme: Styles.lightTheme,
       darkTheme: Styles.darkTheme,
-      // home: WorkoutScreen(),
+      home: WorkoutScreen(),
       onGenerateRoute: appRouter.generateRoute,
-      initialRoute: '/',
+      // initialRoute: '/',
     );
   }
 }

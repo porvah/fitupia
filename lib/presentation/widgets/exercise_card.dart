@@ -1,4 +1,4 @@
-import 'package:first_app/presentation/screens/exercis_screen.dart';
+import 'package:first_app/presentation/widgets/loading.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/card_content.dart';
@@ -15,7 +15,7 @@ class ExerciseCard extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (_) => ExercisScreen(card: card),
+            builder: (_) => Loading(card: card),
           ),
         );
       },
