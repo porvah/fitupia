@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../logic/formulas.dart';
 import '../../logic/read_meal_cubit/read_meal_cubit.dart';
-import '../../logic/read_user_cubit/read_user_cubit.dart';
 import '../../logic/registration_cubit/registration_cubit.dart';
 import '../size_config/size_config.dart';
 import 'notebook_screen.dart';

@@ -6,6 +6,8 @@ import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../logic/read_meal_cubit/read_meal_cubit.dart';
+
 class SettingsScreen extends StatelessWidget {
   static const String routeName = '/settings_screen';
 
@@ -68,7 +70,11 @@ class SettingsScreen extends StatelessWidget {
   Future<void> _deleteAccount(BuildContext context) async {
     var nav = Navigator.of(context);
 
-    await BlocProvider.of<RegistrationCubit>(context).deleteUser();
+    var regCubit = BlocProvider.of<RegistrationCubit>(context);
+    var mealCubit = BlocProvider.of<ReadMealCubit>(context);
+
+    await regCubit.deleteUser();
+    await mealCubit.clearMeals();
 
     nav.pushNamedAndRemoveUntil(
       WelcomeScreen.routeName,

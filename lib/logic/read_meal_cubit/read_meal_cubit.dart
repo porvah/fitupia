@@ -28,6 +28,12 @@ class ReadMealCubit extends Cubit<ReadMealState> {
     getMeals();
   }
 
+  Future<void> clearMeals() async {
+    var mealBox = Hive.box<MealModel>(kMealBox);
+    await mealBox.clear();
+    getMeals();
+  }
+
   String? isMealExceeding(MealModel meal, int bmr, Map<String, int> dri) {
     if (getAllCalories() + meal.cals > bmr) {
       return 'Calories';
