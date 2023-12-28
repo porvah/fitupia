@@ -1,97 +1,87 @@
+import 'package:first_app/presentation/screens/daily_intakes_screen.dart';
+import 'package:first_app/presentation/widgets/calories_stats.dart';
 import 'package:flutter/material.dart';
-import 'package:pie_chart/pie_chart.dart';
-import 'package:syncfusion_flutter_charts/charts.dart' as sf;
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../logic/formulas.dart';
+import '../../logic/read_meal_cubit/read_meal_cubit.dart';
+import '../../logic/read_user_cubit/read_user_cubit.dart';
+import '../../logic/registration_cubit/registration_cubit.dart';
+import '../size_config/size_config.dart';
 import 'notebook_screen.dart';
+import '../themes/appbar.dart';
+import '../widgets/custom_button.dart';
 
 class DietScreen extends StatefulWidget {
+  static const String routeName = '/diet_screen';
+
   const DietScreen({super.key});
+
   @override
   State<DietScreen> createState() => _DietScreenState();
 }
 
 class _DietScreenState extends State<DietScreen> {
-  late List<GPDData> _chartData;
-  late sf.TooltipBehavior _tooltipBehavior;
+  late int allCal;
+  late Map<String, int> dri;
 
   @override
   void initState() {
-    _chartData = getChartData();
-    _tooltipBehavior = sf.TooltipBehavior(enable: true);
     super.initState();
+
+    var userCubit = BlocProvider.of<RegistrationCubit>(context);
+    var user = userCubit.curUser;
+
+    allCal = Formulas.getAllCalories(user);
+    dri = Formulas.getDRI(user);
   }
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<ReadMealCubit>(context).getMeals();
     return Scaffold(
-      appBar: AppBar(title: const Text('Diet')),
-      body: Container(
-        decoration: const BoxDecoration(color: Colors.white),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.,
-          children: [
-            const PieChart(
-              dataMap: {
-                'Carbohydrates': 1500,
-                'Total fiber': 2490,
-                'Protien': 2900,
-                'Fat': 2305,
-                'Water': 2088
-              },
-              chartType: ChartType.ring,
-              legendOptions:
-                  LegendOptions(legendPosition: LegendPosition.right),
-              chartRadius: 100,
-            ),
-            sf.SfCircularChart(
-              legend: sf.Legend(
-                  isVisible: true,
-                  overflowMode: sf.LegendItemOverflowMode.wrap,
-                  position: sf.LegendPosition.bottom),
-              tooltipBehavior: _tooltipBehavior,
-              series: <sf.CircularSeries>[
-                sf.RadialBarSeries<GPDData, String>(
-                    xValueMapper: (GPDData data, _) => data.continent,
-                    yValueMapper: (GPDData data, _) => data.gdp,
-                    dataSource: _chartData,
-                    dataLabelSettings:
-                        const sf.DataLabelSettings(isVisible: true),
-                    radius: "70%",
-                    maximumValue: 3000)
-              ],
-            ),
-            OutlinedButton.icon(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (ctx) => const NoteBookScreen()));
-              },
-              label: const Text('Add Meal'),
-              icon: const Icon(Icons.add),
-            )
-          ],
-        ),
+      appBar: buildAppBar(
+        'Diet',
+        Colors.white70,
+        const Color.fromRGBO(234, 141, 11, 1),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          CaloriesStats(bmr: allCal, dri: dri),
+          SizedBox(height: SizeConfig.getProportionateScreenHeight(60)),
+          _buildButtons(context),
+        ],
       ),
     );
   }
 
-  List<GPDData> getChartData() {
-    List<GPDData> chartdata = [
-      GPDData('Carbohydrates', 1500),
-      GPDData('Total fiber', 2490),
-      GPDData('Protien', 2900),
-      GPDData('Fat', 2305),
-      GPDData('Water', 10),
-    ];
-    return chartdata;
+  Widget _buildButtons(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        CustomButton(
+          title: 'Daily Intakes',
+          onPressed: () {
+            Navigator.of(context).pushNamed(DailyIntakesScreen.routeName);
+          },
+          icon: Icons.dinner_dining,
+          color: Colors.white,
+          backgroundColor: const Color.fromRGBO(234, 141, 11, 1),
+          fontSize: 18,
+        ),
+        CustomButton(
+          title: 'Add Meal',
+          onPressed: () {
+            Navigator.of(context).pushNamed(NoteBookScreen.routeName);
+          },
+          icon: Icons.add,
+          color: Colors.white,
+          backgroundColor: Colors.redAccent,
+          fontSize: 18,
+        ),
+      ],
+    );
   }
-}
-
-class GPDData {
-  GPDData(this.continent, this.gdp);
-  final String continent;
-  final int gdp;
 }

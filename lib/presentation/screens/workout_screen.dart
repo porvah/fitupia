@@ -1,7 +1,8 @@
+import 'package:first_app/presentation/themes/appbar.dart';
+import 'package:first_app/presentation/widgets/exercise_card.dart';
 import 'package:flutter/material.dart';
 
 import '../helper/exercises.dart';
-import '../widgets/exercise_card.dart';
 
 class WorkoutScreen extends StatelessWidget {
   static const String routeName = '/workout_screen';
@@ -11,28 +12,14 @@ class WorkoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
+      appBar: buildAppBar(
+          'Workout', const Color(0xFF455766), const Color(0xFFBED8ED)),
       body: SafeArea(
         child: ListView.builder(
           itemCount: exercises.length,
           itemBuilder: (ctx, index) {
-            return ExerciseCard(card: exercises[index]);
+            return CustomCard(card: exercises[index]);
           },
-        ),
-      ),
-    );
-  }
-
-  AppBar _buildAppBar() {
-    return AppBar(
-      backgroundColor: const Color(0xFFBED8ED),
-      leading: const BackButton(
-        color: Color(0xFF455766),
-      ),
-      title: const Text(
-        "Workout",
-        style: TextStyle(
-          color: Color(0xFF455766),
         ),
       ),
     );
