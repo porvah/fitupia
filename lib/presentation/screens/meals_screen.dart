@@ -27,6 +27,13 @@ class _MealsScreenState extends State<MealsScreen> {
   ];
   bool isSearching = false;
   final TextEditingController _controller = TextEditingController();
+  late List<MealModel> curMeals;
+
+  @override
+  void initState() {
+    super.initState();
+    curMeals = meals[widget.toBeDisplayedList];
+  }
 
   @override
   void dispose() {
@@ -40,14 +47,13 @@ class _MealsScreenState extends State<MealsScreen> {
       appBar: isSearching ? _buildSearchAppBar() : _buildDefaultAppBar(context),
       body: SafeArea(
         child: ListView.builder(
-          itemCount: meals[widget.toBeDisplayedList].length,
+          itemCount: curMeals.length,
           itemBuilder: (ctx, index) {
             return MealWidget(
-              mealModel: meals[widget.toBeDisplayedList][index],
+              mealModel: curMeals[index],
               buttonTitle: 'Add',
               icon: Icons.add,
-              onPressed: () => _openBottomSheet(
-                  context, meals[widget.toBeDisplayedList][index]),
+              onPressed: () => _openBottomSheet(context, curMeals[index]),
             );
           },
         ),
@@ -108,7 +114,18 @@ class _MealsScreenState extends State<MealsScreen> {
         fontSize: 18,
         fontWeight: FontWeight.bold,
       ),
+      onChanged: _onChange,
     );
+  }
+
+  void _onChange(String val) {
+    List<MealModel> newMeals = meals[widget.toBeDisplayedList]
+        .where((e) => e.name.contains(val))
+        .toList();
+
+    setState(() {
+      curMeals = newMeals;
+    });
   }
 
   void _startSearching() {
@@ -122,6 +139,7 @@ class _MealsScreenState extends State<MealsScreen> {
 
   void _stopSearching() {
     setState(() {
+      curMeals = meals[widget.toBeDisplayedList];
       isSearching = false;
       _controller.clear();
     });
