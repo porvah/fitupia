@@ -21,10 +21,10 @@ class ExercisesOfBodyPartAPI {
           .loadString('assets/exercises_data/partExercises.json');
       var map = jsonDecode(input);
       var data = map[bodyPart];
-      print(data);
+      return data;
     } catch (e) {
       print("error => $e");
+      return [];
     }
-    return data;
   }
 }

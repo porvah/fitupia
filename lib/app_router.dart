@@ -1,4 +1,5 @@
 import 'package:first_app/presentation/screens/exercis_screen.dart';
+import 'package:first_app/presentation/screens/exercise_details_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'presentation/screens/calendar_screen.dart';
@@ -34,8 +35,6 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const DietScreen());
       case CalendarScreen.routeName:
         return MaterialPageRoute(builder: (_) => const CalendarScreen());
-      // case ExercisScreen.routeName:
-      //   return MaterialPageRoute(builder: (_) => const ExercisScreen());
       default:
         return MaterialPageRoute(builder: (_) => const DummyScreen());
     }

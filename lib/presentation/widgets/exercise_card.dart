@@ -1,7 +1,8 @@
-import 'package:first_app/presentation/widgets/loading.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/card_content.dart';
+import '../helper/exercise_data.dart';
+import '../screens/exercis_screen.dart';
 import '../size_config/size_config.dart';
 
 class ExerciseCard extends StatelessWidget {
@@ -13,9 +14,11 @@ class ExerciseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        List<dynamic> data = exerciseData[card.name.toLowerCase()] ?? [];
+
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (_) => Loading(card: card),
+            builder: (_) => ExerciseScreen(data: data, card: card),
           ),
         );
       },
