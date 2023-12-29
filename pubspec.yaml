@@ -48,6 +48,7 @@ dependencies:
   image_picker: ^1.0.5
   gradient_icon: ^2.0.8
   http: ^1.1.0
+  flutter_offline: ^3.0.1
 
 dev_dependencies:
   flutter_test:

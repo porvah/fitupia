@@ -1,11 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:first_app/logic/read_user_cubit/read_user_cubit.dart';
 import 'package:first_app/models/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart' as http;
-import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 
 List<dynamic> recommendation = [];
@@ -130,6 +127,5 @@ void getRecommendation(BuildContext ctx) {
         }
       }
     });
-    print(recommendation);
   }
 }

@@ -6,6 +6,7 @@ import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../logic/profile_image_cubit/profile_image_cubit.dart';
 import '../../logic/read_meal_cubit/read_meal_cubit.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -71,8 +72,10 @@ class SettingsScreen extends StatelessWidget {
     var nav = Navigator.of(context);
 
     var regCubit = BlocProvider.of<RegistrationCubit>(context);
+    var imgCubit = BlocProvider.of<ProfileImageCubit>(context);
     var mealCubit = BlocProvider.of<ReadMealCubit>(context);
 
+    await imgCubit.deleteProfileImage(regCubit.curUser);
     await regCubit.deleteUser();
     await mealCubit.clearMeals();
 
