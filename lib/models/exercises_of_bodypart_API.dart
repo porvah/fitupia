@@ -28,7 +28,7 @@ List<String> leg = [
   'lever seated squat calf raise on leg press machine',
   'band stiff leg deadlift',
   'walking high knees lunge',
-  'lever seated squat calf raise on leg press machine',
+  'barbell floor calf raise',
   'astride jumps (male)'
 ];
 List<String> arm = [
