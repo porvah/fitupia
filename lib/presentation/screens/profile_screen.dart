@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
 import 'package:first_app/presentation/screens/registration_screen.dart';
 import 'package:first_app/presentation/size_config/size_config.dart';
@@ -5,6 +7,7 @@ import 'package:first_app/presentation/themes/appbar.dart';
 import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../models/user_data.dart';
 
@@ -19,6 +22,7 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final int profileHeight = 120;
+  Uint8List? curProfile;
   late UserData userData;
 
   @override
@@ -72,9 +76,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             _buildTop(context),
             _getUserName(),
             const SizedBox(height: 12),
+            _buildImageButtons(),
             _buildPanner(context, userParams),
             _buildPanner(context, userGoal),
             _buildPanner(context, userBirth),
+            _buildEditButton()
           ],
         ),
       ),
@@ -94,15 +100,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _getCoverImage(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: profileHeight / 2),
-      color: Colors.grey,
-      width: SizeConfig.screenWidth,
-      height: 150,
-      child: Image.asset(
-        'assets/images_reg/Firefly_greek_architecture.png',
-        fit: BoxFit.fitWidth,
-      ),
-    );
+        margin: EdgeInsets.only(bottom: profileHeight / 2),
+        color: Colors.grey,
+        width: SizeConfig.screenWidth,
+        height: 150,
+        child: Image.asset(
+          'assets/images_reg/Firefly_greek_architecture.png',
+          fit: BoxFit.fitWidth,
+        ));
   }
 
   Widget _getProfileImage() {
@@ -111,40 +116,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: CircleAvatar(
         radius: profileHeight / 2,
         backgroundColor: Colors.grey.shade600,
-        backgroundImage: const AssetImage('assets/images/personLogo.jpg'),
+        backgroundImage: (curProfile == null)
+            ? const AssetImage('assets/images/personLogo.jpg')
+            : Image.memory(curProfile!).image,
       ),
     );
   }
 
   Widget _getUserName() {
+    return Text(
+      userData.name,
+      style: const TextStyle(
+        color: Color.fromARGB(255, 14, 130, 83),
+        fontWeight: FontWeight.bold,
+        fontSize: 22,
+      ),
+      textAlign: TextAlign.center,
+    );
+  }
+
+  Widget _buildImageButtons() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Spacer(flex: 7),
-        Text(
-          userData.name,
-          style: const TextStyle(
-            color: Color.fromARGB(255, 14, 130, 83),
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        const Spacer(flex: 3),
-        Padding(
-          padding: const EdgeInsets.only(right: 12.0),
-          child: CustomButton(
-            title: 'Edit',
-            color: Colors.white,
-            backgroundColor: const Color.fromARGB(255, 140, 193, 6),
-            fontSize: 18,
-            icon: Icons.edit,
-            onPressed: () {
-              Navigator.of(context).pushNamed(RegistrationScreen.routeName);
-            },
-          ),
-        ),
+        _buildDeleteImageButton(),
+        _buildChangeImageButton(),
       ],
+    );
+  }
+
+  Padding _buildEditButton() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: CustomButton(
+        title: 'Edit',
+        color: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 140, 193, 6),
+        fontSize: 22,
+        icon: Icons.edit,
+        onPressed: () {
+          Navigator.of(context).pushNamed(RegistrationScreen.routeName);
+        },
+      ),
     );
   }
 
@@ -199,5 +212,51 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ],
     );
+  }
+
+  Widget _buildDeleteImageButton() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
+      child: CustomButton(
+        title: 'Delete Image',
+        onPressed: _deleteImage,
+        backgroundColor: Colors.red,
+        color: Colors.white,
+        fontSize: 18,
+        icon: Icons.delete,
+      ),
+    );
+  }
+
+  Widget _buildChangeImageButton() {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8.0, bottom: 8.0),
+      child: CustomButton(
+        title: 'Change Image',
+        onPressed: _pickImage,
+        backgroundColor: const Color.fromARGB(255, 55, 95, 225),
+        color: Colors.white,
+        fontSize: 18,
+        icon: Icons.change_circle,
+      ),
+    );
+  }
+
+  Future<void> _pickImage() async {
+    ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+
+    if (image == null) return;
+    var bytes = await image.readAsBytes();
+
+    setState(() {
+      curProfile = bytes;
+    });
+  }
+
+  void _deleteImage() {
+    setState(() {
+      curProfile = null;
+    });
   }
 }
