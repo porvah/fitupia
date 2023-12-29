@@ -1,5 +1,6 @@
 import 'package:first_app/presentation/screens/daily_intakes_screen.dart';
 import 'package:first_app/presentation/screens/encyclopedia_screen.dart';
+import 'package:first_app/presentation/screens/manage_stat_screen.dart';
 import 'package:first_app/presentation/screens/meals_screen.dart';
 import 'package:first_app/presentation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,6 @@ import 'presentation/screens/signup2_screen.dart';
 import 'presentation/screens/signup3_screen.dart';
 import 'presentation/screens/splash_screen.dart';
 import 'presentation/screens/welcome_screen.dart';
-import 'presentation/screens/workout_screen.dart';
 import 'presentation/screens/workout_screen.dart';
 
 class AppRouter {
@@ -74,6 +74,9 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const CalendarScreen());
       case StatsScreen.routeName:
         return MaterialPageRoute(builder: (_) => const StatsScreen());
+      case ManageStatScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const ManageStatScreen());
+
       default:
         return MaterialPageRoute(builder: (_) => const DummyScreen());
     }

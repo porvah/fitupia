@@ -104,6 +104,8 @@ class CalendarState extends State<Calendar> {
       child: SfCalendar(
         view: CalendarView.week,
         showCurrentTimeIndicator: false,
+        maxDate: DateTime.now().add(const Duration(days: 30)),
+        minDate: DateTime.now().subtract(const Duration(days: 30)),
         timeSlotViewSettings: const TimeSlotViewSettings(
           timeInterval: Duration(hours: 24),
           timeRulerSize: 0,
