@@ -120,7 +120,7 @@ class _MealsScreenState extends State<MealsScreen> {
 
   void _onChange(String val) {
     List<MealModel> newMeals = meals[widget.toBeDisplayedList]
-        .where((e) => e.name.contains(val))
+        .where((e) => e.name.toLowerCase().contains(val.trim().toLowerCase()))
         .toList();
 
     setState(() {
