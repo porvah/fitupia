@@ -80,6 +80,7 @@ flutter:
     - assets/images/exercises/
     - assets/images/diet/
     - assets/images_reg/
+    - assets/exercises_data/partExercises.json
 
   fonts:
     - family: Fitupia

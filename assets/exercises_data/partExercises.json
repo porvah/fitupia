@@ -12501,9 +12501,9 @@
                   ]
             }
       ],
-      "waist": [
+      "abdomen": [
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/4dbIIzHFIFoziv",
                   "id": "0001",
@@ -12522,7 +12522,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/mgztYrL1bG6qPD",
                   "id": "0002",
@@ -12540,7 +12540,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/AUO637dSARt573",
                   "id": "0003",
@@ -12558,7 +12558,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/-tWrgCfuuEv3eU",
                   "id": "0006",
@@ -12576,7 +12576,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/szZldqKN8Ld-7H",
                   "id": "2355",
@@ -12594,7 +12594,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/r9dKTxEo7ZyBjr",
                   "id": "2333",
@@ -12612,7 +12612,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/yTsI-hDVqPGvyp",
                   "id": "3204",
@@ -12631,7 +12631,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "assisted",
                   "gifUrl": "https://v2.exercisedb.io/image/H3QsCvDsSkeAo5",
                   "id": "0011",
@@ -12649,7 +12649,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "assisted",
                   "gifUrl": "https://v2.exercisedb.io/image/a-fFt0Hse053Sv",
                   "id": "0010",
@@ -12667,7 +12667,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "assisted",
                   "gifUrl": "https://v2.exercisedb.io/image/q9GUPKn1T9o6uy",
                   "id": "0012",
@@ -12688,7 +12688,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "assisted",
                   "gifUrl": "https://v2.exercisedb.io/image/fgUxCaiAfb7v6-",
                   "id": "0013",
@@ -12710,7 +12710,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "medicine ball",
                   "gifUrl": "https://v2.exercisedb.io/image/VnDfxBUYubgqxT",
                   "id": "0014",
@@ -12730,7 +12730,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "assisted",
                   "gifUrl": "https://v2.exercisedb.io/image/mC5EoYmxUm3WBF",
                   "id": "1714",
@@ -12748,7 +12748,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "assisted",
                   "gifUrl": "https://v2.exercisedb.io/image/kmq4mDUSutVnLp",
                   "id": "1758",
@@ -12767,7 +12767,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "band",
                   "gifUrl": "https://v2.exercisedb.io/image/wvYSDg9Zof6rdR",
                   "id": "0969",
@@ -12785,7 +12785,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "band",
                   "gifUrl": "https://v2.exercisedb.io/image/2hNdXUgZ8f3L5O",
                   "id": "0971",
@@ -12803,7 +12803,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "band",
                   "gifUrl": "https://v2.exercisedb.io/image/OXuUCZu1WtPRkG",
                   "id": "0972",
@@ -12822,7 +12822,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "band",
                   "gifUrl": "https://v2.exercisedb.io/image/D3kEkUJGolN70q",
                   "id": "0979",
@@ -12845,7 +12845,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "band",
                   "gifUrl": "https://v2.exercisedb.io/image/PNxGo4RAbLFxV2",
                   "id": "0981",
@@ -12862,7 +12862,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "band",
                   "gifUrl": "https://v2.exercisedb.io/image/DqCJqG-H-zv0X8",
                   "id": "0985",
@@ -12881,7 +12881,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "band",
                   "gifUrl": "https://v2.exercisedb.io/image/N1dNBD-tTLQQYA",
                   "id": "1002",
@@ -12899,7 +12899,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "band",
                   "gifUrl": "https://v2.exercisedb.io/image/9sZ1PQs2C3iEU3",
                   "id": "0992",
@@ -12919,7 +12919,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "band",
                   "gifUrl": "https://v2.exercisedb.io/image/hGlNJ4EaRxGO9L",
                   "id": "1011",
@@ -12938,7 +12938,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "band",
                   "gifUrl": "https://v2.exercisedb.io/image/Rk0GRklaBG696d",
                   "id": "1005",
@@ -12957,7 +12957,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "band",
                   "gifUrl": "https://v2.exercisedb.io/image/vr82w7BiBfEu5I",
                   "id": "1007",
@@ -12976,7 +12976,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "band",
                   "gifUrl": "https://v2.exercisedb.io/image/TcHOHYwGG9dCZx",
                   "id": "1014",
@@ -12993,7 +12993,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "band",
                   "gifUrl": "https://v2.exercisedb.io/image/qtXklyIqT4-zjV",
                   "id": "1015",
@@ -13014,7 +13014,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "barbell",
                   "gifUrl": "https://v2.exercisedb.io/image/3bcxUDOeaUTW3t",
                   "id": "0071",
@@ -13033,7 +13033,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "barbell",
                   "gifUrl": "https://v2.exercisedb.io/image/FkXAKlMVDgkcvu",
                   "id": "0084",
@@ -13051,7 +13051,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "barbell",
                   "gifUrl": "https://v2.exercisedb.io/image/WItP3U594tB47F",
                   "id": "0083",
@@ -13071,7 +13071,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "barbell",
                   "gifUrl": "https://v2.exercisedb.io/image/WqcFGylODZQmL8",
                   "id": "0094",
@@ -13091,7 +13091,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "barbell",
                   "gifUrl": "https://v2.exercisedb.io/image/qjIUqwiQ6wKjAD",
                   "id": "0096",
@@ -13111,7 +13111,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "barbell",
                   "gifUrl": "https://v2.exercisedb.io/image/crfMRa1p8MHOTC",
                   "id": "2799",
@@ -13128,7 +13128,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "barbell",
                   "gifUrl": "https://v2.exercisedb.io/image/5-Qp6SD4rhk1bt",
                   "id": "2800",
@@ -13147,7 +13147,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "barbell",
                   "gifUrl": "https://v2.exercisedb.io/image/Kxzz3twkpAWn5S",
                   "id": "0103",
@@ -13166,7 +13166,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "barbell",
                   "gifUrl": "https://v2.exercisedb.io/image/8snldGWQJ-qBGg",
                   "id": "0112",
@@ -13186,7 +13186,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/9bURnCKr2utcgC",
                   "id": "3544",
@@ -13205,7 +13205,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/DrCwG2H4mU4dR4",
                   "id": "0138",
@@ -13224,7 +13224,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/qiEI0CUY8p-U8l",
                   "id": "2466",
@@ -13248,7 +13248,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/h0oYyKEuvirpMH",
                   "id": "0870",
@@ -13268,7 +13268,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/r52XwKFiPrjwNi",
                   "id": "0174",
@@ -13290,7 +13290,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/LyaTVUkncjUDxi",
                   "id": "0175",
@@ -13308,7 +13308,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/PPBnBsGeXLs4cS",
                   "id": "0873",
@@ -13327,7 +13327,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/MV1L12y83TzFjk",
                   "id": "0211",
@@ -13347,7 +13347,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/9q6OLFA7X3jtcG",
                   "id": "0212",
@@ -13365,7 +13365,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/kP7NjGYLtAp8jH",
                   "id": "2399",
@@ -13384,7 +13384,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/xtLbMwyq1CD-zJ",
                   "id": "0222",
@@ -13403,7 +13403,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/pGUeO1CbPy9Pfo",
                   "id": "0221",
@@ -13421,7 +13421,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/wiw8JDE1RaT5kw",
                   "id": "0223",
@@ -13440,7 +13440,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/kd7ACgnm4i6YNM",
                   "id": "0226",
@@ -13459,7 +13459,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/NNefg8JpHkqivJ",
                   "id": "0874",
@@ -13478,7 +13478,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/tltkPvZoIhGuhF",
                   "id": "0230",
@@ -13498,7 +13498,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/1XWjSUzsYFmNZg",
                   "id": "0242",
@@ -13517,7 +13517,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/MYOfJaXaZxFN1g",
                   "id": "0243",
@@ -13537,7 +13537,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "cable",
                   "gifUrl": "https://v2.exercisedb.io/image/2iAcN5w7jWUopz",
                   "id": "0862",
@@ -13557,7 +13557,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/8DrNSx29Q5o5Da",
                   "id": "2963",
@@ -13576,7 +13576,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/hBYc0c5i0ZA38Q",
                   "id": "0260",
@@ -13595,7 +13595,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/TU5g5nRqRkLsrM",
                   "id": "1468",
@@ -13614,7 +13614,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/S3qDGGv2bqv3QC",
                   "id": "0262",
@@ -13633,7 +13633,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/tPVCV9URoZjVNo",
                   "id": "0267",
@@ -13651,7 +13651,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "stability ball",
                   "gifUrl": "https://v2.exercisedb.io/image/OXa8VgPI1xLaqW",
                   "id": "0271",
@@ -13670,7 +13670,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "stability ball",
                   "gifUrl": "https://v2.exercisedb.io/image/dvodUWzvl4RuHp",
                   "id": "0272",
@@ -13689,7 +13689,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/igmTe1ja1Bcpq1",
                   "id": "0274",
@@ -13707,7 +13707,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/JJg0pm8Y6K6Abz",
                   "id": "3016",
@@ -13725,7 +13725,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/tmaiJF4Otg5sQd",
                   "id": "0276",
@@ -13746,7 +13746,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/xPAJxoEwnlHUGs",
                   "id": "0277",
@@ -13764,7 +13764,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/AkEHgfdItFnusM",
                   "id": "0282",
@@ -13783,7 +13783,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "dumbbell",
                   "gifUrl": "https://v2.exercisedb.io/image/G2sRHdvtxoXESJ",
                   "id": "0407",
@@ -13800,7 +13800,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/xywPgRgq4xuIrR",
                   "id": "0443",
@@ -13820,7 +13820,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/7d-OD723LSgOk5",
                   "id": "3303",
@@ -13840,7 +13840,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/KwVXpyr4WfX5GB",
                   "id": "0456",
@@ -13859,7 +13859,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/lxYWjkbFuYwMPU",
                   "id": "0457",
@@ -13878,7 +13878,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/v-57Odqb5y-Goz",
                   "id": "2429",
@@ -13896,7 +13896,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/PP7fFtXsaONv0k",
                   "id": "3301",
@@ -13916,7 +13916,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/Ksef-6uynWNZls",
                   "id": "3296",
@@ -13938,7 +13938,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/GraLZ22EYLDN7L",
                   "id": "0464",
@@ -13959,7 +13959,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/TE9GDiFljUZ-Ox",
                   "id": "3315",
@@ -13978,7 +13978,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/hu17bKpfboU7tn",
                   "id": "3299",
@@ -13999,7 +13999,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/6SREFKnNohncqo",
                   "id": "0467",
@@ -14019,7 +14019,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/Md3jG1u1kBjbV-",
                   "id": "0469",
@@ -14038,7 +14038,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/pN3806GoHEkGEm",
                   "id": "3202",
@@ -14056,7 +14056,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/5wd3ZEZZtGo-hW",
                   "id": "1764",
@@ -14074,7 +14074,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/d-xHvKz5rk4wVn",
                   "id": "0472",
@@ -14092,7 +14092,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/1-dXH30570I2xc",
                   "id": "1761",
@@ -14110,7 +14110,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/n0L6WPw2Pv0G6W",
                   "id": "0473",
@@ -14129,7 +14129,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/8APU4YpTotuuS4",
                   "id": "0474",
@@ -14146,7 +14146,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/WoUOQ8nEXp-vZX",
                   "id": "0475",
@@ -14164,7 +14164,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/O5zYxk53Qrd5cT",
                   "id": "0476",
@@ -14184,7 +14184,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/RiXoZ2KGypPeZi",
                   "id": "0484",
@@ -14203,7 +14203,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/KgloYDF81qCXzh",
                   "id": "1471",
@@ -14223,7 +14223,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/5-4wrkirV8F02H",
                   "id": "3698",
@@ -14242,7 +14242,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/K8Fo83-ll3zz07",
                   "id": "0491",
@@ -14260,7 +14260,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/DQVxroU1Pj0tI-",
                   "id": "0495",
@@ -14281,7 +14281,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/CPQsGnxo1h9FZX",
                   "id": "0507",
@@ -14298,7 +14298,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "body weight",
                   "gifUrl": "https://v2.exercisedb.io/image/cLdTp0LN5-9vAR",
                   "id": "0508",
@@ -14317,7 +14317,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "kettlebell",
                   "gifUrl": "https://v2.exercisedb.io/image/UbMnCMchhd8wLK",
                   "id": "0517",
@@ -14340,7 +14340,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "kettlebell",
                   "gifUrl": "https://v2.exercisedb.io/image/cuyVWH4I1HFhE2",
                   "id": "0524",
@@ -14363,7 +14363,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "kettlebell",
                   "gifUrl": "https://v2.exercisedb.io/image/2ANi6XXRWHvi-d",
                   "id": "0530",
@@ -14384,7 +14384,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "kettlebell",
                   "gifUrl": "https://v2.exercisedb.io/image/UoGqdfDmsrTSFF",
                   "id": "0532",
@@ -14405,7 +14405,7 @@
                   ]
             },
             {
-                  "bodyPart": "waist",
+                  "bodyPart": "abdomen",
                   "equipment": "kettlebell",
                   "gifUrl": "https://v2.exercisedb.io/image/cUcmXBMl596hm7",
                   "id": "0554",
