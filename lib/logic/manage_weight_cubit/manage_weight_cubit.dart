@@ -25,8 +25,16 @@ class ManageWeightCubit extends Cubit<ManageWeightState> {
   }
 
   Future<void> deleteWeight(StateItem item) async {
-    await item.delete();
-    getAllWeights();
+    emit(ManageWeightStateLoading());
+
+    try {
+      await item.delete();
+      getAllWeights();
+
+      emit(ManageWeightStateSuccess());
+    } catch (e) {
+      emit(ManageWeightStateFailure(e.toString()));
+    }
   }
 
   void getAllWeights() {

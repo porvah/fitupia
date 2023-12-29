@@ -1,4 +1,6 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
+import 'package:first_app/logic/manage_weight_cubit/manage_weight_cubit.dart';
+import 'package:first_app/models/state_item.dart';
 import 'package:first_app/presentation/screens/home_screen.dart';
 import 'package:first_app/presentation/size_config/size_config.dart';
 import 'package:first_app/presentation/widgets/custom_button.dart';
@@ -147,9 +149,15 @@ class _SignUp1ScreenState extends State<SignUp3Screen> {
       );
 
       ReadUserCubit userCubit = BlocProvider.of<ReadUserCubit>(context);
+      ManageWeightCubit weightCubit =
+          BlocProvider.of<ManageWeightCubit>(context);
+
       regCubit.updateUserDate(currentData);
       await regCubit.registerUser();
       userCubit.getUser();
+      weightCubit.addWeight(
+        StateItem(title: 'start', value: userCubit.userData!.weight),
+      );
 
       if (regCubit.state is RegistrationSuccess) {
         showSnackBarMessenger(scaf, 'Registered Successfully', Colors.green);

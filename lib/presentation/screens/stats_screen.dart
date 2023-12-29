@@ -1,6 +1,8 @@
 import 'package:first_app/logic/formulas.dart';
 import 'package:first_app/logic/manage_weight_cubit/manage_weight_cubit.dart';
+import 'package:first_app/logic/read_user_cubit/read_user_cubit.dart';
 import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
+import 'package:first_app/models/user_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter/material.dart';
@@ -82,6 +84,20 @@ class _StatsScreenState extends State<StatsScreen> {
   }
 
   SfCartesianChart _buildChart(List<StateItem> items) {
+    if (items.isNotEmpty) {
+      currentWeight = items.last.value.toString();
+      var user = BlocProvider.of<ReadUserCubit>(context).userData!;
+      var newUser = UserData(
+          name: user.name,
+          gender: user.gender,
+          dateOfBirth: user.dateOfBirth,
+          height: user.height,
+          weight: double.parse(currentWeight),
+          goal: user.goal,
+          exerciseSchedule: user.exerciseSchedule);
+
+      currentBMI = Formulas.getBMI(newUser).toString();
+    }
     var weights = _getWeights(items);
 
     return SfCartesianChart(
@@ -117,8 +133,8 @@ class _StatsScreenState extends State<StatsScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildPannerValue('Starting: $startingValue'),
-              _buildPannerValue('Current: $currValue'),
+              _buildPannerValue('Starting: ${_getStringVal(startingValue)}'),
+              _buildPannerValue('Current: ${_getStringVal(currValue)}'),
             ],
           )
         ],
@@ -150,6 +166,13 @@ class _StatsScreenState extends State<StatsScreen> {
 
   List<ChartData> _getWeights(List<StateItem> items) {
     return items.map((e) => ChartData(e.title, e.value)).toList();
+  }
+
+  String _getStringVal(String val) {
+    if (val.length > 5) {
+      return '${val.substring(0, 5)}..';
+    }
+    return val;
   }
 }
 

@@ -197,6 +197,10 @@ class _ManageStatScreenState extends State<ManageStatScreen> {
   }
 
   Future<void> _onDelete(StateItem item) async {
+    if (weightCubit.allWeights.indexOf(item) == 0) {
+      return;
+    }
+
     await weightCubit.deleteWeight(item);
     setState(() {});
   }
