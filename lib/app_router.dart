@@ -1,9 +1,11 @@
+import 'package:first_app/presentation/screens/daily_intakes_screen.dart';
 import 'package:first_app/presentation/screens/encyclopedia_screen.dart';
 import 'package:first_app/presentation/screens/meals_screen.dart';
 import 'package:first_app/presentation/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'presentation/screens/calendar_screen.dart';
+import 'presentation/screens/custom_meal_screen.dart';
 import 'presentation/screens/diet_screen.dart';
 import 'presentation/screens/dummy_screen.dart';
 import 'presentation/screens/food_screen.dart';
@@ -31,6 +33,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case WelcomeScreen.routeName:
         return MaterialPageRoute(builder: (_) => const WelcomeScreen());
+
       case ProfileScreen.routeName:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case SettingsScreen.routeName:
@@ -51,15 +54,21 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const WorkoutScreen());
       case EncyclopediaScreen.routeName:
         return MaterialPageRoute(builder: (_) => const EncyclopediaScreen());
-      case MealsScreen.routeName:
-        return MaterialPageRoute(builder: (_) => const MealsScreen());
 
+      case MealsScreen.routeName:
+        int toBeDisplayedList = settings.arguments as int;
+        return MaterialPageRoute(
+            builder: (_) => MealsScreen(toBeDisplayedList));
       case FoodScreen.routeName:
         return MaterialPageRoute(builder: (_) => const FoodScreen());
       case NoteBookScreen.routeName:
         return MaterialPageRoute(builder: (_) => const NoteBookScreen());
       case DietScreen.routeName:
         return MaterialPageRoute(builder: (_) => const DietScreen());
+      case DailyIntakesScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const DailyIntakesScreen());
+      case CustomMealScreen.routeName:
+        return MaterialPageRoute(builder: (_) => const CustomMealScreen());
 
       case CalendarScreen.routeName:
         return MaterialPageRoute(builder: (_) => const CalendarScreen());

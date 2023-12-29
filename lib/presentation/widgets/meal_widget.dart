@@ -1,10 +1,19 @@
 import 'package:first_app/models/meal_model.dart';
+import 'package:first_app/presentation/size_config/size_config.dart';
 import 'package:flutter/material.dart';
 
 class MealWidget extends StatelessWidget {
   final MealModel mealModel;
+  final String buttonTitle;
+  final IconData icon;
+  final VoidCallback onPressed;
 
-  const MealWidget({required this.mealModel, super.key});
+  const MealWidget(
+      {required this.mealModel,
+      required this.buttonTitle,
+      required this.icon,
+      required this.onPressed,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +30,7 @@ class MealWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _buildPanner(),
-              _buildAddButton(),
+              _buildAddButton(context),
             ],
           ),
           const SizedBox(height: 20),
@@ -35,8 +44,11 @@ class MealWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 6.0),
+        Container(
+          padding: const EdgeInsets.only(left: 6),
+          constraints: BoxConstraints(
+            maxWidth: SizeConfig.screenWidth * 0.65,
+          ),
           child: Text(
             mealModel.name,
             style: const TextStyle(
@@ -44,6 +56,7 @@ class MealWidget extends StatelessWidget {
               fontWeight: FontWeight.bold,
               fontSize: 22,
             ),
+            overflow: TextOverflow.ellipsis,
           ),
         ),
         Row(
@@ -53,7 +66,7 @@ class MealWidget extends StatelessWidget {
               color: Colors.amber,
             ),
             Text(
-              '${mealModel.cals} cal - ${mealModel.weight} G',
+              '${mealModel.cals.toStringAsFixed(1)} cal - ${mealModel.weight} G',
               style: TextStyle(
                 color: Colors.grey[600],
                 fontSize: 16,
@@ -72,6 +85,8 @@ class MealWidget extends StatelessWidget {
         _buildNut('Protein', mealModel.protein, Colors.green),
         _buildNut('Carbs', mealModel.carbs, Colors.amber),
         _buildNut('Fat', mealModel.fat, Colors.purple),
+        // _buildNut(
+        //     'Fibers', mealModel.fibers, const Color.fromRGBO(21, 101, 192, 1)),
       ],
     );
   }
@@ -108,13 +123,13 @@ class MealWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildAddButton() {
+  Widget _buildAddButton(BuildContext context) {
     return TextButton.icon(
-      onPressed: () {},
-      icon: const Icon(Icons.add),
-      label: const Text(
-        'Add',
-        style: TextStyle(fontSize: 16),
+      onPressed: onPressed,
+      icon: Icon(icon),
+      label: Text(
+        buttonTitle,
+        style: const TextStyle(fontSize: 16),
       ),
       style: TextButton.styleFrom(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

@@ -16,6 +16,7 @@ class RegistrationCubit extends Cubit<RegistrationState> {
     height: 0,
     weight: 0,
     goal: '',
+    exerciseSchedule: [1, 2, 3, 4, 5],
   );
 
   void updateUserDate(UserData data) {
@@ -38,13 +39,13 @@ class RegistrationCubit extends Cubit<RegistrationState> {
   Future<void> deleteUser() async {
     await curUser.delete();
     curUser = UserData(
-      name: '',
-      gender: '',
-      dateOfBirth: '',
-      height: 0,
-      weight: 0,
-      goal: '',
-    );
+        name: '',
+        gender: '',
+        dateOfBirth: '',
+        height: 0,
+        weight: 0,
+        goal: '',
+        exerciseSchedule: [1, 2, 3, 4, 5]);
     emit(RegistrationInitial());
   }
 

@@ -1,3 +1,6 @@
+import 'dart:typed_data';
+
+import 'package:first_app/logic/profile_image_cubit/profile_image_cubit.dart';
 import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
 import 'package:first_app/presentation/screens/registration_screen.dart';
 import 'package:first_app/presentation/size_config/size_config.dart';
@@ -5,6 +8,7 @@ import 'package:first_app/presentation/themes/appbar.dart';
 import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../models/user_data.dart';
 
@@ -19,12 +23,15 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final int profileHeight = 120;
+  Uint8List? curProfile;
   late UserData userData;
 
   @override
   void initState() {
     super.initState();
     userData = BlocProvider.of<RegistrationCubit>(context).curUser;
+
+    BlocProvider.of<ProfileImageCubit>(context).getProfileImage(userData);
   }
 
   @override
@@ -72,9 +79,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             _buildTop(context),
             _getUserName(),
             const SizedBox(height: 12),
+            _buildImageButtons(),
             _buildPanner(context, userParams),
             _buildPanner(context, userGoal),
             _buildPanner(context, userBirth),
+            _buildEditButton()
           ],
         ),
       ),
@@ -94,57 +103,86 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _getCoverImage(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: profileHeight / 2),
-      color: Colors.grey,
-      width: SizeConfig.screenWidth,
-      height: 150,
-      child: Image.asset(
-        'assets/images_reg/Firefly_greek_architecture.png',
-        fit: BoxFit.fitWidth,
-      ),
-    );
+        margin: EdgeInsets.only(bottom: profileHeight / 2),
+        color: Colors.grey,
+        width: SizeConfig.screenWidth,
+        height: 150,
+        child: Image.asset(
+          'assets/images_reg/Firefly_greek_architecture.png',
+          fit: BoxFit.fitWidth,
+        ));
   }
 
   Widget _getProfileImage() {
+    return BlocBuilder<ProfileImageCubit, ProfileImageState>(
+        builder: (context, state) {
+      if (state is ProfileImageStateNoImage) {
+        return _buildEmptyImage();
+      } else if (state is ProfileImageStateHaveImage) {
+        return _buildFullImage(state.curProfileImage);
+      } else {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+    });
+  }
+
+  Widget _buildEmptyImage() {
     return Positioned(
       bottom: 0,
       child: CircleAvatar(
-        radius: profileHeight / 2,
-        backgroundColor: Colors.grey.shade600,
-        backgroundImage: const AssetImage('assets/images/personLogo.jpg'),
-      ),
+          radius: profileHeight / 2,
+          backgroundColor: Colors.grey.shade600,
+          backgroundImage: const AssetImage('assets/images/personLogo.jpg')),
     );
   }
 
+  Widget _buildFullImage(Uint8List curImage) {
+    return Positioned(
+        bottom: 0,
+        child: CircleAvatar(
+          radius: profileHeight / 2,
+          backgroundColor: Colors.grey.shade600,
+          backgroundImage: Image.memory(curImage).image,
+        ));
+  }
+
   Widget _getUserName() {
+    return Text(
+      userData.name,
+      style: const TextStyle(
+        color: Color.fromARGB(255, 14, 130, 83),
+        fontWeight: FontWeight.bold,
+        fontSize: 22,
+      ),
+      textAlign: TextAlign.center,
+    );
+  }
+
+  Widget _buildImageButtons() {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Spacer(flex: 7),
-        Text(
-          userData.name,
-          style: const TextStyle(
-            color: Color.fromARGB(255, 14, 130, 83),
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        const Spacer(flex: 3),
-        Padding(
-          padding: const EdgeInsets.only(right: 12.0),
-          child: CustomButton(
-            title: 'Edit',
-            color: Colors.white,
-            backgroundColor: const Color.fromARGB(255, 5, 144, 12),
-            fontSize: 18,
-            icon: Icons.edit,
-            onPressed: () {
-              Navigator.of(context).pushNamed(RegistrationScreen.routeName);
-            },
-          ),
-        ),
+        _buildDeleteImageButton(),
+        _buildChangeImageButton(),
       ],
+    );
+  }
+
+  Padding _buildEditButton() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: CustomButton(
+        title: 'Edit',
+        color: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 140, 193, 6),
+        fontSize: 22,
+        icon: Icons.edit,
+        onPressed: () {
+          Navigator.of(context).pushNamed(RegistrationScreen.routeName);
+        },
+      ),
     );
   }
 
@@ -199,5 +237,48 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ],
     );
+  }
+
+  Widget _buildDeleteImageButton() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
+      child: CustomButton(
+        title: 'Delete Image',
+        onPressed: _deleteImage,
+        backgroundColor: Colors.red,
+        color: Colors.white,
+        fontSize: 18,
+        icon: Icons.delete,
+      ),
+    );
+  }
+
+  Widget _buildChangeImageButton() {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8.0, bottom: 8.0),
+      child: CustomButton(
+        title: 'Change Image',
+        onPressed: _pickImage,
+        backgroundColor: const Color.fromARGB(255, 55, 95, 225),
+        color: Colors.white,
+        fontSize: 18,
+        icon: Icons.change_circle,
+      ),
+    );
+  }
+
+  Future<void> _pickImage() async {
+    ImagePicker picker = ImagePicker();
+    var imgCubit = BlocProvider.of<ProfileImageCubit>(context);
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+
+    if (image == null) return;
+    var bytes = await image.readAsBytes();
+    await imgCubit.saveProfileImage(userData, bytes);
+  }
+
+  Future<void> _deleteImage() async {
+    var imgCubit = BlocProvider.of<ProfileImageCubit>(context);
+    await imgCubit.deleteProfileImage(userData);
   }
 }

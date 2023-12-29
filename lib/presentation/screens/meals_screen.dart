@@ -1,52 +1,147 @@
 import 'package:first_app/models/meal_model.dart';
-import 'package:first_app/presentation/themes/appbar.dart';
 import 'package:first_app/presentation/widgets/meal_widget.dart';
 import 'package:flutter/material.dart';
 
-class MealsScreen extends StatelessWidget {
+import '../helper/meals.dart';
+import '../widgets/custom_bottom_sheet.dart';
+
+class MealsScreen extends StatefulWidget {
   static const String routeName = '/meals_screen';
+  final int toBeDisplayedList;
 
-  final List<MealModel> meals = const [
-    MealModel(
-      name: 'Chicken',
-      cals: 284,
-      weight: 172,
-      protein: 53.4,
-      carbs: 0,
-      fat: 6.2,
-    ),
-    MealModel(
-      name: 'Chicken',
-      cals: 284,
-      weight: 172,
-      protein: 53.4,
-      carbs: 0,
-      fat: 6.2,
-    ),
-    MealModel(
-      name: 'Chicken',
-      cals: 284,
-      weight: 172,
-      protein: 53.4,
-      carbs: 0,
-      fat: 6.2,
-    ),
+  const MealsScreen(this.toBeDisplayedList, {super.key});
+
+  @override
+  State<MealsScreen> createState() => _MealsScreenState();
+}
+
+class _MealsScreenState extends State<MealsScreen> {
+  final pagenameList = const [
+    'Dairy product',
+    'Meats and beef',
+    'Fish',
+    'Vegetables',
+    'Bread and flour',
+    'Nuts and seeds',
+    'Drinks'
   ];
+  bool isSearching = false;
+  final TextEditingController _controller = TextEditingController();
+  late List<MealModel> curMeals;
 
-  const MealsScreen({super.key});
+  @override
+  void initState() {
+    super.initState();
+    curMeals = meals[widget.toBeDisplayedList];
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar('Meals', Colors.white, Colors.green),
+      appBar: isSearching ? _buildSearchAppBar() : _buildDefaultAppBar(context),
       body: SafeArea(
         child: ListView.builder(
-          itemCount: meals.length,
+          itemCount: curMeals.length,
           itemBuilder: (ctx, index) {
-            return MealWidget(mealModel: meals[index]);
+            return MealWidget(
+              mealModel: curMeals[index],
+              buttonTitle: 'Add',
+              icon: Icons.add,
+              onPressed: () => _openBottomSheet(context, curMeals[index]),
+            );
           },
         ),
       ),
     );
+  }
+
+  void _openBottomSheet(BuildContext context, MealModel mealModel) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (ctx) {
+        return CustomBottomSheet(meal: mealModel);
+      },
+    );
+  }
+
+  AppBar _buildDefaultAppBar(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.green,
+      foregroundColor: Colors.white,
+      title: Text(
+        pagenameList[widget.toBeDisplayedList],
+        style: const TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      actions: [
+        IconButton(
+          onPressed: _startSearching,
+          icon: const Icon(Icons.search),
+        ),
+      ],
+    );
+  }
+
+  AppBar _buildSearchAppBar() {
+    return AppBar(
+      backgroundColor: Colors.green,
+      foregroundColor: Colors.white,
+      title: _buildTextField(),
+    );
+  }
+
+  Widget _buildTextField() {
+    return TextField(
+      controller: _controller,
+      decoration: const InputDecoration(
+        border: InputBorder.none,
+        hintText: 'Search for meal',
+        hintStyle: TextStyle(color: Colors.white54, fontSize: 18),
+      ),
+      cursorColor: Colors.white,
+      autofocus: true,
+      enableSuggestions: true,
+      style: const TextStyle(
+        color: Colors.white,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ),
+      onChanged: _onChange,
+    );
+  }
+
+  void _onChange(String val) {
+    List<MealModel> newMeals = meals[widget.toBeDisplayedList]
+        .where((e) => e.name.toLowerCase().contains(val.trim().toLowerCase()))
+        .toList();
+
+    setState(() {
+      curMeals = newMeals;
+    });
+  }
+
+  void _startSearching() {
+    setState(() {
+      ModalRoute.of(context)!.addLocalHistoryEntry(
+        LocalHistoryEntry(onRemove: _stopSearching),
+      );
+      isSearching = true;
+    });
+  }
+
+  void _stopSearching() {
+    setState(() {
+      curMeals = meals[widget.toBeDisplayedList];
+      isSearching = false;
+      _controller.clear();
+    });
   }
 }

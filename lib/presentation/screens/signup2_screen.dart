@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../logic/registration_cubit/registration_cubit.dart';
 import '../widgets/label_input_field.dart';
-import '../widgets/show_snack_bar.dart';
+import '../widgets/show_snack_bar_context.dart';
 import 'signup3_screen.dart';
 
 class SignUp2Screen extends StatefulWidget {
@@ -22,6 +22,14 @@ class SignUp2Screen extends StatefulWidget {
 class _SignUp1ScreenState extends State<SignUp2Screen> {
   final _heightController = TextEditingController();
   final _weightController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    _heightController.dispose();
+    _weightController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +93,7 @@ class _SignUp1ScreenState extends State<SignUp2Screen> {
     for (var check in checks) {
       if (check == null) continue;
 
-      showSnackBar(
+      showSnackBarContext(
         context,
         check[0]!,
         const Color.fromARGB(255, 188, 37, 26),
