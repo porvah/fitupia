@@ -47,6 +47,7 @@ dependencies:
   circular_chart_flutter: ^0.0.2
   image_picker: ^1.0.5
   gradient_icon: ^2.0.8
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:

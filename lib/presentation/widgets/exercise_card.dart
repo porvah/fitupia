@@ -1,3 +1,4 @@
+import 'package:first_app/models/exercises_of_bodypart_API.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/card_content.dart';
@@ -14,11 +15,12 @@ class ExerciseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        List<dynamic> data = exerciseData[card.name.toLowerCase()] ?? [];
+        List<dynamic> newdata = data[card.name
+            .toLowerCase()]; //exerciseData[card.name.toLowerCase()] ?? [];
 
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (_) => ExerciseScreen(data: data, card: card),
+            builder: (_) => ExerciseScreen(data: newdata, card: card),
           ),
         );
       },

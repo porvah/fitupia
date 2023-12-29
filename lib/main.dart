@@ -3,17 +3,18 @@ import 'package:first_app/logic/profile_image_cubit/profile_image_cubit.dart';
 import 'package:first_app/logic/read_meal_cubit/read_meal_cubit.dart';
 import 'package:first_app/logic/read_user_cubit/read_user_cubit.dart';
 import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
+import 'package:first_app/models/exercises_of_bodypart_API.dart';
 import 'package:first_app/models/meal_model.dart';
 import 'package:first_app/presentation/helper/helper.dart';
 import 'package:first_app/presentation/helper/meals.dart';
 import 'package:first_app/presentation/size_config/size_config.dart';
+import 'package:first_app/presentation/widgets/exercis_of_option_bodypart_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import 'app_router.dart';
 import 'models/user_data.dart';
-import 'presentation/helper/exercise_data.dart';
 import 'presentation/themes/custom_theme.dart';
 
 void main() async {
@@ -21,17 +22,16 @@ void main() async {
 
   await prepareMeals();
 
-  await prepareExerciseData();
+  await prepareData();
 
   await Hive.initFlutter();
 
   Hive.registerAdapter(UserDataAdapter());
   Hive.registerAdapter(MealModelAdapter());
-
   await Hive.openBox<UserData>(kUserBox);
   await Hive.openBox<MealModel>(kMealBox);
   await Hive.openBox(kImagesBox);
-
+  await prepareData();
   runApp(const FitupiaApp());
 }
 
