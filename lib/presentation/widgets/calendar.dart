@@ -55,7 +55,6 @@ class CalendarState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
-    print(_schedule);
     return Column(
       children: [
         _buildTimeStamp(),
