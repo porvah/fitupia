@@ -26,6 +26,7 @@ void main() async {
 
   await Hive.openBox<UserData>(kUserBox);
   await Hive.openBox<MealModel>(kMealBox);
+  await Hive.openBox(kImagesBox);
 
   runApp(const FitupiaApp());
 }
