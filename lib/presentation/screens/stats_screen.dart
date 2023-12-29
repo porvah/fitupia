@@ -22,11 +22,13 @@ class _StatsScreenState extends State<StatsScreen> {
   int completedDays = 50;
   int missedDays = 30;
   List<ChartData> weights = [
+    ChartData('Apr', 32),
     ChartData('Jan', 35),
     ChartData('Feb', 28),
+    ChartData('May', 40),
     ChartData('Mar', 34),
-    ChartData('Apr', 32),
-    ChartData('May', 40)
+    ChartData('Jun', 80),
+    ChartData('a', 10),
   ];
 
   @override
@@ -51,27 +53,10 @@ class _StatsScreenState extends State<StatsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SfCartesianChart(
-              primaryXAxis: CategoryAxis(),
-              title: ChartTitle(
-                  text: "Weights",
-                  textStyle: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  )),
-              series: <ChartSeries>[
-                LineSeries<ChartData, String>(
-                  enableTooltip: true,
-                  dataSource: weights,
-                  xValueMapper: (ChartData data, _) => data.x,
-                  yValueMapper: (ChartData data, _) => data.y,
-                )
-              ],
-            ),
-            _getText('Starting BMI: $startingBMI'),
-            _getText('Current BMI: $currentBMI'),
-            _getText('Starting Weight: $startingWeight'),
-            _getText('Current Weight: $currentWeight'),
+            _buildChart(),
+            _buildPanner('BMI', startingBMI.toString(), currentBMI.toString()),
+            _buildPanner(
+                'Weight', startingWeight.toString(), currentWeight.toString()),
             // _getText('Completed days: $completedDays'),
             // _getText('Missed days: $missedDays'),
           ],
@@ -80,12 +65,67 @@ class _StatsScreenState extends State<StatsScreen> {
     );
   }
 
-  Widget _getText(String text) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
-      child: Text(
-        text,
-        style: const TextStyle(fontSize: 25),
+  SfCartesianChart _buildChart() {
+    return SfCartesianChart(
+      primaryXAxis: CategoryAxis(),
+      title: ChartTitle(
+          text: "Weights",
+          textStyle: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          )),
+      series: <ChartSeries>[
+        LineSeries<ChartData, String>(
+          enableTooltip: true,
+          dataSource: weights,
+          xValueMapper: (ChartData data, _) => data.x,
+          yValueMapper: (ChartData data, _) => data.y,
+        )
+      ],
+    );
+  }
+
+  Widget _buildPanner(String title, String startingValue, String currValue) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: const Color.fromARGB(255, 46, 133, 204),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        children: [
+          _buildPannerTitle(title),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildPannerValue('Starting: $startingValue'),
+              _buildPannerValue('Current: $currValue'),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  Text _buildPannerValue(String startingValue) {
+    return Text(
+      startingValue,
+      style: const TextStyle(
+        color: Color.fromARGB(255, 252, 234, 234),
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+
+  Text _buildPannerTitle(String title) {
+    return Text(
+      title,
+      style: const TextStyle(
+        color: Color.fromARGB(255, 236, 236, 236),
+        fontSize: 25,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
