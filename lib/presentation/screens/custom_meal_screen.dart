@@ -36,6 +36,23 @@ class _CustomMealScreenState extends State<CustomMealScreen> {
   final TextEditingController _fatController = TextEditingController();
 
   @override
+  void dispose() {
+    super.dispose();
+
+    _nameController.dispose();
+
+    _weightController.dispose();
+
+    _calsController.dispose();
+
+    _proteinController.dispose();
+
+    _carbController.dispose();
+
+    _fatController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar('Custom Meal', Colors.white, Colors.green),

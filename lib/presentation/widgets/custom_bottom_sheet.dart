@@ -32,6 +32,12 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    controlGrams.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(

@@ -29,6 +29,13 @@ class _SignUp1ScreenState extends State<SignUp1Screen> {
   String? _date;
 
   @override
+  void dispose() {
+    super.dispose();
+    _nameController.dispose();
+    _genderController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
