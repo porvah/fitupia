@@ -1,9 +1,10 @@
 import 'package:first_app/logic/formulas.dart';
 import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
-import 'package:first_app/presentation/themes/appbar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter/material.dart';
+
+import 'manage_stat_screen.dart';
 
 class StatsScreen extends StatefulWidget {
   static const String routeName = '/stats_screen';
@@ -44,11 +45,7 @@ class _StatsScreenState extends State<StatsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(
-        'Statistics',
-        Colors.white,
-        const Color.fromARGB(255, 6, 85, 149),
-      ),
+      appBar: _buildAppBar(),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,6 +59,24 @@ class _StatsScreenState extends State<StatsScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      foregroundColor: Colors.white,
+      backgroundColor: Colors.red[700]!,
+      title: const Text(
+        'Statistics',
+        style: TextStyle(color: Colors.white),
+      ),
+      actions: [
+        IconButton(
+          onPressed: () =>
+              Navigator.of(context).pushNamed(ManageStatScreen.routeName),
+          icon: const Icon(Icons.add),
+        )
+      ],
     );
   }
 
