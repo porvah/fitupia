@@ -34,6 +34,7 @@ class _StatsScreenState extends State<StatsScreen> {
     super.initState();
     var user = BlocProvider.of<RegistrationCubit>(context).curUser;
     weightCubit = BlocProvider.of<ManageWeightCubit>(context);
+    weightCubit.getAllWeights();
 
     startingWeight = user.weight.toString();
     currentWeight = user.weight.toString();
