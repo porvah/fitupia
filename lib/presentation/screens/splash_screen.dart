@@ -1,5 +1,8 @@
+import 'package:first_app/logic/read_user_cubit/read_user_cubit.dart';
+import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
+import 'package:first_app/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../size_config/size_config.dart';
 import '../widgets/animated_text.dart';
 import 'welcome_screen.dart';
@@ -22,9 +25,11 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
+    BlocProvider.of<ReadUserCubit>(context).getUser();
+
     initializeAnimation();
 
-    navigateToHomeScreen();
+    navigateToNextScreen();
   }
 
   @override
@@ -53,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   Widget _getImage(BuildContext context) {
     return Image.asset(
-      'assets/logo.png',
+      'assets/logo2.png',
       height: MediaQuery.of(context).size.width / 2,
     );
   }
@@ -69,10 +74,19 @@ class _SplashScreenState extends State<SplashScreen>
     _animationController.forward();
   }
 
-  void navigateToHomeScreen() {
+  void navigateToNextScreen() {
     Future.delayed(
       const Duration(milliseconds: 1500),
-      () => Navigator.of(context).pushReplacementNamed(WelcomeScreen.routeName),
+      () {
+        var readCubit = BlocProvider.of<ReadUserCubit>(context);
+        if (readCubit.state is ReadUserNew) {
+          return Navigator.of(context)
+              .pushReplacementNamed(WelcomeScreen.routeName);
+        }
+        var regCubit = BlocProvider.of<RegistrationCubit>(context);
+        regCubit.updateUserDate(readCubit.userData!);
+        return Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+      },
     );
   }
 }

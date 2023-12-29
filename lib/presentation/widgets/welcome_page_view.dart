@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/home_screen.dart';
+import '../screens/signup1_screen.dart';
 import '../size_config/size_config.dart';
 import 'custom_button.dart';
 
@@ -32,7 +32,7 @@ class WelcomePageView extends StatelessWidget {
               icon: Icons.arrow_forward_ios_outlined,
               onPressed: () {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (ctx) => const HomeScreen()));
+                    .pushReplacementNamed(SignUp1Screen.routeName);
               },
             ),
           _getImage(),
