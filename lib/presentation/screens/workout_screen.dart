@@ -22,9 +22,9 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xFFBED8ED),
-        selectedItemColor: const Color(0xFF455766),
-        unselectedItemColor: Colors.white60,
+        backgroundColor: const Color.fromARGB(255, 17, 86, 142),
+        selectedItemColor: Colors.white70,
+        unselectedItemColor: Colors.white54,
         iconSize: 40,
         currentIndex: _currentIndex,
         onTap: (index) {
