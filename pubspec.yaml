@@ -46,6 +46,7 @@ dependencies:
   hive_flutter: ^1.1.0
   circular_chart_flutter: ^0.0.2
   image_picker: ^1.0.5
+  gradient_icon: ^2.0.8
 
 dev_dependencies:
   flutter_test:
@@ -90,6 +91,8 @@ flutter:
     - assets/images/statistics.png
     - assets/images_reg/
     - assets/datasets/
+
+    - assets/exercises_data/partExercises.json
 
   fonts:
     - family: Fitupia

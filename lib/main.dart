@@ -13,12 +13,15 @@ import 'package:hive_flutter/adapters.dart';
 
 import 'app_router.dart';
 import 'models/user_data.dart';
+import 'presentation/helper/exercise_data.dart';
 import 'presentation/themes/custom_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await prepareMeals();
+
+  await prepareExerciseData();
 
   await Hive.initFlutter();
 

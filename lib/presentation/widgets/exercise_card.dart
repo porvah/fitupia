@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
 
 import '../../models/card_content.dart';
-import '../screens/exercise_screen.dart';
+import '../helper/exercise_data.dart';
+import '../screens/exercis_screen.dart';
 import '../size_config/size_config.dart';
 
-class CustomCard extends StatelessWidget {
+class ExerciseCard extends StatelessWidget {
   final CardContent card;
 
-  const CustomCard({required this.card, super.key});
+  const ExerciseCard({required this.card, super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (card.routeName != null) {
-          Navigator.of(context).pushNamed(card.routeName!);
-        } else {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => ExerciseScreen(card: card),
-            ),
-          );
-        }
+        List<dynamic> data = exerciseData[card.name.toLowerCase()] ?? [];
+
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => ExerciseScreen(data: data, card: card),
+          ),
+        );
       },
       child: _buildHeroAnimation(
         child: Container(

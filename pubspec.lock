@@ -360,6 +360,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  gradient_icon:
+    dependency: "direct main"
+    description:
+      name: gradient_icon
+      sha256: "298c75eea60ba197c4c410e369a57b0a4a6e4b8903d925cf5cc56f978b6580fd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.8"
   graphs:
     dependency: transitive
     description:

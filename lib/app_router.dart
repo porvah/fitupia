@@ -20,6 +20,7 @@ import 'presentation/screens/signup3_screen.dart';
 import 'presentation/screens/splash_screen.dart';
 import 'presentation/screens/welcome_screen.dart';
 import 'presentation/screens/workout_screen.dart';
+import 'presentation/screens/workout_screen.dart';
 
 class AppRouter {
   const AppRouter();
