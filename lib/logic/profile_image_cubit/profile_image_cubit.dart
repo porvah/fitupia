@@ -10,15 +10,52 @@ part 'profile_image_state.dart';
 class ProfileImageCubit extends Cubit<ProfileImageState> {
   ProfileImageCubit() : super(ProfileImageStateInitial());
 
-  Future<void> saveProfileImage(UserData user, Uint8List imageData) async {
-    final box = Hive.box(kImagesBox);
+  Uint8List? curProfileImage;
 
-    await box.put(user.key, imageData);
+  Future<void> saveProfileImage(UserData user, Uint8List imageData) async {
+    emit(ProfileImageStateLoading());
+
+    try {
+      final box = Hive.box(kImagesBox);
+
+      await box.put(user.key, imageData);
+
+      emit(ProfileImageStateHaveImage(imageData));
+    } catch (e) {
+      emit(ProfileImageStateFailure(e.toString()));
+    }
   }
 
   Future<Uint8List?> getProfileImage(UserData user) async {
-    final box = Hive.box(kImagesBox);
+    emit(ProfileImageStateLoading());
 
-    return await box.get(user.key);
+    try {
+      final box = Hive.box(kImagesBox);
+      var img = await box.get(user.key);
+
+      if (img == null) {
+        emit(ProfileImageStateNoImage());
+      } else {
+        emit(ProfileImageStateHaveImage(img));
+      }
+
+      return img;
+    } catch (e) {
+      emit(ProfileImageStateFailure(e.toString()));
+      return null;
+    }
+  }
+
+  Future<void> deleteProfileImage(UserData user) async {
+    emit(ProfileImageStateLoading());
+
+    try {
+      final box = Hive.box(kImagesBox);
+      await box.delete(user.key);
+
+      emit(ProfileImageStateNoImage());
+    } catch (e) {
+      emit(ProfileImageStateFailure(e.toString()));
+    }
   }
 }

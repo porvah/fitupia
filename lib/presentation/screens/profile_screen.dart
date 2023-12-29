@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:first_app/logic/profile_image_cubit/profile_image_cubit.dart';
 import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
 import 'package:first_app/presentation/screens/registration_screen.dart';
 import 'package:first_app/presentation/size_config/size_config.dart';
@@ -29,6 +30,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     super.initState();
     userData = BlocProvider.of<RegistrationCubit>(context).curUser;
+
+    BlocProvider.of<ProfileImageCubit>(context).getProfileImage(userData);
   }
 
   @override
@@ -111,16 +114,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _getProfileImage() {
+    return BlocBuilder<ProfileImageCubit, ProfileImageState>(
+        builder: (context, state) {
+      if (state is ProfileImageStateNoImage) {
+        return _buildEmptyImage();
+      } else if (state is ProfileImageStateHaveImage) {
+        return _buildFullImage(state.curProfileImage);
+      } else {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+    });
+  }
+
+  Widget _buildEmptyImage() {
     return Positioned(
       bottom: 0,
       child: CircleAvatar(
-        radius: profileHeight / 2,
-        backgroundColor: Colors.grey.shade600,
-        backgroundImage: (curProfile == null)
-            ? const AssetImage('assets/images/personLogo.jpg')
-            : Image.memory(curProfile!).image,
-      ),
+          radius: profileHeight / 2,
+          backgroundColor: Colors.grey.shade600,
+          backgroundImage: const AssetImage('assets/images/personLogo.jpg')),
     );
+  }
+
+  Widget _buildFullImage(Uint8List curImage) {
+    return Positioned(
+        bottom: 0,
+        child: CircleAvatar(
+          radius: profileHeight / 2,
+          backgroundColor: Colors.grey.shade600,
+          backgroundImage: Image.memory(curImage).image,
+        ));
   }
 
   Widget _getUserName() {
@@ -244,19 +269,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> _pickImage() async {
     ImagePicker picker = ImagePicker();
+    var imgCubit = BlocProvider.of<ProfileImageCubit>(context);
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
 
     if (image == null) return;
     var bytes = await image.readAsBytes();
-
-    setState(() {
-      curProfile = bytes;
-    });
+    await imgCubit.saveProfileImage(userData, bytes);
   }
 
-  void _deleteImage() {
-    setState(() {
-      curProfile = null;
-    });
+  Future<void> _deleteImage() async {
+    var imgCubit = BlocProvider.of<ProfileImageCubit>(context);
+    await imgCubit.deleteProfileImage(userData);
   }
 }
