@@ -1,11 +1,14 @@
 import 'package:first_app/logic/add_meal_cubit/add_meal_cubit.dart';
+import 'package:first_app/logic/manage_weight_cubit/manage_weight_cubit.dart';
 import 'package:first_app/logic/profile_image_cubit/profile_image_cubit.dart';
 import 'package:first_app/logic/read_meal_cubit/read_meal_cubit.dart';
 import 'package:first_app/logic/read_user_cubit/read_user_cubit.dart';
 import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
 import 'package:first_app/models/meal_model.dart';
+import 'package:first_app/models/state_item.dart';
 import 'package:first_app/presentation/helper/helper.dart';
 import 'package:first_app/presentation/helper/meals.dart';
+import 'package:first_app/presentation/screens/manage_stat_screen.dart';
 import 'package:first_app/presentation/size_config/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,10 +30,12 @@ void main() async {
 
   Hive.registerAdapter(UserDataAdapter());
   Hive.registerAdapter(MealModelAdapter());
+  Hive.registerAdapter(StateItemAdapter());
 
   await Hive.openBox<UserData>(kUserBox);
   await Hive.openBox<MealModel>(kMealBox);
   await Hive.openBox(kImagesBox);
+  await Hive.openBox<StateItem>(kStateBox);
 
   runApp(const FitupiaApp());
 }
@@ -51,6 +56,7 @@ class FitupiaApp extends StatelessWidget {
         BlocProvider<AddMealCubit>(create: (_) => AddMealCubit()),
         BlocProvider<ReadMealCubit>(create: (_) => ReadMealCubit()),
         BlocProvider<ProfileImageCubit>(create: (_) => ProfileImageCubit()),
+        BlocProvider<ManageWeightCubit>(create: (_) => ManageWeightCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

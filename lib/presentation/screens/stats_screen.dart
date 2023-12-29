@@ -1,9 +1,11 @@
 import 'package:first_app/logic/formulas.dart';
+import 'package:first_app/logic/manage_weight_cubit/manage_weight_cubit.dart';
 import 'package:first_app/logic/registration_cubit/registration_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/state_item.dart';
 import 'manage_stat_screen.dart';
 
 class StatsScreen extends StatefulWidget {
@@ -22,20 +24,15 @@ class _StatsScreenState extends State<StatsScreen> {
   String currentWeight = '0';
   int completedDays = 50;
   int missedDays = 30;
-  List<ChartData> weights = [
-    ChartData('Apr', 32),
-    ChartData('Jan', 35),
-    ChartData('Feb', 28),
-    ChartData('May', 40),
-    ChartData('Mar', 34),
-    ChartData('Jun', 80),
-    ChartData('a', 10),
-  ];
+  late ManageWeightCubit weightCubit;
+  // List<ChartData> weights = [];
 
   @override
   void initState() {
     super.initState();
     var user = BlocProvider.of<RegistrationCubit>(context).curUser;
+    weightCubit = BlocProvider.of<ManageWeightCubit>(context);
+
     startingWeight = user.weight.toString();
     currentWeight = user.weight.toString();
     startingBMI = Formulas.getBMI(user).toStringAsFixed(1);
@@ -47,16 +44,20 @@ class _StatsScreenState extends State<StatsScreen> {
     return Scaffold(
       appBar: _buildAppBar(),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildChart(),
-            _buildPanner('BMI', startingBMI.toString(), currentBMI.toString()),
-            _buildPanner(
-                'Weight', startingWeight.toString(), currentWeight.toString()),
-            // _getText('Completed days: $completedDays'),
-            // _getText('Missed days: $missedDays'),
-          ],
+        child: BlocBuilder<ManageWeightCubit, ManageWeightState>(
+          builder: (context, state) {
+            return ListView(
+              children: [
+                _buildChart(weightCubit.allWeights),
+                _buildPanner(
+                    'BMI', startingBMI.toString(), currentBMI.toString()),
+                _buildPanner('Weight', startingWeight.toString(),
+                    currentWeight.toString()),
+                // _getText('Completed days: $completedDays'),
+                // _getText('Missed days: $missedDays'),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -80,7 +81,9 @@ class _StatsScreenState extends State<StatsScreen> {
     );
   }
 
-  SfCartesianChart _buildChart() {
+  SfCartesianChart _buildChart(List<StateItem> items) {
+    var weights = _getWeights(items);
+
     return SfCartesianChart(
       primaryXAxis: CategoryAxis(),
       title: ChartTitle(
@@ -143,6 +146,10 @@ class _StatsScreenState extends State<StatsScreen> {
         fontWeight: FontWeight.bold,
       ),
     );
+  }
+
+  List<ChartData> _getWeights(List<StateItem> items) {
+    return items.map((e) => ChartData(e.title, e.value)).toList();
   }
 }
 

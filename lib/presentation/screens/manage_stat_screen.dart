@@ -1,7 +1,10 @@
+import 'package:first_app/logic/manage_weight_cubit/manage_weight_cubit.dart';
+import 'package:first_app/models/state_item.dart';
 import 'package:first_app/presentation/themes/appbar.dart';
 import 'package:first_app/presentation/widgets/custom_button.dart';
 import 'package:first_app/presentation/widgets/label_input_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ManageStatScreen extends StatefulWidget {
   static const String routeName = '/manage_stats';
@@ -17,14 +20,23 @@ class _ManageStatScreenState extends State<ManageStatScreen> {
   final TextEditingController valueController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
+  late ManageWeightCubit weightCubit;
 
-  List<List<dynamic>> stats = [
-    ['1/1', 120],
-    ['1/2', 100],
-    ['1/3', 110],
-    ['1/4', 80],
-    ['1/4', 60],
-  ];
+  // List<List<dynamic>> stats = [
+  //   ['1/1', 120],
+  //   ['1/2', 100],
+  //   ['1/3', 110],
+  //   ['1/4', 80],
+  //   ['1/4', 60],
+  // ];
+
+  @override
+  void initState() {
+    super.initState();
+    weightCubit = BlocProvider.of<ManageWeightCubit>(context);
+
+    weightCubit.getAllWeights();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +104,8 @@ class _ManageStatScreenState extends State<ManageStatScreen> {
   }
 
   Widget _buildStatsHistory() {
+    var stats = weightCubit.allWeights;
+
     return Expanded(
       child: ListView.builder(
         itemCount: stats.length,
@@ -102,7 +116,7 @@ class _ManageStatScreenState extends State<ManageStatScreen> {
     );
   }
 
-  Widget _buildItem(List<dynamic> item) {
+  Widget _buildItem(StateItem item) {
     return Container(
       padding: const EdgeInsets.all(8),
       margin: const EdgeInsets.all(8),
@@ -112,7 +126,7 @@ class _ManageStatScreenState extends State<ManageStatScreen> {
       ),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Text(
-          'Date: ${item[0]}',
+          'Date: ${_getStringVal(item.title)}',
           style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -120,7 +134,7 @@ class _ManageStatScreenState extends State<ManageStatScreen> {
           ),
         ),
         Text(
-          'Weight: ${item[1] as int}',
+          'Weight: ${_getStringVal(item.value.toString())}',
           style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -128,7 +142,7 @@ class _ManageStatScreenState extends State<ManageStatScreen> {
           ),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: () => _onDelete(item),
           icon: const Icon(
             Icons.delete,
             color: Colors.red,
@@ -156,6 +170,9 @@ class _ManageStatScreenState extends State<ManageStatScreen> {
       if (newVal <= 0) {
         return "Weight must be greater than zero";
       }
+      if (newVal >= 400) {
+        return "Weight must be less than 400";
+      }
     } catch (e) {
       return "Weight must be number";
     }
@@ -169,5 +186,25 @@ class _ManageStatScreenState extends State<ManageStatScreen> {
       });
       return;
     }
+
+    var nav = Navigator.of(context);
+
+    String title = titleController.text;
+    double weight = double.parse(valueController.text);
+
+    await weightCubit.addWeight(StateItem(title: title, value: weight));
+    nav.pop();
+  }
+
+  Future<void> _onDelete(StateItem item) async {
+    await weightCubit.deleteWeight(item);
+    setState(() {});
+  }
+
+  String _getStringVal(String val) {
+    if (val.length > 5) {
+      return '${val.substring(0, 5)}..';
+    }
+    return val;
   }
 }
