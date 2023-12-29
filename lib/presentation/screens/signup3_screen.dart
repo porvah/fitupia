@@ -24,6 +24,12 @@ class _SignUp1ScreenState extends State<SignUp3Screen> {
   final _goalController = TextEditingController();
 
   @override
+  void dispose() {
+    super.dispose();
+    _goalController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(

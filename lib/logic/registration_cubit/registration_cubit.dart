@@ -16,7 +16,7 @@ class RegistrationCubit extends Cubit<RegistrationState> {
     height: 0,
     weight: 0,
     goal: '',
-    exerciseSchedule: [0, 0, 0, 0, 0],
+    exerciseSchedule: [1, 2, 3, 4, 5],
   );
 
   void updateUserDate(UserData data) {
@@ -45,7 +45,7 @@ class RegistrationCubit extends Cubit<RegistrationState> {
         height: 0,
         weight: 0,
         goal: '',
-        exerciseSchedule: [0, 0, 0, 0, 0]);
+        exerciseSchedule: [1, 2, 3, 4, 5]);
     emit(RegistrationInitial());
   }
 

@@ -48,6 +48,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+
+    _heightController.dispose();
+    _weightController.dispose();
+    _goalController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(

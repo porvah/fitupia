@@ -24,6 +24,14 @@ class _SignUp1ScreenState extends State<SignUp2Screen> {
   final _weightController = TextEditingController();
 
   @override
+  void dispose() {
+    super.dispose();
+
+    _heightController.dispose();
+    _weightController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
