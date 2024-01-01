@@ -56,3 +56,4 @@ We appreciate your trust in Fitupia as your fitness and health partner. Whether 
 
 ## License
 
+This project is licensed under the MIT License.
